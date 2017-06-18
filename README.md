@@ -8,7 +8,7 @@ While feeds are useful in the sense that they distill the vast river of the web 
 
 # What Pheed Does
 
-Once installed on a server, Pheed **aggregates** and **sorts** posts that come in from **pheeders** selected by the user. Users can add an RSS feed, Twitter or Facebook timeline, LinkedIn news feed, or any other type of feed that is defined by **pheeder**. Once added, these feeds are aggregated and sorted, according to a **philter** that is selected by the user and is open-source (and thus transparent). The aggregated and filtered feed can be consumed by the user through a default website or a through a JSON format (which allows mobile apps, browser plugins, etc..).
+Once installed on a server, Pheed **aggregates** and **sorts** posts that come in from **pheeders** selected by the user. Users can add an RSS feed, Twitter or Facebook timeline, LinkedIn news feed, or any other type of feed that is defined by a **pheeder**. Once added, these feeds are aggregated and sorted, according to a **philter** that is selected by the user and is open-source (and thus transparent). The aggregated and filtered feed can be consumed by the user through a default website or a through a JSON format (which allows mobile apps, browser plugins, etc..).
 
 ## How it works
 
@@ -28,13 +28,31 @@ The standard format for posts that Pheed deals with conforms to the [JSON Feed s
 
 # Philter Interface
 
-The role of philters is to assign a score to an post based on the item's content and the user's options (details on how this works to be filled out later). It is thus a pure function which accepts a JSON feed `item` as the first argument and returns an integer from 0 to 100. Items with higher scores will shown at the top of the user's aggregated feed, above items with lower scores. Items with a score of 0 will not be shown in the aggregated feed at all.
+The role of philters is to assign a score to an post based on the item's content and the user's options (details on how this works to be filled out later). It is thus a pure function which accepts a JSON feed `item` as the first argument and returns an integer from 0 to 100 (called the **priority**). Items with higher priorities will shown at the top of the user's aggregated feed, above items with lower scores. Items with a priority of 0 will not be shown in the aggregated feed at all.
 
 **Example**
 
 # Pheed as an API
 
-Pheed provides a very simple web interface but all resources can also be accessed by API (once authenticated).
+Pheed provides a simple web interface on its own but all resources can also be accessed by API (once authenticated).
+
+# Glossary
+
+To keep conversations meaningful and direct, a few terms:
+
+**Feed**: Any HTTP resource which can be expressed as a stream of **posts**. Examples: the list of posts in a blog, the timeline of tweets you consume or produce.
+
+**Aggregated feed**: The aggregated and sorted list of posts produced by Pheeder for the consumption of a particular user.
+
+**Post**: An item within a feed (or aggregated feed).
+
+**Post standard content**: The standardized format/content of a post defined by the JSON Feed spec.
+
+**Pheeder**: An algorithm for consuming a feed. See above.
+
+**Philter**: An algorithm for scoring/ranking posts. See above.
+
+**Post priority**: A score associated with a post for a particular user. Ranged from 0-100.
 
 # Notes and stuff for later
 
