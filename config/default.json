@@ -1,0 +1,34 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "authentication": {
+    "secret": "fa35ecd8de3ec5850186c77ecb1385f19ab4ac6ee9c7e266ea9bc95525c68baf6d0f527e09514df9edfa5f3489668fce3a362b6a3b13ba677dd89ce9e660922083e78f009f979bdee37bd99b240c546d01ce78fa56c4d1da01ef603a6ec654e1be52c9f92d49e77b4f0ee61f9f7069a0be79c920bd9f2383c9828fcd4f378af5be360bcb43d4b5e5369b2ee42469b8290c1d53529f296e4e79964bf89a26b68ec70bbe85cd233f4f1ba01c203f2e2cfbc52b0c74a6d4a2a5e45d0358dad4026bed7c35f214209d18c26938f5000ef196d232d20ba901a78fb1dfd29a697085a05e5cedadda96a6ca845d5f21f0785f985075b34ce82417d2681414bab03d223e",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "type": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    }
+  },
+  "mongodb": "mongodb://pheed-dev:y4Q3kXLSlTHdpbMVVI@ds147872.mlab.com:47872/pheed-dev"
+}
