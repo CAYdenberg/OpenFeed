@@ -43,6 +43,7 @@
     "feathers-rest": "^1.8.0",
     "helmet": "^3.6.1",
     "mongoose": "^4.11.1",
+    "popsicle": "^9.1.0",
     "serve-favicon": "^2.4.3",
     "winston": "^2.3.1"
   },
