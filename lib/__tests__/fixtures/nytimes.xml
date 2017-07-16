@@ -1,0 +1,523 @@
+<?xml version="1.0"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:nyt="http://www.nytimes.com/namespaces/rss/2.0" version="2.0">
+  <channel>
+    <title>NYT &gt; Home Page</title>
+    <link>http://www.nytimes.com/pages/index.html?partner=rss&amp;emc=rss</link>
+    <atom:link rel="self" type="application/rss+xml" href="http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml"/>
+    <description/>
+    <language>en-us</language>
+    <copyright>Copyright 2017  The New York Times Company</copyright>
+    <lastBuildDate>Sun, 16 Jul 2017 20:17:15 GMT </lastBuildDate>
+    <image>
+      <title>NYT &gt; Home Page</title>
+      <url>https://static01.nyt.com/images/misc/NYT_logo_rss_250x40.png</url>
+      <link>http://www.nytimes.com/pages/index.html?partner=rss&amp;emc=rss</link>
+    </image>
+    <item>
+      <title>McCain&#x2019;s Surgery Will Delay Senate Votes on Health Care Bill</title>
+      <link>https://www.nytimes.com/2017/07/15/us/mccains-surgery-will-delay-senate-votes-on-health-care-bill.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/15/us/mccains-surgery-will-delay-senate-votes-on-health-care-bill.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/15/us/mccains-surgery-will-delay-senate-votes-on-health-care-bill.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/16/us/16SENATE/16SENATE-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Senator John McCain in April. He has been noncommittal in his comments on the bill to repeal the Affordable Care Act.</media:description>
+      <media:credit>Al Drago/The New York Times</media:credit>
+      <description>With John McCain&#x2019;s absence, Republicans would have only 49 votes to move ahead with the legislation; all Democrats and the two independent senators oppose it.</description>
+      <dc:creator>ROBERT PEAR</dc:creator>
+      <pubDate>Sun, 16 Jul 2017 04:34:21 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Senate</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Republican Party</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Law and Legislation</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Health Insurance and Managed Care</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Patient Protection and Affordable Care Act (2010)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">McCain, John</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">McConnell, Mitch</category>
+    </item>
+    <item>
+      <title>In Clash Over Health Bill, a Growing Fear of &#x2018;Junk Insurance&#x2019;</title>
+      <link>https://www.nytimes.com/2017/07/15/health/senate-health-care-obamacare.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/15/health/senate-health-care-obamacare.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/15/health/senate-health-care-obamacare.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/16/us/16junk/16junk-web-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Julie Arkison, a self-employed horseback-riding instructor, at her farm in Saline, Mich. She said the insurance plan she had before the Affordable Care Act ended up costing her thousands of dollars when she needed hip surgery.</media:description>
+      <media:credit>Laura McDermott for The New York Times</media:credit>
+      <description>The Republicans&#x2019; proposal to overturn Obamacare could allow insurers to sell bare-bones plans that fail to pay for what is now deemed essential medical care.</description>
+      <dc:creator>REED ABELSON</dc:creator>
+      <pubDate>Sat, 15 Jul 2017 17:09:35 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Health Insurance and Managed Care</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Consumer Protection</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/mdes">Patient Protection and Affordable Care Act (2010)</category>
+    </item>
+    <item>
+      <title>Trump Goes on Attack as Russia Revelations Appear to Take Toll</title>
+      <link>https://www.nytimes.com/2017/07/16/us/politics/trump-twitter-russia.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/16/us/politics/trump-twitter-russia.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/16/us/politics/trump-twitter-russia.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/17/us/17dc-trump/17dc-trump-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>President Trump on Saturday at Trump National Golf Club during the United States Women&#x2019;s Open in Bedminster, N.J.</media:description>
+      <media:credit>Eric Thayer for The New York Times</media:credit>
+      <description>During a weekend of watching golf in New Jersey, the president used Twitter to defend his son and excoriate Hillary Clinton and the news media.</description>
+      <dc:creator>MARK LANDLER</dc:creator>
+      <pubDate>Sun, 16 Jul 2017 19:28:48 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J Jr</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Trump National Golf Club (Bedminster, NJ)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Russian Interference in 2016 US Elections and Ties to Trump Associates</category>
+    </item>
+    <item>
+      <title>Soviet Veteran Who Met With Trump Jr. Is a Master of the Dark Arts</title>
+      <link>https://www.nytimes.com/2017/07/15/world/europe/rinat-akhmetshin-donald-trump-jr-natalia-veselnitskaya.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/15/world/europe/rinat-akhmetshin-donald-trump-jr-natalia-veselnitskaya.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/15/world/europe/rinat-akhmetshin-donald-trump-jr-natalia-veselnitskaya.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/16/world/16RINAT-01/16RINAT-01-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Rinat Akhmetshin at a House Foreign Affairs Committee hearing last summer on United States policy toward Russia.</media:description>
+      <media:credit>Hermitage Capital</media:credit>
+      <description>Rinat Akhmetshin, a gregarious, fast-talking man with a sharp sense of humor, has often warned his friends and contacts: &#x201C;Nothing is secure.&#x201D;</description>
+      <dc:creator>ANDREW HIGGINS and ANDREW E. KRAMER</dc:creator>
+      <pubDate>Sat, 15 Jul 2017 22:40:07 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Akhmetshin, Rinat</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Lobbying and Lobbyists</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Russian Interference in 2016 US Elections and Ties to Trump Associates</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J Jr</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Veselnitskaya, Natalia</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States Politics and Government</category>
+    </item>
+    <item>
+      <title>Huge Manafort Payment Reflects Murky Ukraine Politics</title>
+      <link>https://www.nytimes.com/2017/07/15/world/europe/ukraine-paul-manafort-viktor-yanukovych.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/15/world/europe/ukraine-paul-manafort-viktor-yanukovych.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/15/world/europe/ukraine-paul-manafort-viktor-yanukovych.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/16/world/europe/manafort-img/manafort-img-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Paul Manafort on the floor of the Republican National Convention in Cleveland in 2016.</media:description>
+      <media:credit>Matt Rourke/Associated Press</media:credit>
+      <description>How did an organization that reported spending of less than $15 million over two years pay Donald J. Trump&#x2019;s former campaign chairman $17 million?</description>
+      <dc:creator>ANDREW E. KRAMER</dc:creator>
+      <pubDate>Sat, 15 Jul 2017 12:28:08 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Ukraine</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Manafort, Paul J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Yanukovych, Viktor F</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Party of Regions (Ukraine)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Russian Interference in 2016 US Elections and Ties to Trump Associates</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Presidential Election of 2016</category>
+    </item>
+    <item>
+      <title>Trump&#x2019;s Re-Election Campaign Doubles Its Spending on Legal Fees</title>
+      <link>https://www.nytimes.com/2017/07/15/us/politics/trump-campaign-legal-fees.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/15/us/politics/trump-campaign-legal-fees.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/15/us/politics/trump-campaign-legal-fees.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/16/us/16dc-FEC/16dc-FEC-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Committees focused on President Trump&#x2019;s re-election spent nearly $200,000 on branded merchandise between April and June.</media:description>
+      <media:credit>Jonathan Ernst/Reuters</media:credit>
+      <description>The committees devoted to Mr. Trump&#x2019;s 2020 campaign spent nearly $700,000 on legal fees in the second quarter, according to reports filed Saturday.</description>
+      <dc:creator>KENNETH P. VOGEL and RACHEL SHOREY</dc:creator>
+      <pubDate>Sat, 15 Jul 2017 23:45:41 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Presidential Election of 2016</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Campaign Finance</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Russian Interference in 2016 US Elections and Ties to Trump Associates</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Presidential Election of 2020</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Federal Election Commission</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J Jr</category>
+    </item>
+    <item>
+      <title>After a Harrowing Flight From U.S., Refugees Find Refuge in Canada</title>
+      <link>https://www.nytimes.com/2017/07/16/world/canada/refugees-in-canada.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/16/world/canada/refugees-in-canada.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/16/world/canada/refugees-in-canada.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/08/world/10canada-bordercrossers1/10canada-bordercrossers1-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Razak Iyal, 35, center left, and Seidu Mohammed, 24, center right, volunteering at the Canadian Muslim Women&#x2019;s Institute in Winnipeg.</media:description>
+      <media:credit>Aaron Vincent Elkaim for The New York Times</media:credit>
+      <description>Two Ghanaian refugees lost all but a single thumb to frostbite while fleeing the United States. Six months later, they&#x2019;ve both been accepted in Canada.</description>
+      <dc:creator>CATHERINE PORTER</dc:creator>
+      <pubDate>Sun, 16 Jul 2017 15:09:33 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Asylum, Right of</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Refugees and Displaced Persons</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Canada</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">United States</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Winnipeg (Manitoba)</category>
+    </item>
+    <item>
+      <title>Donald Trump Jr., Macron, Senate Republicans: Your Weekend Briefing</title>
+      <link>https://www.nytimes.com/2017/07/16/briefing/donald-trump-jr-macron-republicans.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/16/briefing/donald-trump-jr-macron-republicans.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/16/briefing/donald-trump-jr-macron-republicans.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/16/briefing/16WeekendBriefingSS-slide-6N5O/16WeekendBriefingSS-slide-6N5O-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description/>
+      <media:credit>Sam Hodgson for The New York Times</media:credit>
+      <description>Here&#x2019;s what you need to know about the week&#x2019;s top stories.</description>
+      <dc:creator>MAYA SALAM and HEATHER CASEY</dc:creator>
+      <pubDate>Sun, 16 Jul 2017 16:50:57 GMT</pubDate>
+    </item>
+    <item>
+      <title>Asia and Australia Edition: Roger Federer, Turkey, Donald Trump Jr.: Your Monday Briefing</title>
+      <link>https://www.nytimes.com/2017/07/16/briefing/roger-federer-turkey-donald-trump-jr.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/16/briefing/roger-federer-turkey-donald-trump-jr.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/16/briefing/roger-federer-turkey-donald-trump-jr.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/16/us/17BRIEFING-asia-slide-DQQ2/17BRIEFING-asia-slide-DQQ2-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description/>
+      <media:credit>Doug Mills/The New York Times</media:credit>
+      <description>Here&#x2019;s what you need to know to start your day.</description>
+      <dc:creator>CHARLES McDERMID</dc:creator>
+      <pubDate>Sun, 16 Jul 2017 19:57:41 GMT</pubDate>
+    </item>
+    <item>
+      <title>At a Luxury Complex in India, the Maids and the Madams Go to War</title>
+      <link>https://www.nytimes.com/2017/07/15/world/asia/at-a-luxury-complex-in-india-the-maids-and-the-madams-go-to-war.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/15/world/asia/at-a-luxury-complex-in-india-the-maids-and-the-madams-go-to-war.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/15/world/asia/at-a-luxury-complex-in-india-the-maids-and-the-madams-go-to-war.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/16/world/16MAIDS-01print/16MAIDS-01print-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>A dispute between a maid and her employer ignited a riot at the Mahagun Moderne complex in Noida, India.</media:description>
+      <media:credit>Poras Chaudhary for The New York Times</media:credit>
+      <description>A dispute between a maid and her employer led to a full-blown riot, an unusual boiling over of resentment between rich and poor in India.</description>
+      <dc:creator>SUHASINI RAJ and ELLEN BARRY</dc:creator>
+      <pubDate>Sat, 15 Jul 2017 17:48:35 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Noida (India)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Domestic Service</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Demonstrations, Protests and Riots</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Sethi, Harshu</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Bibi, Johra</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">India</category>
+    </item>
+    <item>
+      <title>Roger Federer Wins Record-Breaking Eighth Wimbledon Title</title>
+      <link>https://www.nytimes.com/2017/07/16/sports/tennis/wimbledon-roger-federer-marin-cilic.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/16/sports/tennis/wimbledon-roger-federer-marin-cilic.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/16/sports/tennis/wimbledon-roger-federer-marin-cilic.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/16/sports/17WIMBLEDON5/17WIMBLEDON5-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Roger Federer, who turns 36 next month, is the oldest man to win the Wimbledon singles title in the Open era, which began in 1968.</media:description>
+      <media:credit>Clive Brunskill/Getty Images</media:credit>
+      <description>Federer defeated Marin Cilic in straight sets, making him the man with the most singles titles at the tournament, and the oldest man to win it in the Open era.</description>
+      <dc:creator>CHRISTOPHER CLAREY</dc:creator>
+      <pubDate>Sun, 16 Jul 2017 15:44:50 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Tennis</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Wimbledon Tennis Tournament</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Cilic, Marin</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Federer, Roger</category>
+    </item>
+    <item>
+      <title>Whimsical Urban Debris as Art in Detroit</title>
+      <link>https://www.nytimes.com/video/us/100000005152891/whimsical-urban-debris-as-art-in-detroit.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/video/us/100000005152891/whimsical-urban-debris-as-art-in-detroit.html</guid>
+      <description>More than 30 years ago, Tyree Guyton began transforming the blighted street he grew up on. Now, he is dismantling a portion of what is known as the Heidelberg Project to begin something new.</description>
+      <dc:creator/>
+      <pubDate>Sun, 16 Jul 2017 09:00:02 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/des">Art</category>
+      <category domain="http://www.nytimes.com/namespaces/des">Urban Areas</category>
+    </item>
+    <item>
+      <title>Your Daily Mini Crossword</title>
+      <link>http://www.nytimes.com/crosswords/game/mini?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/crosswords/game/mini</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/crosswords/game/mini?partner=rss&amp;emc=rss"/>
+      <description>Solve a bite-size crossword in just a few minutes.</description>
+      <dc:creator/>
+      <pubDate>Tue, 14 Mar 2017 22:01:11 GMT</pubDate>
+    </item>
+    <item>
+      <title>What Happens After Prison? This.</title>
+      <link>https://www.nytimes.com/video/us/100000005265290/what-happens-after-prison.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/video/us/100000005265290/what-happens-after-prison.html</guid>
+      <description>The Times, in collaboration with the PBS series &#x201C;Frontline,&#x201D; followed 10 recently released inmates struggling to succeed on the outside.</description>
+      <dc:creator/>
+      <pubDate>Sun, 16 Jul 2017 11:55:22 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/des">Prisons and Prisoners</category>
+    </item>
+    <item>
+      <title>She&#x2019;s His Rock. His Parole Officer Won&#x2019;t Let Him See Her.</title>
+      <link>https://www.nytimes.com/2017/07/16/us/life-on-parole.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/16/us/life-on-parole.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/16/us/life-on-parole.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/17/us/17parole-poster/17parole-poster-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description/>
+      <media:credit/>
+      <description>As prison rolls drop and the number of parolees increases, a Connecticut man learns that getting out of prison is not the same as being free.</description>
+      <dc:creator>SHAILA DEWAN</dc:creator>
+      <pubDate>Sun, 16 Jul 2017 12:00:25 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Probation and Parole</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Connecticut</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Cheshire (Conn)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/mdes">Addiction (Psychology)</category>
+    </item>
+    <item>
+      <title>Cardinals on Opposite Sides of the Hudson Reflect Two Paths of Catholicism</title>
+      <link>https://www.nytimes.com/2017/07/16/nyregion/cardinals-catholicism-same-sex-attraction-gay.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/16/nyregion/cardinals-catholicism-same-sex-attraction-gay.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/16/nyregion/cardinals-catholicism-same-sex-attraction-gay.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/16/nyregion/16CARDINALS1/16CARDINALS1-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Cardinal Joseph W. Tobin, top, in May before a service welcoming gay, lesbian, bisexual and transgender Catholics at the Cathedral Basilica of the Sacred Heart in Newark.</media:description>
+      <media:credit>Bryan Anselm for The New York Times</media:credit>
+      <description>Cardinal Joseph W. Tobin of Newark tends toward the progressive spirit of Pope Francis; Cardinal Timothy M. Dolan of New York hews toward Pope Benedict&#x2019;s conservative views.</description>
+      <dc:creator>SHARON OTTERMAN</dc:creator>
+      <pubDate>Sun, 16 Jul 2017 07:00:23 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Cardinals (Roman Catholic Prelates)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Dolan, Timothy M</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Tobin, Joseph W (1952- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Manhattan (NYC)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Newark (NJ)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Roman Catholic Church</category>
+    </item>
+    <item>
+      <title>After N.F.L. Concussion Settlement, Feeding Frenzy of Lawyers and Lenders</title>
+      <link>https://www.nytimes.com/2017/07/16/sports/football/nfl-concussion-settlement-lawyers.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/16/sports/football/nfl-concussion-settlement-lawyers.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/16/sports/football/nfl-concussion-settlement-lawyers.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/16/sports/17predators1/17predators1-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Walter Carter, who played for the Raiders and the Buccaneers, has heard from at least a dozen companies pitching services.</media:description>
+      <media:credit>Eve Edelheit for The New York Times</media:credit>
+      <description>The possibility of large payouts to former players, many with cognitive ailments from hits to the head, attracts offers of help with claims, for a cut.</description>
+      <dc:creator>KEN BELSON</dc:creator>
+      <pubDate>Sun, 16 Jul 2017 13:37:47 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Concussions</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Legal Profession</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/mdes">Suits and Litigation (Civil)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/mdes">Consumer Protection</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">National Football League</category>
+    </item>
+    <item>
+      <title>How Andy Serkis Plays a Talking Chimp, Believably</title>
+      <link>https://www.nytimes.com/video/movies/100000005246278/andy-serkis-war-for-the-planet-of-the-apes-interview.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/video/movies/100000005246278/andy-serkis-war-for-the-planet-of-the-apes-interview.html</guid>
+      <description>Andy Serkis (famously known as Gollum in &#x201C;The Lord of the Rings&#x201D;) reprises his role as the talking chimpanzee Caesar in "War for the Planet of the Apes."</description>
+      <dc:creator/>
+      <pubDate>Fri, 14 Jul 2017 20:04:24 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/nyt_per">Serkis, Andy</category>
+      <category domain="http://www.nytimes.com/namespaces/des">Actors and Actresses</category>
+      <category domain="http://www.nytimes.com/namespaces/des">Movies</category>
+      <category domain="http://www.nytimes.com/namespaces/nyt_ttl">War for the Planet of the Apes (Movie)</category>
+    </item>
+    <item>
+      <title>Andy Serkis on the Ending of &#x2018;War for the Planet of the Apes&#x2019;</title>
+      <link>https://www.nytimes.com/2017/07/16/movies/andy-serkis-war-planet-apes-ending.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/16/movies/andy-serkis-war-planet-apes-ending.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/16/movies/andy-serkis-war-planet-apes-ending.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/17/arts/17SERKISjp/17SERKIS-web-2-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Mr. Serkis wearing performance-capture sensors on the set of &#x201C;War for the Planet of the Apes,&#x201D; directed by Matt Reeves.</media:description>
+      <media:credit>20th Century Fox</media:credit>
+      <description>The actor says he wasn&#x2019;t surprised when he read the script because it had been planned for a few years. But the movie was shot out of order, and that was difficult.</description>
+      <dc:creator>ROSLYN SULCAS</dc:creator>
+      <pubDate>Sun, 16 Jul 2017 16:30:10 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Movies</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Actors and Actresses</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Serkis, Andy</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_ttl">War for the Planet of the Apes (Movie)</category>
+    </item>
+    <item>
+      <title>&#x2018;Planet of the Apes&#x2019; Arrives to Ho-Hum Ticket Sales</title>
+      <link>https://www.nytimes.com/2017/07/16/arts/planet-of-the-apes-arrives-to-ho-hum-ticket-sales.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/16/arts/planet-of-the-apes-arrives-to-ho-hum-ticket-sales.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/16/arts/planet-of-the-apes-arrives-to-ho-hum-ticket-sales.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/17/arts/17box/17box-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>A scene from &#x201C;War for the Planet of the Apes,&#x201D; the third film in the franchise.</media:description>
+      <media:credit>20th Century Fox, via Associated Press</media:credit>
+      <description>The third film in the &#x2018;Apes&#x2019; franchise took in $56.5 million at the North American box office in its first weekend, a sluggish start.</description>
+      <dc:creator>BROOKS BARNES</dc:creator>
+      <pubDate>Sun, 16 Jul 2017 18:45:20 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Movies</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Reeves, Matt (1966- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_ttl">War for the Planet of the Apes (Movie)</category>
+    </item>
+    <item>
+      <title>Tehran's Turn | Part 1: Iran Dominates in Iraq After U.S. &#x2018;Handed the Country Over&#x2019;</title>
+      <link>https://www.nytimes.com/2017/07/15/world/middleeast/iran-iraq-iranian-power.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/15/world/middleeast/iran-iraq-iranian-power.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/15/world/middleeast/iran-iraq-iranian-power.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/14/world/middleeast/IranPower-slide-4KJF/IranPower-slide-4KJF-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Members of the Popular Mobilization Forces, a mostly Shiite militia group, at their post at the Iraqi border with Syria.</media:description>
+      <media:credit>Sergey Ponomarev for The New York Times</media:credit>
+      <description>The United States spent more than $1 trillion and lost about 4,500 troops in the effort to make Iraq the cornerstone of a Western-facing Middle East. But today, Iran&#x2019;s influence is paramount.</description>
+      <dc:creator>TIM ARANGO</dc:creator>
+      <pubDate>Sat, 15 Jul 2017 19:46:29 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Iran</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Iraq</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Diyala Province (Iraq)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/mdes">United States International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/mdes">Shiite Muslims</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/mdes">Sunni Muslims</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Islamic Revolutionary Guards Corps</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">vis-photo</category>
+    </item>
+    <item>
+      <title>Maryam Mirzakhani, Only Woman to Win a Fields Medal, Dies at 40</title>
+      <link>https://www.nytimes.com/2017/07/16/us/maryam-mirzakhani-dead.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/16/us/maryam-mirzakhani-dead.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/16/us/maryam-mirzakhani-dead.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/17/obituaries/17xp-Mirzakhani-obit/17xp-Mirzakhani-obit-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Maryam Mirzakhani was awarded a Fields Medal in 2014. Many Iranian newspapers covered her death in front-page articles, &#x200B;some of which showed recent photographs of her without her head covered.</media:description>
+      <media:credit>Stanford University, via European Pressphoto Agency</media:credit>
+      <description>Dr. Mirzakhani, a mathematician at Stanford University, was the only woman and only Iranian ever to win what is often described as the Nobel Prize of mathematics.</description>
+      <dc:creator>KENNETH CHANG</dc:creator>
+      <pubDate>Sun, 16 Jul 2017 16:31:05 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Deaths (Obituaries)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Stanford University</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">International Mathematical Union</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Mirzakhani, Maryam</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Mathematics</category>
+    </item>
+    <item>
+      <title>Arson Suspected in Fire in China That Killed at Least 22</title>
+      <link>https://www.nytimes.com/2017/07/16/world/asia/china-fire-jiangsu-province.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/16/world/asia/china-fire-jiangsu-province.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/16/world/asia/china-fire-jiangsu-province.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/17/world/asia/China-fire-img/merlin-to-scoop-124829363-555833-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>The building where a deadly fire broke out early on Sunday in Jiangsu Province, China.</media:description>
+      <media:credit>China Network/Reuters</media:credit>
+      <description>A suspect was arrested in the blaze at a two-story house used as a workers&#x2019; dormitory in Jiangsu Province.</description>
+      <dc:creator>CHRIS BUCKLEY</dc:creator>
+      <pubDate>Sun, 16 Jul 2017 15:40:04 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Fires and Firefighters</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Arson</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/mdes">Deaths (Fatalities)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Jiangsu Province (China)</category>
+    </item>
+    <item>
+      <title>U.S. Journalist Found Alive in Congo; 5 Others Are Killed</title>
+      <link>https://www.nytimes.com/aponline/2017/07/16/world/africa/ap-af-congo-attacks.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/aponline/2017/07/16/world/africa/ap-af-congo-attacks.html</guid>
+      <description>Five park rangers were found dead and a female journalist was in good condition in the Okapi Wildlife Reserve after going missing during a militia attack.</description>
+      <dc:creator>THE ASSOCIATED PRESS</dc:creator>
+      <pubDate>Sun, 16 Jul 2017 10:54:37 GMT</pubDate>
+    </item>
+    <item>
+      <title>&#x2018;Doctor Who&#x2019; Breaks the Mold With Female Lead</title>
+      <link>https://www.nytimes.com/2017/07/16/arts/television/doctor-who-jodie-whittaker-bbc.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/16/arts/television/doctor-who-jodie-whittaker-bbc.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/16/arts/television/doctor-who-jodie-whittaker-bbc.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/17/arts/17doctorwho1/17doctorwho1-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Jodie Whittaker is the next star of the BBC&#x2019;s &#x201C;Doctor Who.&#x201D;</media:description>
+      <media:credit>Joel Ryan/Invision, via Associated Press</media:credit>
+      <description>Jodie Whittaker will be the first woman to play the Doctor, taking over from Peter Capaldi, the BBC said.</description>
+      <dc:creator>ANDREW R. CHOW</dc:creator>
+      <pubDate>Sun, 16 Jul 2017 16:33:10 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Television</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Whittaker, Jodie</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_ttl">Doctor Who (TV Program)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">British Broadcasting Corp</category>
+    </item>
+    <item>
+      <title>Chicago Airport Security Officers to Shed &#x2018;Police&#x2019; Label After United Airlines Dragging Episode</title>
+      <link>https://www.nytimes.com/2017/07/12/us/united-chicago-airport-security.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/12/us/united-chicago-airport-security.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/12/us/united-chicago-airport-security.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/13/us/13xp-aviation_web1/13xp-aviation_web1-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Video still images of a United Airlines passenger, Dr. David Dao, being removed from a flight in Chicago in April.</media:description>
+      <media:credit>Audra D. Bridges, via Associated Press</media:credit>
+      <description>A report on the April treatment of Dr. David Dao says that new measures will limit the authority of Chicago&#x2019;s airport security officers to board airplanes.</description>
+      <dc:creator>MATT STEVENS</dc:creator>
+      <pubDate>Thu, 13 Jul 2017 01:11:39 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Airlines and Airplanes</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Airports</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">United Airlines</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Police Department (Chicago, Ill)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Chicago (Ill)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Dao, David A (1948- )</category>
+    </item>
+    <item>
+      <title>Erdogan and Supporters Stage Rally on Anniversary of Failed Coup</title>
+      <link>https://www.nytimes.com/2017/07/16/world/europe/turkey-recep-tayyip-erdogan-rally-coup.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/16/world/europe/turkey-recep-tayyip-erdogan-rally-coup.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/16/world/europe/turkey-recep-tayyip-erdogan-rally-coup.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/17/world/europe/erdogan-img2/erdogan-img2-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>President Recep Tayyip Erdogan addressing a huge crowd at the presidential palace in Ankara on Sunday, where he flew after a rally in Istanbul. He is seen as a threat to many democratic freedoms, but his supporters argue that he has upheld the civil rights that are important to them.</media:description>
+      <media:credit>Reuters</media:credit>
+      <description>The event this weekend was the centerpiece of an elaborate day of pageantry that implicitly placed the president as the hero.</description>
+      <dc:creator>PATRICK KINGSLEY</dc:creator>
+      <pubDate>Sun, 16 Jul 2017 13:31:54 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Demonstrations, Protests and Riots</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Coups D'Etat and Attempted Coups D'Etat</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Turkey</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Erdogan, Recep Tayyip</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Ankara (Turkey)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Istanbul (Turkey)</category>
+    </item>
+    <item>
+      <title>Comey&#x2019;s Writing a Book, and Publishers Are Eager to Pay Big Money for It</title>
+      <link>https://www.nytimes.com/2017/07/15/us/politics/former-fbi-director-james-comey-book.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/15/us/politics/former-fbi-director-james-comey-book.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/15/us/politics/former-fbi-director-james-comey-book.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/16/us/16comey/16comey-moth-v2.jpg" medium="image" height="151" width="151"/>
+      <media:description>James B. Comey has been meeting with editors and publishers in New York. His book is expected to go to auction this week.</media:description>
+      <media:credit>Doug Mills/The New York Times</media:credit>
+      <description>Mr. Comey&#x2019;s book, which will address his run-ins with President Trump and other moments in his career, is expected to go to auction this coming week.</description>
+      <dc:creator>ALEXANDRA ALTER</dc:creator>
+      <pubDate>Sat, 15 Jul 2017 20:30:11 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Comey, James B</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Federal Bureau of Investigation</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/mdes">Books and Literature</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Russian Interference in 2016 US Elections and Ties to Trump Associates</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States Politics and Government</category>
+    </item>
+    <item>
+      <title>Brazilian Court Dismisses False-Report Case Against Ryan Lochte</title>
+      <link>https://www.nytimes.com/2017/07/15/sports/brazil-court-ryan-lochte.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/15/sports/brazil-court-ryan-lochte.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/15/sports/brazil-court-ryan-lochte.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/16/sports/16Lochte/16Lochte-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>The American swimmer Ryan Lochte had been charged with filing a false robbery report last year.</media:description>
+      <media:credit>Patrick B. Kraemer/European Pressphoto Agency</media:credit>
+      <description>Lochte had been charged with filing a false robbery report after a confrontation involving him and other U.S. swimmers who were in Brazil for the 2016 Olympics.</description>
+      <dc:creator>THE ASSOCIATED PRESS</dc:creator>
+      <pubDate>Sat, 15 Jul 2017 22:54:09 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Olympic Games (2016)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Swimming</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Lochte, Ryan</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Brazil</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Police</category>
+    </item>
+    <item>
+      <title>Former Patriots Quarterback Babe Parilli Dies at 87</title>
+      <link>https://www.nytimes.com/aponline/2017/07/15/sports/football/ap-fbn-obit-parilli.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/aponline/2017/07/15/sports/football/ap-fbn-obit-parilli.html</guid>
+      <media:content url="https://static01.nyt.com/images/2017/07/16/sports/16Parilli1-obit/16Parilli1-obit-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Babe Parilli, with the Jets in 1969. He had a Hall of Fame college career as a quarterback at the University of Kentucky.</media:description>
+      <media:credit>Associated Press</media:credit>
+      <description>Parilli, who starred in the team's American Football League days, died Saturday. He was a member of the College Football Hall of Fame.</description>
+      <dc:creator>THE ASSOCIATED PRESS</dc:creator>
+      <pubDate>Sun, 16 Jul 2017 15:03:50 GMT</pubDate>
+    </item>
+    <item>
+      <title>Three Companies, Three Facets of Balanchine&#x2019;s &#x2018;Jewels&#x2019;</title>
+      <link>https://www.nytimes.com/2017/07/13/arts/dance/from-three-ballet-companies-bolshoi-paris-opera-new-york-city-ballet-three-facets-of-balanchines-jewels.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/13/arts/dance/from-three-ballet-companies-bolshoi-paris-opera-new-york-city-ballet-three-facets-of-balanchines-jewels.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/13/arts/dance/from-three-ballet-companies-bolshoi-paris-opera-new-york-city-ballet-three-facets-of-balanchines-jewels.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/16/arts/16JEWELS1/16JEWELS1-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Olga Smirnova and Semyon Chudin of the Bolshoi in the &#x201C;Diamonds&#x201D; segment of Balanchine&#x2019;s &#x201C;Jewels.&#x201D;</media:description>
+      <media:credit>Elena Fetisova/Bolshoi Theater</media:credit>
+      <description>The ballerinas Doroth&#xE9;e Gilbert, Teresa Reichlen and Olga Smirnova talk about their roles in Lincoln Center Festival&#x2019;s production of this 1967 ballet.</description>
+      <dc:creator>MARINA HARSS</dc:creator>
+      <pubDate>Thu, 13 Jul 2017 19:34:53 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Dancing</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_ttl">Jewels (Ballet)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Bolshoi Ballet</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">New York City Ballet</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Paris Opera Ballet</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Balanchine, George</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/mdes">Lincoln Center Festival</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Koch, David H, Theater</category>
+    </item>
+    <item>
+      <title>Q. and A.: If Workers Are Scarce, Is It the Work or the Wages?</title>
+      <link>https://www.nytimes.com/2017/07/13/business/economy/labor-market-wages.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2017/07/13/business/economy/labor-market-wages.html</guid>
+      <atom:link rel="standout" href="https://www.nytimes.com/2017/07/13/business/economy/labor-market-wages.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2017/07/14/business/14WAGE1/14WAGE1-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Sarah M. Smith, an owner of Rooforia Home Exteriors, at a job site in Omaha. She said hiring Americans at higher wages was unrealistic, which is why she turned to a program that gives temporary visas to guest workers to find people willing to repair roofs for $17 an hour.</media:description>
+      <media:credit>Ryan Henriksen for The New York Times</media:credit>
+      <description>A roofing-business owner, turning to temporary immigrants to fill $17-an-hour jobs, says hiring Americans at better pay isn&#x2019;t a realistic alternative.</description>
+      <dc:creator>PATRICIA COHEN</dc:creator>
+      <pubDate>Thu, 13 Jul 2017 18:37:02 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Foreign Workers</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Wages and Salaries</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Labor and Jobs</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Shortages</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Omaha (Neb)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States Economy</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Smith, Sarah M</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Rooforia Home Exteriors</category>
+    </item>
+  </channel>
+</rss>

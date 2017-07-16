@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss1full.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?><!-- generator="FeedCreator 1.7.2" --><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://purl.org/rss/1.0/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel rdf:about="http://theoatmeal.com/feed/rss">
+        <title>The Oatmeal - Comics, Quizzes, &amp; Stories</title>
+        <description>The oatmeal tastes better than stale skittles found under the couch cushions</description>
+        <link>http://theoatmeal.com/</link>
+       <dc:date>2017-07-16T20:51:58+01:00</dc:date>
+        <items>
+            <rdf:Seq>
+                <rdf:li rdf:resource="http://theoatmeal.com/comics/toot" />
+                <rdf:li rdf:resource="http://theoatmeal.com/catapp" />
+                <rdf:li rdf:resource="http://theoatmeal.com/comics/believe" />
+                <rdf:li rdf:resource="http://theoatmeal.com/blog/grizzlies_north_cascades" />
+                <rdf:li rdf:resource="http://theoatmeal.com/comics/mobile_website" />
+                <rdf:li rdf:resource="http://theoatmeal.com/comics/trust" />
+                <rdf:li rdf:resource="http://theoatmeal.com/blog/westworld_horses" />
+                <rdf:li rdf:resource="http://theoatmeal.com/comics/selfie_public" />
+                <rdf:li rdf:resource="http://theoatmeal.com/blog/black_friday2016" />
+            </rdf:Seq>
+        </items>
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rdf+xml" href="http://feeds.feedburner.com/oatmealfeed" /><feedburner:info xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" uri="oatmealfeed" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" /></channel>
+    <item rdf:about="http://theoatmeal.com/comics/toot">
+        <dc:format>text/html</dc:format>
+        <dc:date>2017-07-16T18:45:06+01:00</dc:date>
+        <dc:source>http://theoatmeal.com</dc:source>
+        <dc:creator>Matthew Inman</dc:creator>
+        <title>Oh hello! I'm a toot.</title>
+        <link>http://theoatmeal.com/comics/toot</link>
+        <description>&lt;a href="http://theoatmeal.com/comics/toot"&gt;&lt;img src="http://s3.amazonaws.com/theoatmeal-img/thumbnails/toot.png" alt="Oh hello! I'm a toot." class="border0" /&gt;&lt;/a&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://theoatmeal.com/comics/toot"&gt;View&lt;/a&gt;</description>
+    </item>
+    <item rdf:about="http://theoatmeal.com/catapp">
+        <dc:format>text/html</dc:format>
+        <dc:date>2017-06-29T19:35:14+01:00</dc:date>
+        <dc:source>http://theoatmeal.com</dc:source>
+        <dc:creator>Matthew Inman</dc:creator>
+        <title>Is your cat plotting to kill you? </title>
+        <link>http://theoatmeal.com/catapp</link>
+        <description>&lt;a href="http://theoatmeal.com/catapp"&gt;&lt;img src="http://s3.amazonaws.com/theoatmeal-img/thumbnails/cat_kill_app.png" alt="Is your cat plotting to kill you? " class="border0" /&gt;&lt;/a&gt;&lt;p&gt;This app will scan your cat and tell you the likelihood that they are plotting to murder you.&lt;/p&gt;&lt;a href="http://theoatmeal.com/catapp"&gt;View&lt;/a&gt;</description>
+    </item>
+    <item rdf:about="http://theoatmeal.com/comics/believe">
+        <dc:format>text/html</dc:format>
+        <dc:date>2017-05-02T20:52:22+01:00</dc:date>
+        <dc:source>http://theoatmeal.com</dc:source>
+        <dc:creator>Matthew Inman</dc:creator>
+        <title>You're not going to believe what I'm about to tell you</title>
+        <link>http://theoatmeal.com/comics/believe</link>
+        <description>&lt;a href="http://theoatmeal.com/comics/believe"&gt;&lt;img src="http://s3.amazonaws.com/theoatmeal-img/thumbnails/believe.png" alt="You're not going to believe what I'm about to tell you" class="border0" /&gt;&lt;/a&gt;&lt;p&gt;This is a comic about the backfire effect.&lt;/p&gt;&lt;a href="http://theoatmeal.com/comics/believe"&gt;View&lt;/a&gt;</description>
+    </item>
+    <item rdf:about="http://theoatmeal.com/blog/grizzlies_north_cascades">
+        <dc:format>text/html</dc:format>
+        <dc:date>2017-03-12T00:19:35+01:00</dc:date>
+        <dc:source>http://theoatmeal.com</dc:source>
+        <dc:creator>Matthew Inman</dc:creator>
+        <title>I need 50,000 comments on a government website.</title>
+        <link>http://theoatmeal.com/blog/grizzlies_north_cascades</link>
+        <description>&lt;a href="http://theoatmeal.com/blog/grizzlies_north_cascades"&gt;&lt;img src="http://s3.amazonaws.com/theoatmeal-img/thumbnails/grizzlies_north_cascades.png" alt="I need 50,000 comments on a government website." class="border0" /&gt;&lt;/a&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://theoatmeal.com/blog/grizzlies_north_cascades"&gt;View&lt;/a&gt;</description>
+    </item>
+    <item rdf:about="http://theoatmeal.com/comics/mobile_website">
+        <dc:format>text/html</dc:format>
+        <dc:date>2016-12-17T20:25:26+01:00</dc:date>
+        <dc:source>http://theoatmeal.com</dc:source>
+        <dc:creator>Matthew Inman</dc:creator>
+        <title>What a mobile website is SUPPOSED to do</title>
+        <link>http://theoatmeal.com/comics/mobile_website</link>
+        <description>&lt;a href="http://theoatmeal.com/comics/mobile_website"&gt;&lt;img src="http://s3.amazonaws.com/theoatmeal-img/thumbnails/mobile_website.png" alt="What a mobile website is SUPPOSED to do" class="border0" /&gt;&lt;/a&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://theoatmeal.com/comics/mobile_website"&gt;View&lt;/a&gt;</description>
+    </item>
+    <item rdf:about="http://theoatmeal.com/comics/trust">
+        <dc:format>text/html</dc:format>
+        <dc:date>2016-12-16T19:36:41+01:00</dc:date>
+        <dc:source>http://theoatmeal.com</dc:source>
+        <dc:creator>Matthew Inman</dc:creator>
+        <title>Trust is a tricky thing</title>
+        <link>http://theoatmeal.com/comics/trust</link>
+        <description>&lt;a href="http://theoatmeal.com/comics/trust"&gt;&lt;img src="http://s3.amazonaws.com/theoatmeal-img/thumbnails/trust.png" alt="Trust is a tricky thing" class="border0" /&gt;&lt;/a&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://theoatmeal.com/comics/trust"&gt;View&lt;/a&gt;</description>
+    </item>
+    <item rdf:about="http://theoatmeal.com/blog/westworld_horses">
+        <dc:format>text/html</dc:format>
+        <dc:date>2016-12-07T23:09:23+01:00</dc:date>
+        <dc:source>http://theoatmeal.com</dc:source>
+        <dc:creator>Matthew Inman</dc:creator>
+        <title>The characters of Westworld beautifully reimagined as horses</title>
+        <link>http://theoatmeal.com/blog/westworld_horses</link>
+        <description>&lt;a href="http://theoatmeal.com/blog/westworld_horses"&gt;&lt;img src="http://s3.amazonaws.com/theoatmeal-img/thumbnails/westworld_horses.png" alt="The characters of Westworld beautifully reimagined as horses" class="border0" /&gt;&lt;/a&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://theoatmeal.com/blog/westworld_horses"&gt;View&lt;/a&gt;</description>
+    </item>
+    <item rdf:about="http://theoatmeal.com/comics/selfie_public">
+        <dc:format>text/html</dc:format>
+        <dc:date>2016-11-30T21:02:35+01:00</dc:date>
+        <dc:source>http://theoatmeal.com</dc:source>
+        <dc:creator>Matthew Inman</dc:creator>
+        <title>How to use a selfie stick without bothering others</title>
+        <link>http://theoatmeal.com/comics/selfie_public</link>
+        <description>&lt;a href="http://theoatmeal.com/comics/selfie_public"&gt;&lt;img src="http://s3.amazonaws.com/theoatmeal-img/thumbnails/selfie_public.png" alt="How to use a selfie stick without bothering others" class="border0" /&gt;&lt;/a&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://theoatmeal.com/comics/selfie_public"&gt;View&lt;/a&gt;</description>
+    </item>
+    <item rdf:about="http://theoatmeal.com/blog/black_friday2016">
+        <dc:format>text/html</dc:format>
+        <dc:date>2016-11-25T18:33:18+01:00</dc:date>
+        <dc:source>http://theoatmeal.com</dc:source>
+        <dc:creator>Matthew Inman</dc:creator>
+        <title>Black Friday 2016</title>
+        <link>http://theoatmeal.com/blog/black_friday2016</link>
+        <description>&lt;a href="http://theoatmeal.com/blog/black_friday2016"&gt;&lt;img src="http://s3.amazonaws.com/theoatmeal-img/thumbnails/black_friday2016.png" alt="Black Friday 2016" class="border0" /&gt;&lt;/a&gt;&lt;p&gt;&lt;/p&gt;&lt;a href="http://theoatmeal.com/blog/black_friday2016"&gt;View&lt;/a&gt;</description>
+    </item>
+</rdf:RDF>
