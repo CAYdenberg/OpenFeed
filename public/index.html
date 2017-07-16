@@ -16,8 +16,11 @@
       <h2>Logout</h2>
       <button type="button" id="logout">Logout</button>
 
-
-
+      <h2>Add a source</h2>
+      <label>Url
+        <input type="url" id="source-url" name="source-url" />
+      </label>
+      <button type="button" id="add-source">Add</button>
 
       <footer>
         <p class="center-text">For more information on Feathers see <a href="http://docs.feathersjs.com" alt="Feathers Documentation" target="blank">docs.feathersjs.com</a>.</p>
@@ -38,6 +41,7 @@ $(document).ready(function() {
   client.configure(feathers.authentication({storage: window.localStorage}))
 
   const timelines = client.service('/timelines')
+  const sources = client.service('/sources')
 
   window.client = client
   window.users = client.service('/users')
@@ -69,6 +73,13 @@ $(document).ready(function() {
   $('#logout').click(function(e) {
     e.preventDefault()
     client.logout()
+  })
+
+  // adding a source
+  $('#add-source').click(function(e) {
+    e.preventDefault()
+    const url = $('#source-url').val()
+    sources.create({endpoint: url}).then(console.log)
   })
 
 })

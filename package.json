@@ -23,9 +23,8 @@
   },
   "scripts": {
     "test": "npm run eslint && npm run mocha",
-    "eslint": "eslint src/. test/. --config .eslintrc.json",
-    "start": "node src/",
-    "mocha": "mocha test/ --recursive"
+    "eslint": "eslint server/. --config .eslintrc.json",
+    "start": "node server/"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
