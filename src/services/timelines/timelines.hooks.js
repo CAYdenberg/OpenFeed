@@ -1,8 +1,10 @@
-const { authenticate } = require('feathers-authentication').hooks;
+const mine = require('../../hooks/mine')
+
+const { authenticate } = require('feathers-authentication').hooks
 
 module.exports = {
   before: {
-    all: [ authenticate('jwt') ],
+    all: [authenticate('jwt'), mine],
     find: [],
     get: [],
     create: [],
