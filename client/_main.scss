@@ -4,5 +4,19 @@
 // bulma varialbes, see
 // http://bulma.io/documentation/overview/variables/
 
+$family-sans-serif: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$family-serif: "Crete Round", serif;
+
+$primary: #ff922b;
+$info: #219792;
+$success: #58A479;
+$warning: #F8EA5C;
+$danger: #d2172c;
+
+$link: $info;
 
 @import "../node_modules/bulma/bulma.sass";
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $family-serif;
+}
