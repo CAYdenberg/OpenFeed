@@ -5,10 +5,10 @@ const gutil = require('gulp-util')
 const rename = require('gulp-rename')
 const sass = require('gulp-sass')
 // const eslint = require('gulp-eslint')
-// const webpack = require('gulp-webpack')
+const webpack = require('gulp-webpack')
 //
-// const browserSync = require('browser-sync')
-// const nodemon = require('gulp-nodemon')
+const browserSync = require('browser-sync')
+const nodemon = require('gulp-nodemon')
 
 gulp.task('css', function() {
   gulp.src('./client/_main.scss')
@@ -16,7 +16,7 @@ gulp.task('css', function() {
     .pipe(sass())
     .on('error', gutil.log)
     .pipe(gulp.dest('./public/css'))
-    // .pipe(browserSync.stream())
+    .pipe(browserSync.stream())
 })
 
 // gulp.task('fonts', function() {
@@ -37,51 +37,46 @@ gulp.task('css', function() {
 //
 // })
 //
-// gulp.task('js', function () {
-//   return gulp.src('src/_main.js')
-//     .pipe(webpack({
-//       module: {loaders: [
-//         {
-//           test: /.js$/,
-//           exclude: /node_modules/,
-//           loader: 'babel',
-//           query: {
-//             presets: ['es2015', 'react']
-//           }
-//         }
-//       ]}
-//     }))
-//     .pipe(rename('main.js'))
-//     .on('error', gutil.log)
-//     .pipe(gulp.dest('./dist'))
-//     .pipe(browserSync.stream())
-// })
-//
-// gulp.task('default', ['css', 'fonts', 'lint', 'js'])
-//
-// gulp.task('watch', function () {
-//
-//   gulp.watch(['src/**/*.scss'], ['css'])
-//   // watch CLIENT SIDE JS
-//   gulp.watch(['src/**/*.js', 'components/**/*.js', 'store/**/*.js'], ['js'])
-//   // trigger browserSync reload when HBS files change
-//   gulp.watch(['**/*.pug'], browserSync.reload)
-//
-//   return nodemon({
-//
-//     script: 'app.js',
-//
-//     // watch SERVER SIDE files
-//     // note we are NOT watching components even though most of these render
-//     // server-side as well.
-//     watch: ['app.js', 'controllers/**/*.js', 'models/**/*.js', 'store/**/*.js']
-//
-//   })
-//   .once('start', function() {
-//     browserSync.init({
-//       proxy: 'http://localhost:' + process.env.PORT,
-//       port: (parseInt(process.env.PORT, 10) + 1)
-//     })
-//   }).on('restart', browserSync.reload)
-//
-// })
+gulp.task('js', function() {
+  return gulp.src('client/_main.js')
+    .pipe(webpack({
+      module: {loaders: [
+        {
+          test: /.js$/,
+          exclude: /node_modules/,
+          loader: 'babel',
+          query: {
+            presets: ['es2015', 'react']
+          }
+        }
+      ]}
+    }))
+    .pipe(rename('main.js'))
+    .on('error', gutil.log)
+    .pipe(gulp.dest('./public'))
+    .pipe(browserSync.stream())
+})
+
+gulp.task('default', ['css', 'js'])
+
+gulp.task('watch', function() {
+  gulp.watch(['client/**/*.scss'], ['css'])
+  // watch CLIENT SIDE JS
+  gulp.watch(['client/**/*.js'], ['js'])
+
+  return nodemon({
+
+    script: 'server/index.js',
+
+    // watch SERVER SIDE files
+    // note we are NOT watching components even though most of these render
+    // server-side as well.
+    watch: ['server/**/*.js']
+
+  }).once('start', function() {
+    browserSync.init({
+      proxy: 'http://localhost:' + 3030,
+      port: 3031
+    })
+  }).on('restart', browserSync.reload)
+})

@@ -1,89 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html>
   <head>
-    <title>Welcome to Feathers</title>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title></title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <link rel="apple-touch-icon" href="apple-touch-icon.png">
+      <link href="https://fonts.googleapis.com/css?family=Crete+Round|Open+Sans:400,700" rel="stylesheet">
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+      <link rel="stylesheet" href="../public/css/style.css">
+
   </head>
   <body>
-    <main class="container">
 
-      <h2>Login</h2>
-      <form method="POST" id="login-form">
-        <input type="email" id="email" name="email" />
-        <input type="password" id="password" name="password" />
-        <button type="submit">Submit</button>
-      </form>
+    <div id="app-root"></div>
 
-      <h2>Logout</h2>
-      <button type="button" id="logout">Logout</button>
+    <script src="/main.js"></script>
 
-      <h2>Add a source</h2>
-      <label>Url
-        <input type="url" id="source-url" name="source-url" />
-      </label>
-      <button type="button" id="add-source">Add</button>
-
-      <footer>
-        <p class="center-text">For more information on Feathers see <a href="http://docs.feathersjs.com" alt="Feathers Documentation" target="blank">docs.feathersjs.com</a>.</p>
-      </footer>
-
-    </main>
-
-    <script
-      src="https://code.jquery.com/jquery-2.2.4.min.js"
-      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-      crossorigin="anonymous"></script>
-    <script src="//npmcdn.com/feathers-client@^2.0.0-pre.1/dist/feathers.js"></script>
-
-    <script>
-$(document).ready(function() {
-  const client = feathers().configure(feathers.rest().jquery($))
-  client.configure(feathers.hooks())
-  client.configure(feathers.authentication({storage: window.localStorage}))
-
-  const timelines = client.service('/timelines')
-  const sources = client.service('/sources')
-
-  window.client = client
-  window.users = client.service('/users')
-  window.timelines = timelines
-
-  // get information about current user
-  client.passport.verifyJWT(localStorage['feathers-jwt']).then(payload => {
-    return users.get(payload.userId)
-  }).then(console.log)
-
-  // login
-  $('#login-form').submit(function(e) {
-    e.preventDefault()
-    client.authenticate({
-      strategy: 'local',
-      email: $('#email').val(),
-      password: $('#password').val()
-    }).then(res => {
-      return client.passport.verifyJWT(res.accessToken)
-    }).then(payload => {
-      return users.get(payload.userId)
-    }).then(user => {
-      client.set('user', user)
-      console.log(user)
-    })
-  })
-
-  // logout
-  $('#logout').click(function(e) {
-    e.preventDefault()
-    client.logout()
-  })
-
-  // adding a source
-  $('#add-source').click(function(e) {
-    e.preventDefault()
-    const url = $('#source-url').val()
-    sources.create({endpoint: url}).then(console.log)
-  })
-
-})
-
-    </script>
   </body>
 </html>

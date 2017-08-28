@@ -1,8 +1,19 @@
 {
+  "plugins": ["react"],
+  "settings": {
+  "react": {
+    "pragma": "React",
+    "version": "15.6.1"
+    }
+  },
   "env": {
     "es6": true,
     "node": true,
-    "mocha": true
+    "jest": true,
+    "browser": true
+  },
+  "globals": {
+    "React": true
   },
   "extends": "standard",
   "rules": {
@@ -30,7 +41,9 @@
       "warn"
     ],
     "no-unused-vars": [
-      "warn"
+      "warn", {
+        "varsIgnorePattern": "React"
+      }
     ]
   }
 }
