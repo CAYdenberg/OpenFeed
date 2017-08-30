@@ -15,7 +15,7 @@ gulp.task('css', function() {
     .pipe(rename('style.css'))
     .pipe(sass())
     .on('error', gutil.log)
-    .pipe(gulp.dest('./public/css'))
+    .pipe(gulp.dest('./public'))
     .pipe(browserSync.stream())
 })
 

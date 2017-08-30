@@ -1,6 +1,6 @@
 #
-public/css
-public/js
+public/style.css
+public/main.js
 
 # Logs
 logs

@@ -1,21 +1,32 @@
 {
   "plugins": ["react"],
+
   "settings": {
-  "react": {
-    "pragma": "React",
-    "version": "15.6.1"
+    "react": {
+      "pragma": "React",
+      "version": "15.6.1"
     }
   },
+
   "env": {
     "es6": true,
     "node": true,
     "jest": true,
     "browser": true
   },
+
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+
   "globals": {
     "React": true
   },
+
   "extends": "standard",
+
   "rules": {
     "indent": [
       "error",
@@ -44,6 +55,7 @@
       "warn", {
         "varsIgnorePattern": "React"
       }
-    ]
+    ],
+    "react/jsx-uses-vars": 1
   }
 }

@@ -49,11 +49,22 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(37);
 
-	ReactDOM.render(React.createElement(
-	  'h1',
-	  null,
-	  'Hello, world!'
-	), document.getElementById('app-root'));
+	var LoginForm = __webpack_require__(184);
+
+	var Base = function Base() {
+	  return React.createElement(
+	    'div',
+	    null,
+	    React.createElement(
+	      'h1',
+	      null,
+	      'Hello, world'
+	    ),
+	    React.createElement(LoginForm, null)
+	  );
+	};
+
+	ReactDOM.render(React.createElement(Base, null), document.getElementById('app-root'));
 
 /***/ }),
 /* 1 */
@@ -22178,6 +22189,70 @@
 
 	module.exports = ReactDOMInvalidARIAHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ }),
+/* 184 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(1);
+
+	var LoginForm = function LoginForm() {
+	  return React.createElement(
+	    "div",
+	    { className: "container" },
+	    React.createElement(
+	      "form",
+	      { className: "login-form" },
+	      React.createElement(
+	        "div",
+	        { className: "field" },
+	        React.createElement(
+	          "p",
+	          { className: "control has-icons-left has-icons-right" },
+	          React.createElement("input", { className: "input", type: "email", placeholder: "Email" }),
+	          React.createElement(
+	            "span",
+	            { className: "icon is-left" },
+	            React.createElement("i", { className: "fa fa-envelope" })
+	          ),
+	          React.createElement(
+	            "span",
+	            { className: "icon is-right" },
+	            React.createElement("i", { className: "fa fa-check" })
+	          )
+	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "field" },
+	        React.createElement(
+	          "p",
+	          { className: "control has-icons-left has-icons-right" },
+	          React.createElement("input", { className: "input", type: "email", placeholder: "Password" }),
+	          React.createElement(
+	            "span",
+	            { className: "icon is-left" },
+	            React.createElement("i", { className: "fa fa-envelope" })
+	          ),
+	          React.createElement(
+	            "span",
+	            { className: "icon is-right" },
+	            React.createElement("i", { className: "fa fa-check" })
+	          )
+	        )
+	      ),
+	      React.createElement(
+	        "button",
+	        { className: "button is-primary" },
+	        "Primary"
+	      )
+	    )
+	  );
+	};
+
+	module.exports = LoginForm;
 
 /***/ })
 /******/ ]);

@@ -1,7 +1,7 @@
-const popsicle = require('popsicle')
+const axios = require('axios')
 
-const resolveSource = (source, api = popsicle) =>
-  popsicle.request({
+const resolveSource = (source, call = axios) =>
+  call({
     method: 'GET',
     url: source.endpoint
   })
