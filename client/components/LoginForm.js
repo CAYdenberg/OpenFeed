@@ -12,9 +12,10 @@ const LoginForm = () => {
               <i className="fa fa-envelope"></i>
             </span>
             <span className="icon is-right">
-              <i className="fa fa-check"></i>
+              <i className="fa fa-times"></i>
             </span>
           </p>
+          <p className="help is-danger">Username not available</p>
         </div>
 
         <div className="field">

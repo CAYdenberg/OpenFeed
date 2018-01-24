@@ -1,6 +1,8 @@
 #
 public/style.css
 public/main.js
+package-lock.json
+.cache
 
 # Logs
 logs

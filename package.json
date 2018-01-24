@@ -23,7 +23,7 @@
   },
   "scripts": {
     "test": "./node_modules/.bin/jest --watch",
-    "eslint": "eslint server/. --config .eslintrc.json",
+    "eslint": "eslint --config .eslintrc.json",
     "start": "node server/",
     "stop": "kill $(ps aux | grep 'node app.js' | awk '{print $2}')"
   },
@@ -64,15 +64,16 @@
     "browser-sync": "^2.18.13",
     "eslint": "^4.1.1",
     "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-react": "^7.3.0",
-    "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.3.0",
+    "eslint-plugin-standard": "^3.0.1",
     "gulp-nodemon": "^2.2.1",
     "gulp-webpack": "~1.5.0",
     "jest": "^20.0.4",
     "request": "^2.81.0",
-    "request-promise": "^4.2.1"
+    "request-promise": "^4.2.1",
+    "stylelint-config-standard": "^18.0.0"
   }
 }

@@ -9,14 +9,19 @@ $family-serif: "Crete Round", serif;
 
 $primary: #ff922b;
 $info: #219792;
-$success: #58A479;
-$warning: #F8EA5C;
+$success: #58a479;
+$warning: #f8ea5c;
 $danger: #d2172c;
 
 $link: $info;
 
 @import "../node_modules/bulma/bulma.sass";
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $family-serif;
 }

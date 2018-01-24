@@ -22220,8 +22220,13 @@
 	          React.createElement(
 	            "span",
 	            { className: "icon is-right" },
-	            React.createElement("i", { className: "fa fa-check" })
+	            React.createElement("i", { className: "fa fa-times" })
 	          )
+	        ),
+	        React.createElement(
+	          "p",
+	          { className: "help is-danger" },
+	          "Username not available"
 	        )
 	      ),
 	      React.createElement(
