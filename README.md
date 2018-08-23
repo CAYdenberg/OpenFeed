@@ -8,33 +8,29 @@ While feeds are useful in the sense that they distill the vast river of the web 
 
 # What Pheed Does
 
-Once installed on a server, Pheed **aggregates** and **sorts** posts that come in from **pheeders** selected by the user. Users can add an RSS feed, Twitter or Facebook timeline, LinkedIn news feed, or any other type of feed that is defined by a **pheeder**. Once added, these feeds are aggregated and sorted, according to a **philter** that is selected by the user and is open-source (and thus transparent). The aggregated and filtered feed can be consumed by the user through a default website or a through a JSON format (which allows mobile apps, browser plugins, etc..).
+Pheed is a offline-first content aggregator and sorter. It gives users the ability to add Pheeders (which are REST APIs) to their locally-running app. Pheeders translate various kinds of syndicated content (blog/RSS feeds, Twitter feeds, iTunes, etc.) into a standardized format - the JSONFeed. Once added, the posts from those feeds are merged into a single stream (called the timeline) which can be sorted by one a few simple algorithms and tweaked by user settings.
 
-## How it works
+Pheed can also provide users with feedback on their reading habits (by topic, source, author) and allow them to adjust whether they want to see more or less of a particular type of content.
 
-Pheed does little on its own. It provides an authentication system together with the ability of users to add feeds. These feeds must be recognised by an installed "pheeder" which translates a feed (e.g. a Facebook timeline) into a common format. Philters then work with this common format to sort/drop posts in the aggregated feed. The output is HTML or JSON.
-
-The only default pheeder is for adding RSS feeds, and the only default philter sorts by publication date.
+Pheed is offline-first. Authentication is optional if the user wants to only work on one machine. User data can be synced between different machines via a Couch database.
 
 ## Installing Pheed
 
-Pheed is based on NodeJS and MongoDB. --details to be filled in--
+The server side of Pheed is based on NodeJS and CouchDB. **details**
 
 # Pheeder Interface
 
-The standard format for posts that Pheed deals with conforms to the [JSON Feed spec from Brent Simmons and Manton Reece](https://jsonfeed.org/version/1). Pheeders are thus pure functions which take an HTTP post body (string) as input and return an array of JSON feed `items` objects (it doesn't need to handle the outer parts like `title` and `feed_url`, as these are part of the aggregated feed). The Pheed core will handle actually making the actual HTTP request and handling erroneous responses. Pheeders can thus assume the response body will be from a successful (2xx) response.
+The standard format for posts that Pheed deals with conforms to the [JSON Feed spec from Brent Simmons and Manton Reece](https://jsonfeed.org/version/1). Pheeders are thus RESTful APIs which a take a resource URL as input and return the JSONFeed version of the syndicated content as output. Pheeders can be hosted anywhere on the web (they must enable CORS). The Pheed domain hosts some of the most common pheeders.
+
+Note: use https://feed2json.org/ https://github.com/appsattic/feed2json.org or fork so it can be used as middleware.
 
 **Example**
 
 # Philter Interface
 
-The role of philters is to assign a score to an post based on the item's content and the user's options (details on how this works to be filled out later). It is thus a pure function which accepts a JSON feed `item` as the first argument and returns an integer from 0 to 100 (called the **priority**). Items with higher priorities will shown at the top of the user's aggregated feed, above items with lower scores. Items with a priority of 0 will not be shown in the aggregated feed at all.
+The role of philters is to adjust the rankings of posts within the timeline based on user settings. The way this is done is by providing an "adjusted date" which corresponds to the publication date of the item plus a bonus or penalty based on the content of the item and user settings. The Philter can also drop the item from the timeline altogether. Thus Philters can be expressed as pure functions that take into account user settings and the item and return a date adjustment.
 
-**Example**
-
-# Pheed as an API
-
-Pheed provides a simple web interface on its own but all resources can also be accessed by API (once authenticated).
+Because Philters take into account user info and settings (or reading habits) they cannot be added as easily as Pheeds. They are designed to be configured on set-up of the server at installation time and users can choose between available Philters in their particular Pheed instance.
 
 # Glossary
 
@@ -42,9 +38,9 @@ To keep conversations meaningful and direct, a few terms:
 
 **Feed**: Any HTTP resource which can be expressed as a stream of **posts**. Examples: the list of posts in a blog, the timeline of tweets you consume or produce.
 
-**Aggregated feed**: The aggregated and sorted list of posts produced by Pheeder for the consumption of a particular user.
+**Timeline**: The aggregated and sorted list of posts produced by Pheeder for the consumption of a particular user.
 
-**Post**: An item within a feed (or aggregated feed).
+**Post**: An item within a feed (or timeline).
 
 **Post standard content**: The standardized format/content of a post defined by the JSON Feed spec.
 
