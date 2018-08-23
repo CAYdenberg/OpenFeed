@@ -1,29 +1,51 @@
 {
   "name": "pheed",
-  "description": "Give control of the content you see back to you",
-  "version": "0.0.0",
-  "homepage": "",
-  "keywords": [
-    "jsonFeed"
-  ],
-  "author": {
-    "name": "@CAYdenberg",
-    "email": "ydenberg@gmail.com"
-  },
-  "engines": {
-    "node": ">= 9.10.1",
-    "npm": ">= 6.2.0"
-  },
-  "scripts": {
-    "eslint": "eslint --config .eslintrc.json",
-    "start": "node server/",
-    "test": "./node_modules/.bin/jest --watch",
-    "stop": "kill $(ps aux | grep 'node app.js' | awk '{print $2}')"
-  },
+  "version": "0.0.1",
+  "description": "Pheed is an installable feed aggregation server that aims to give control of the content you see back to you.",
+  "main": "index.js",
   "dependencies": {
-
+    "bulma": "^0.7.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.4.2",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
   },
   "devDependencies": {
-
-  }
+    "babel": "^6.23.0",
+    "babel-eslint": "^8.2.6",
+    "babel-jest": "^23.4.2",
+    "babel-plugin-syntax-flow": "^6.18.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "deep-freeze": "^0.0.1",
+    "eslint": "^5.4.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-flowtype-errors": "^3.6.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-standard": "^3.1.0",
+    "flow-bin": "^0.79.1",
+    "jest": "^23.5.0",
+    "node-sass": "^4.9.3",
+    "parcel-bundler": "^1.9.7",
+    "parcel-plugin-bundle-visualiser": "^1.1.2"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/parcel build src/index.html",
+    "start": "./node_modules/.bin/parcel src/index.html",
+    "test": "./node_modules/.bin/jest --watch --env=jsdom"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CAYdenberg/pheed.git"
+  },
+  "author": "@CAYdenberg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CAYdenberg/pheed/issues"
+  },
+  "homepage": "https://github.com/CAYdenberg/pheed#readme"
 }

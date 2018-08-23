@@ -1,10 +1,12 @@
 {
-  "plugins": ["react"],
+  "plugins": ["react", "flowtype-errors"],
+
+  "parser": "babel-eslint",
 
   "settings": {
     "react": {
       "pragma": "React",
-      "version": "15.6.1"
+      "version": "16.2.0"
     }
   },
 
@@ -30,7 +32,8 @@
   "rules": {
     "indent": [
       "error",
-      2
+      2,
+      {"SwitchCase": 1}
     ],
     "linebreak-style": [
       "error",
@@ -57,6 +60,7 @@
       }
     ],
     "comma-dangle": 0,
-    "react/jsx-uses-vars": 1
+    "react/jsx-uses-vars": 1,
+    "flowtype-errors/show-errors": 2
   }
 }
