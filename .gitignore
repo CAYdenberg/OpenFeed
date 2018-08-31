@@ -1,10 +1,10 @@
 #
-public/style.css
-public/main.js
 package-lock.json
 yarn.lock
 dist/*
 .cache
+.feedcache/*
+!.feedcache/.gitkeep
 
 # Logs
 logs
