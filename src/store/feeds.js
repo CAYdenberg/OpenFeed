@@ -10,7 +10,9 @@ export const actions = {
   reqNewFeed: url => {
     return {
       type: c.REQ_NEW_FEED,
-      popsicle: {},
+      popsicle: {
+        url: `https://feed2json.org/convert?url=${encodeURIComponent(url)}`
+      },
       response: actions.addNewFeed
     }
   },
