@@ -11,7 +11,7 @@ export const actions = {
     return {
       type: c.REQ_NEW_FEED,
       popsicle: {
-        url: `https://feed2json.org/convert?url=${encodeURIComponent(url)}`
+        url: `/convert?url=${encodeURIComponent(url)}`
       },
       response: actions.addNewFeed
     }
