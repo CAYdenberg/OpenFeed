@@ -1,53 +1,58 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {actions as fieldsActions} from '../store/fields'
-import {actions as feedsActions} from '../store/feeds'
 
-const mapStateToProps = state => {
-  return {
-    value: state.fields.addFeed
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    handleChange: e => {
-      e.preventDefault()
-      dispatch(fieldsActions.update('addFeed', e.target.value))
-    },
-    addFeed: (e, feed) => {
-      e.preventDefault()
-      dispatch(feedsActions.reqNewFeed(feed))
-    }
-  }
-}
+import AddFeedForm from './AddFeedForm'
+import Timeline from './Timeline'
 
 const App = props => {
   return (
-    <form onSubmit={e => props.addFeed(e, props.value)}>
-      <div className="field">
-        <label className="label" htmlFor="addFeed">Add Feed</label>
-        <p className="control has-icons-left has-icons-right">
+    <div className="app-inner container">
+      <nav className="navbar">
 
-          <input
-            className="input"
-            type="url"
-            placeholder="http://example.com/atom.xml"
-            value={props.value}
-            onChange={props.handleChange}
-          />
+        <div className="navbar-brand">
+          <a className="navbar-item">Pheed</a>
 
-          <span className="icon is-left">
-            <i className="fa fa-envelope"></i>
-          </span>
-          <span className="icon is-right">
-            <i className="fa fa-check"></i>
-          </span>
-        </p>
+          <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+
+        </div>
+        <div className="navbar-menu">
+          <div className="navbar-end">
+            <a className="navbar-item">About</a>
+            <a className="navbar-item">GitHub</a>
+          </div>
+        </div>
+      </nav>
+
+      <div className="columns">
+        <div className="column is-one-third">
+
+          <nav className="panel">
+            <p className="panel-tabs">
+              <a className="is-active">Feeds</a>
+              <a>Pheeders</a>
+              <a>Settings</a>
+            </p>
+
+            <a className="panel-block is-active">CSS Tricks</a>
+            <a className="panel-block">Inclusive Components</a>
+            <a className="panel-block">React Newsletter</a>
+            <a className="panel-block">Gimlet: Reply All</a>
+            <AddFeedForm />
+
+          </nav>
+
+        </div>
+
+        <div className="column">
+          <Timeline />
+        </div>
       </div>
-      <button type="submit">Submit</button>
-    </form>
+
+    </div>
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App

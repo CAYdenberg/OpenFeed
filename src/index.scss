@@ -1,1 +1,6 @@
+@import "../node_modules/bulmaswatch/journal/_variables.scss";
+
+// variable overrides here
+
 @import "../node_modules/bulma/bulma.sass";
+@import "../node_modules/bulmaswatch/journal/_overrides.scss";
