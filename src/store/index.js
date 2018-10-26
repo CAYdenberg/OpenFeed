@@ -1,24 +1,23 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux'
+import {createStore, combineReducers} from 'redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
-import reduxPopsicle from 'redux-popsicle'
-
-import createPouchMiddleware from './middleware/pouchdb'
+import middleware from './middleware'
 
 import {
   reducer as fieldsReducer
 } from './fields'
 
 import {
-  reducer as feedsReducer
+  reducer as feedsReducer,
+  actions as feedsActions,
 } from './feeds'
-
-const pouchMiddleware = createPouchMiddleware('pheed-default')
 
 const reducer = combineReducers({
   fields: fieldsReducer,
   feeds: feedsReducer,
 })
 
-export default createStore(reducer, composeWithDevTools(
-  applyMiddleware(reduxPopsicle, pouchMiddleware)
-))
+const store = createStore(reducer, composeWithDevTools(middleware))
+
+store.dispatch(feedsActions.loadFeeds())
+
+export default store

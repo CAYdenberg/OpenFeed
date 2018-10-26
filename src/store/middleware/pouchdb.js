@@ -1,21 +1,29 @@
 import PouchDB from 'pouchdb'
-window.PouchDB = PouchDB
+import Find from 'pouchdb-find'
+
+PouchDB.plugin(Find)
 
 export function createMiddleware(db) {
   return store => next => action => {
     next(action)
 
-    if (action.pouch) {
-      const state = store.getState()
-      const operation = action.pouch(db, state)
+    const {pouch} = action
+    if (pouch) {
+      const operation = pouch(db, store.getState)
+
       operation.then(operationResult => {
-        store.dispatch({type: '@@redux-pouchdb/DONE', result: operationResult})
+        return store.dispatch(action.response(operationResult))
+      }).catch(err => {
+        return store.dispatch(action.error(err.status, err))
       })
     }
   }
 }
 
-export default dbName => {
+export default (dbName) => {
   const db = new PouchDB(dbName)
+  db.createIndex({
+    index: {fields: ['type', 'modified']}
+  })
   return createMiddleware(db)
 }
