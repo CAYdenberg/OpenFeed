@@ -1,6 +1,6 @@
 import React from 'react'
 
-import AddFeed from './AddFeed'
+import ControlPanel from './ControlPanel'
 import Timeline from './Timeline'
 
 const App = props => {
@@ -28,22 +28,7 @@ const App = props => {
 
       <div className="columns">
         <div className="column is-one-third">
-
-          <nav className="panel">
-            <p className="panel-tabs">
-              <a className="is-active">Feeds</a>
-              <a>Pheeders</a>
-              <a>Settings</a>
-            </p>
-
-            <a className="panel-block is-active">CSS Tricks</a>
-            <a className="panel-block">Inclusive Components</a>
-            <a className="panel-block">React Newsletter</a>
-            <a className="panel-block">Gimlet: Reply All</a>
-            <AddFeed />
-
-          </nav>
-
+          <ControlPanel />
         </div>
 
         <div className="column">

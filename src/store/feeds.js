@@ -1,6 +1,6 @@
 import update from 'immutability-helper'
 
-import {getFeeds, upsert} from '../db'
+import {getFeeds, upsert, remove} from '../db'
 
 export const constants = {
   LOAD_FEEDS: 'FEEDS/LOAD_FEEDS',
@@ -9,7 +9,9 @@ export const constants = {
 
   UPSERT_FEED: 'FEEDS/UPSERT_FEED',
   UPSERT_FEED_OK: 'FEEDS/UPSERT_FEED_OK',
-  UPSERT_FEED_ERR: 'FEEDS/UPSERT_FEED_ERR'
+  UPSERT_FEED_ERR: 'FEEDS/UPSERT_FEED_ERR',
+
+  REMOVE_FEED: 'FEEDS/REMOVE_FEED'
 }
 const c = constants
 
@@ -64,6 +66,16 @@ export const actions = {
   upsertFeedErr: (status, error) => {
     console.error(error)
     return {type: c.UPSERT_FEED_ERR, status}
+  },
+
+  removeFeed: (id) => {
+    return {
+      type: c.REMOVE_FEED,
+      id,
+      pouch: remove(id),
+      response: actions.upsertFeedOk,
+      error: actions.upsertFeedErr,
+    }
   }
 }
 
@@ -102,6 +114,13 @@ export const reducer = (inputState = {}, action) => {
       if (i === -1) return initialState
       return update(initialState, {
         feeds: {[i]: {$merge: {_rev: action.rev}}}
+      })
+    }
+
+    case c.REMOVE_FEED: {
+      const i = initialState.feeds.findIndex(feed => feed._id === action.id)
+      return update(initialState, {
+        feeds: {$splice: [[i, 1]]}
       })
     }
   }

@@ -1,7 +1,7 @@
 import {actions, reducer} from '../feeds'
 import deepFreeze from 'deep-freeze'
 
-const {upsertFeed, upsertFeedOk} = actions
+const {upsertFeed, upsertFeedOk, removeFeed} = actions
 
 const nullState = reducer(undefined, {type: 'noop'})
 const runActions = actions => actions.reduce((state, action) => {
@@ -65,4 +65,13 @@ describe('upsertFeedOk', () => {
     expect(finalState.feeds[0]).toHaveProperty('_id')
     expect(finalState.feeds[0]).toHaveProperty('_rev')
   })
+})
+
+describe('removeFeed', () => {
+  const finalState = runActions([
+    upsertFeed(feed, 'http://feed.com'),
+    upsertFeedOk({ok: true, id: 'pheed|feed|http://feed.com', rev: 'revision'}),
+    removeFeed('pheed|feed|http://feed.com')
+  ])
+  expect(finalState.feeds).toHaveLength(0)
 })

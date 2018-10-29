@@ -1,20 +1,22 @@
-import {upsert} from '../index'
+import {upsert, remove} from '../index'
 
 let CustomPouchError = new Error()
 CustomPouchError.status = 404
 
+const db = {
+  put: jest.fn(() => Promise.resolve({ok: true})),
+  remove: jest.fn(() => Promise.resolve({ok: true})),
+  get: jest.fn(id =>
+    (id === 'existingdoc')
+      ? Promise.resolve({
+        _id: id,
+        _rev: 'revision'
+      })
+      : Promise.reject(CustomPouchError)
+  )
+}
+
 describe('upsert', () => {
-  const db = {
-    put: jest.fn(() => Promise.resolve({ok: true})),
-    get: jest.fn(id =>
-      (id === 'existingdoc')
-        ? Promise.resolve({
-          _id: id,
-          _rev: 'revision'
-        })
-        : Promise.reject(CustomPouchError)
-    )
-  }
   const doc = {
     _id: 'newdoc',
     title: 'New feed',
@@ -34,3 +36,12 @@ describe('upsert', () => {
     return expect(result).resolves.toEqual({ok: true})
   })
 })
+
+describe('remove', () => {
+  it('should remove a document by id', () => {
+    const result = remove('existingdoc')(db)
+    return expect(result).resolves.toHaveProperty('ok', true)
+  })
+})
+
+// TODO: get, patch, generic find
