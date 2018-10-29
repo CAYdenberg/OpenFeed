@@ -18,10 +18,10 @@ export const upsertPost = post => db => {
 export const upsert = (doc) => db => {
   return db.get(doc._id).then(existingDoc => {
     const newDoc = Object.assign({}, doc, {_rev: existingDoc._rev})
-    return db.put(newDoc).then(() => newDoc)
+    return db.put(newDoc)
   }).catch(err => {
     if (err.status === 404) {
-      return db.put(doc).then(() => doc)
+      return db.put(doc)
     }
     return Promise.reject(err)
   })

@@ -5,7 +5,7 @@ CustomPouchError.status = 404
 
 describe('upsert', () => {
   const db = {
-    put: jest.fn(() => Promise.resolve()),
+    put: jest.fn(() => Promise.resolve({ok: true})),
     get: jest.fn(id =>
       (id === 'existingdoc')
         ? Promise.resolve({
@@ -22,7 +22,7 @@ describe('upsert', () => {
 
   it('should create a new feed if one does not already exist', () => {
     const result = upsert(doc)(db)
-    return expect(result).resolves.toEqual(doc)
+    return expect(result).resolves.toEqual({ok: true})
   })
 
   it('should update a feed if it is already present', () => {
@@ -31,10 +31,6 @@ describe('upsert', () => {
       title: 'Existing doc'
     }
     const result = upsert(doc)(db)
-    return expect(result).resolves.toEqual({
-      _id: 'existingdoc',
-      _rev: 'revision',
-      title: 'Existing doc'
-    })
+    return expect(result).resolves.toEqual({ok: true})
   })
 })

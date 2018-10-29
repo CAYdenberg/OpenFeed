@@ -3,12 +3,13 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
 import {actions} from '../../store/newFeed'
+import {actions as feedActions} from '../../store/feeds'
 import Field from './Field'
 
 const mapStateToProps = state => {
   return {
     value: state.newFeed.value,
-    loadState: state.newFeed.loadState
+    loadState: state.newFeed.loadState,
   }
 }
 
@@ -18,7 +19,13 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.updateValue(value))
     },
 
-    reqNewFeed: () => dispatch(actions.newFeedReq())
+    reqNewFeed: () => dispatch(actions.newFeedReq()),
+
+    addFeed: (e) => {
+      e.preventDefault()
+      dispatch(feedActions.upsertFeedFromState())
+      dispatch(actions.updateValue(''))
+    }
   }
 }
 
@@ -52,7 +59,7 @@ class AddFeed extends React.Component {
     const {props} = this
 
     return (
-      <form onSubmit={e => props.addFeed(e, props.value)} className="panel-block">
+      <form onSubmit={props.addFeed} className="panel-block" disabled="true">
         <label className="label sr-only" htmlFor="addFeed">Add Feed</label>
 
         <div className="field has-addons is-full-width">
@@ -63,7 +70,11 @@ class AddFeed extends React.Component {
           />
 
           <div className="control">
-            <button className="button is-success" type="submit">
+            <button
+              className="button is-success"
+              type="submit"
+              disabled={props.loadState < 2}
+            >
               Add
             </button>
           </div>
@@ -78,7 +89,7 @@ AddFeed.propTypes = {
   reqNewFeed: PropTypes.func.isRequired,
   loadState: PropTypes.number.isRequired,
 
-  onAddFeed: PropTypes.func
+  onAdd: PropTypes.func,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddFeed)

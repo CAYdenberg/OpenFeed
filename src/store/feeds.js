@@ -1,14 +1,15 @@
 import update from 'immutability-helper'
 
-import {getFeeds, upsertFeed} from '../db'
+import {getFeeds, upsert} from '../db'
 
 export const constants = {
   LOAD_FEEDS: 'FEEDS/LOAD_FEEDS',
-  ADD_FEEDS: 'FEEDS/ADD_FEEDS',
-  REQ_NEW_FEED: 'FEEDS/REQ_NEW_FEED',
-  ADD_NEW_FEED: 'FEEDS/ADD_NEW_FEED',
-  ADD_NEW_FEED_SUCCESS: 'FEEDS/ADD_NEW_FEED_SUCCESS',
-  ADD_NEW_FEED_ERROR: 'FEEDS/ADD_NEW_FEED_ERROR'
+  LOAD_FEEDS_OK: 'FEEDS/LOAD_FEEDS_OK',
+  LOAD_FEEDS_ERR: 'FEEDS/LOAD_FEEDS_ERR',
+
+  UPSERT_FEED: 'FEEDS/UPSERT_FEED',
+  UPSERT_FEED_OK: 'FEEDS/UPSERT_FEED_OK',
+  UPSERT_FEED_ERR: 'FEEDS/UPSERT_FEED_ERR'
 }
 const c = constants
 
@@ -17,65 +18,59 @@ export const actions = {
     return {
       type: c.LOAD_FEEDS,
       pouch: getFeeds(),
-      response: actions.addFeeds,
-      error: actions.getFeedsError
+      response: actions.loadFeedsOk,
+      error: actions.loadFeedsErr
     }
   },
 
-  addFeeds: feeds => {
-    return {type: c.ADD_FEEDS, feeds}
+  loadFeedsOk: feeds => {
+    return {type: c.LOAD_FEEDS_OK, feeds}
   },
 
-  getFeedsError: status => {
+  loadFeedsErr: status => {
     console.log(status)
   },
 
-  reqNewFeed: url => {
-    return {
-      type: c.REQ_NEW_FEED,
-      popsicle: {
-        url: `/convert?url=${encodeURIComponent(url)}`
-      },
-      response: res => actions.addNewFeed(res, url)
-    }
+  upsertFeedFromState: () => (dispatch, getState) => {
+    const {loadState, feed, posts, value} = getState().newFeed
+    if (loadState < 2) dispatch({type: 'noop'})
+    dispatch(actions.upsertFeed(feed, value))
   },
 
-  addNewFeed: (res, url) => {
-    const uniqueUrl = res.feed_url || url
+  upsertFeed: (data, url) => {
     const doc = {
       modified: new Date().getTime(),
       type: 'feed',
-      _id: `pheed|feed|${uniqueUrl}`,
-      feed_url: res.feed_url,
-      home_page_url: res.home_page_url,
-      title: res.title,
-      version: res.version
+      _id: `pheed|feed|${url}`,
+      feed_url: data.feed_url,
+      home_page_url: data.home_page_url,
+      title: data.title,
+      version: data.version
     }
 
     return {
-      type: c.ADD_NEW_FEED,
-      pouch: upsertFeed(doc),
-      response: actions.addNewFeedRes,
-      error: actions.addNewFeedError
+      type: c.UPSERT_FEED,
+      pouch: upsert(doc),
+      doc,
+      response: actions.upsertFeedOk,
+      error: actions.upsertFeedErr
     }
   },
 
-  addNewFeedRes: feed => {
-    return {type: c.ADD_NEW_FEED_SUCCESS, feed}
+  upsertFeedOk: ({ok, id, rev}) => {
+    return {type: c.UPSERT_FEED_OK, ok, id, rev}
   },
 
-  addNewFeedError: (status, error) => {
+  upsertFeedErr: (status, error) => {
     console.error(error)
-    return {type: c.ADD_NEW_FEED_ERROR, status}
+    return {type: c.UPSERT_FEED_ERR, status}
   }
 }
 
 export const reducer = (inputState = {}, action) => {
   const defaultState = {
-    newFeedRequestState: 0,
     feeds: [],
-    feedsLoadState: 0,
-    currentFeed: ''
+    feedsLoadState: 0
   }
   const initialState = update(defaultState, {$merge: inputState})
 
@@ -86,23 +81,27 @@ export const reducer = (inputState = {}, action) => {
       })
     }
 
-    case c.ADD_FEEDS: {
+    case c.LOAD_FEEDS_OK: {
       return update(initialState, {
         feedsLoadState: {$set: 2},
         feeds: {$set: action.feeds}
       })
     }
 
-    case c.REQ_NEW_FEED: {
+    case c.UPSERT_FEED: {
+      const i = initialState.feeds.findIndex(feed => feed._id === action.doc._id)
       return update(initialState, {
-        newFeedRequestState: {$set: 1}
+        feeds: (i === -1)
+          ? {$push: [action.doc]}
+          : {$splice: [[i, 1, action.doc]]}
       })
     }
 
-    case c.ADD_NEW_FEED_SUCCESS: {
+    case c.UPSERT_FEED_OK: {
+      const i = initialState.feeds.findIndex(feed => feed._id === action.id)
+      if (i === -1) return initialState
       return update(initialState, {
-        newFeedRequestState: {$set: 0},
-        feeds: {$push: [action.feed]}
+        feeds: {[i]: {$merge: {_rev: action.rev}}}
       })
     }
   }

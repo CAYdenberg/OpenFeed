@@ -1,11 +1,13 @@
-import {createStore, combineReducers} from 'redux'
+import {
+  createStore,
+} from 'redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
-import middleware from './middleware'
 
+import middleware from './middleware'
+import {combineReducers} from './reduxHelpers'
 import {
   reducer as newFeedReducer
 } from './newFeed'
-
 import {
   reducer as feedsReducer,
   actions as feedsActions,
