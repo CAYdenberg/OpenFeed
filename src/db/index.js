@@ -15,15 +15,14 @@ export const upsertPost = post => db => {
 
 }
 
-export const upsertFeed = (feed, url) => db => {
-  const doc = {
-    modified: new Date().getTime(),
-    type: 'feed',
-    _id: `pheed|feed|${url}`,
-    feed_url: feed.feed_url,
-    home_page_url: feed.home_page_url,
-    title: feed.title,
-    version: feed.version
-  }
-  return db.put(doc).then(() => doc)
+export const upsert = (doc) => db => {
+  return db.get(doc._id).then(existingDoc => {
+    const newDoc = Object.assign({}, doc, {_rev: existingDoc._rev})
+    return db.put(newDoc).then(() => newDoc)
+  }).catch(err => {
+    if (err.status === 404) {
+      return db.put(doc).then(() => doc)
+    }
+    return Promise.reject(err)
+  })
 }

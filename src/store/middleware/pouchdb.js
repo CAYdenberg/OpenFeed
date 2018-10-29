@@ -25,5 +25,6 @@ export default (dbName) => {
   db.createIndex({
     index: {fields: ['type', 'modified']}
   })
+  window.db = db
   return createMiddleware(db)
 }

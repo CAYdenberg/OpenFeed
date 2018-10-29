@@ -3,8 +3,8 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import middleware from './middleware'
 
 import {
-  reducer as fieldsReducer
-} from './fields'
+  reducer as newFeedReducer
+} from './newFeed'
 
 import {
   reducer as feedsReducer,
@@ -12,7 +12,7 @@ import {
 } from './feeds'
 
 const reducer = combineReducers({
-  fields: fieldsReducer,
+  newFeed: newFeedReducer,
   feeds: feedsReducer,
 })
 

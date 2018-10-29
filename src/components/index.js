@@ -1,6 +1,6 @@
 import React from 'react'
 
-import AddFeedForm from './AddFeedForm'
+import AddFeed from './AddFeed'
 import Timeline from './Timeline'
 
 const App = props => {
@@ -40,7 +40,7 @@ const App = props => {
             <a className="panel-block">Inclusive Components</a>
             <a className="panel-block">React Newsletter</a>
             <a className="panel-block">Gimlet: Reply All</a>
-            <AddFeedForm />
+            <AddFeed />
 
           </nav>
 

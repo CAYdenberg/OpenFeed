@@ -4,3 +4,7 @@
 
 @import "../node_modules/bulma/bulma.sass";
 @import "../node_modules/bulmaswatch/journal/_overrides.scss";
+
+.card--post {
+  margin: 1rem 0;
+}

@@ -42,9 +42,19 @@ export const actions = {
 
   addNewFeed: (res, url) => {
     const uniqueUrl = res.feed_url || url
+    const doc = {
+      modified: new Date().getTime(),
+      type: 'feed',
+      _id: `pheed|feed|${uniqueUrl}`,
+      feed_url: res.feed_url,
+      home_page_url: res.home_page_url,
+      title: res.title,
+      version: res.version
+    }
+
     return {
       type: c.ADD_NEW_FEED,
-      pouch: upsertFeed(res, uniqueUrl),
+      pouch: upsertFeed(doc),
       response: actions.addNewFeedRes,
       error: actions.addNewFeedError
     }
