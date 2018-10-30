@@ -1,4 +1,5 @@
 import update from 'immutability-helper'
+import {actions as feedActions} from './feeds'
 
 export const constants = {
   UPDATE_VALUE: 'NEW_FEED/UPDATE_VALUE',
@@ -27,7 +28,14 @@ export const actions = {
     ({type: c.NEW_FEED_RES, res}),
 
   newFeedError: status =>
-    ({type: c.NEW_FEED_ERROR, status})
+    ({type: c.NEW_FEED_ERROR, status}),
+
+  addFeedToDB: () => (dispatch, getState) => {
+    const {loadState, feed, posts, value} = getState().newFeed
+    if (loadState < 2) dispatch({type: 'noop'})
+    dispatch(feedActions.upsertFeed(feed, value))
+    console.log(posts)
+  },
 }
 
 export const reducer = (inputState = {}, action) => {

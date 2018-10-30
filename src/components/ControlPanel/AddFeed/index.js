@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
 import {actions} from '../../../store/newFeed'
-import {actions as feedActions} from '../../../store/feeds'
 import Field from './Field'
 
 const mapStateToProps = state => {
@@ -23,8 +22,7 @@ const mapDispatchToProps = dispatch => {
 
     addFeed: (e) => {
       e.preventDefault()
-      dispatch(feedActions.upsertFeedFromState())
-      dispatch(actions.updateValue(''))
+      dispatch(actions.addFeedToDB())
     }
   }
 }

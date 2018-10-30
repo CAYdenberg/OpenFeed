@@ -33,12 +33,6 @@ export const actions = {
     console.log(status)
   },
 
-  upsertFeedFromState: () => (dispatch, getState) => {
-    const {loadState, feed, posts, value} = getState().newFeed
-    if (loadState < 2) dispatch({type: 'noop'})
-    dispatch(actions.upsertFeed(feed, value))
-  },
-
   upsertFeed: (data, url) => {
     const doc = {
       modified: new Date().getTime(),
