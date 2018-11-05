@@ -35,6 +35,23 @@ describe('upsert', () => {
     const result = upsert(doc)(db)
     return expect(result).resolves.toEqual({ok: true})
   })
+
+  it('should upsert multiple documents', () => {
+    const doc = {
+      _id: 'newdoc',
+      title: 'New doc',
+    }
+    const doc2 = {
+      _id: 'anothernewdoc',
+      title: 'New doc',
+    }
+
+    const result = upsert([doc, doc2])(db)
+    return expect(result).resolves.toEqual([
+      {ok: true},
+      {ok: true}
+    ])
+  })
 })
 
 describe('remove', () => {

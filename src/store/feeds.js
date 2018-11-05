@@ -1,6 +1,9 @@
 import update from 'immutability-helper'
 
+import {filterObjectByKeys} from '../helpers'
 import {getFeeds, upsert, remove} from '../db'
+
+const ALLOWED_KEYS = ['version', 'title', 'home_page_url', 'feed_url', 'description', 'author']
 
 export const constants = {
   LOAD_FEEDS: 'FEEDS/LOAD_FEEDS',
@@ -38,10 +41,7 @@ export const actions = {
       modified: new Date().getTime(),
       type: 'feed',
       _id: `pheed|feed|${url}`,
-      feed_url: data.feed_url,
-      home_page_url: data.home_page_url,
-      title: data.title,
-      version: data.version
+      ...filterObjectByKeys(data, ALLOWED_KEYS)
     }
 
     return {

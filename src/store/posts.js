@@ -1,5 +1,10 @@
 import update from 'immutability-helper'
 import {wrapReducer} from './reduxHelpers'
+import {filterObjectByKeys} from '../helpers'
+
+import {getFeeds, upsert, remove} from '../db'
+
+const ALLOWED_KEYS = ['external_url', 'title', 'content_html', 'content_text', 'summary', 'image', 'banner_image', 'date_published', 'date_modified', 'author', 'tags']
 
 const constants = {
   POPULATE: 'POSTS/POPULATE',
@@ -11,15 +16,68 @@ const constants = {
 }
 const c = constants
 
-const actions = {
-  // populate: save feeds passed as action creator AND place them all in the timeline
-  // (replacing the current contents of the timeline)
-  // load: get feeds from the db and put them in the timeline
+export const actions = {
+  populate: (data, url) => {
+    const docs = data.map(item => ({
+      modified: new Date().getTime(),
+      type: 'post',
+      _id: `pheed|post|${item.id}`,
+      ...filterObjectByKeys(item, ALLOWED_KEYS),
+    }))
+    return {
+      type: c.POPULATE,
+      docs,
+      view: {url},
+      pouch: upsert(docs),
+      response: actions.populateOk,
+      error: actions.populateErr
+    }
+  },
+
+  populateOk: (res) => {
+    return {type: c.POPULATE_OK, res}
+  },
+
+  populateErr: (status, error) => {
+    console.error(error)
+    return {type: c.POPULATE_ERR, status}
+  },
+
+  loadByFeed: (url) => {
+    return {type: c.LOAD}
+  },
+
+  loadOk: posts => {
+    return {type: c.LOAD_OK, posts}
+  },
+
+  loadErr: (status, error) => {
+    console.error(error)
+    return {type: c.LOAD_ERR, status}
+  }
 }
 
-const reducer = wrapReducer({
+export const reducer = wrapReducer({
   loadState: 0,
+  view: {},
   posts: []
 }, (initialState, action) => {
+  switch (action.type) {
+    case c.POPULATE: {
+      return update(initialState, {
+        posts: {$set: action.docs},
+        loadState: {$set: 2},
+        view: {$set: action.view}
+      })
+    }
 
+    case c.POPULATE_OK: {
+      return update(initialState, {
+        posts: {$map: (post, i) => ({
+          ...post,
+          _rev: action.res[i].rev
+        })}
+      })
+    }
+  }
 })

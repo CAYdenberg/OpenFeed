@@ -8,6 +8,10 @@ export const getFeeds = () => db => {
 }
 
 export const upsert = (doc) => db => {
+  if (Array.isArray(doc)) {
+    return Promise.all(doc.map(singleDoc => upsert(singleDoc)(db)))
+  }
+
   return db.get(doc._id).then(existingDoc => {
     const newDoc = Object.assign({}, doc, {_rev: existingDoc._rev})
     return db.put(newDoc)
