@@ -12,7 +12,7 @@
     "immutability-helper": "^2.7.1",
     "lodash.get": "^4.4.2",
     "moment": "^2.22.2",
-    "morgan": "^1.9.0",
+    "morgan": "^1.9.1",
     "popsicle": "^10.0.1",
     "pouchdb": "^7.0.0",
     "pouchdb-find": "^7.0.0",
@@ -28,7 +28,9 @@
     "rss-to-json-feed": "0.0.1"
   },
   "devDependencies": {
+    "@babel/plugin-syntax-object-rest-spread": "^7.0.0",
     "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
     "babel-jest": "^23.4.2",
     "babel-plugin-syntax-flow": "^6.18.0",
@@ -46,10 +48,10 @@
     "eslint-plugin-standard": "^3.1.0",
     "flow-bin": "^0.79.1",
     "jest": "^23.5.0",
-    "node-sass": "^4.9.3",
     "nodemon": "^1.18.4",
-    "parcel-bundler": "^1.9.7",
-    "parcel-plugin-bundle-visualiser": "^1.1.2"
+    "parcel-bundler": "^1.10.3",
+    "parcel-plugin-bundle-visualiser": "^1.1.2",
+    "sass": "^1.15.1"
   },
   "scripts": {
     "build": "./node_modules/.bin/parcel build src/index.html",

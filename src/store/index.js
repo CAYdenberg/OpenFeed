@@ -12,10 +12,14 @@ import {
   reducer as feedsReducer,
   actions as feedsActions,
 } from './feeds'
+import {
+  reducer as postsReducer,
+} from './posts'
 
 const reducer = combineReducers({
   newFeed: newFeedReducer,
   feeds: feedsReducer,
+  posts: postsReducer
 })
 
 const store = createStore(reducer, composeWithDevTools(middleware))

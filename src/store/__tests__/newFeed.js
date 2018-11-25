@@ -9,7 +9,7 @@ const runActions = actions => actions.reduce((state, action) => {
   return reducer(state, action)
 }, nullState)
 
-describe('update', () => {
+describe('reducer', () => {
   it('should update the value of the text field', () => {
     const finalState = runActions([
       updateValue('http://feed.com')
@@ -66,7 +66,7 @@ describe('update', () => {
     expect(finalState).toHaveProperty('loadState', 0)
   })
 
-  it('should remove the staged feed everytime the text box value changed', () => {
+  it('should remove the staged feed everytime the text box value changes', () => {
     const finalState = runActions([
       updateValue('http://feed.com'),
       newFeedReq(),

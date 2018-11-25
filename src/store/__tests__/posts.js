@@ -27,7 +27,7 @@ const posts = [
 
 describe('action creators', () => {
   describe('populate', () => {
-    it('should pass the documents to populate to upsertBulk', () => {
+    it('should pass the documents to populate to upsert', () => {
       const result = populate(posts, 'http://feed.com')
       expect(result.docs).toHaveLength(2)
       expect(result.docs[0]).toHaveProperty('_id')
@@ -47,7 +47,7 @@ describe('reducer', () => {
       expect(finalState.posts).toHaveLength(2)
       expect(finalState.posts[0]).toHaveProperty('_id')
       expect(finalState.posts[0]).not.toHaveProperty('_rev')
-      expect(finalState.view).toEqual({url: 'http://feed.com'})
+      expect(finalState.view).toEqual('feed=http://feed.com')
       expect(finalState.loadState).toEqual(2)
     })
   })

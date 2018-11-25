@@ -36,11 +36,11 @@ export const actions = {
     console.log(status)
   },
 
-  upsertFeed: (data, url) => {
+  upsertFeed: (data, id) => {
     const doc = {
       modified: new Date().getTime(),
       type: 'feed',
-      _id: `pheed|feed|${url}`,
+      _id: id,
       ...filterObjectByKeys(data, ALLOWED_KEYS)
     }
 

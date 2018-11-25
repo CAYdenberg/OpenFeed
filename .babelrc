@@ -1,5 +1,5 @@
 {
-  "plugins": ["babel-plugin-syntax-flow", "babel-plugin-transform-flow-strip-types"],
+  "plugins": ["syntax-flow", "syntax-object-rest-spread", "transform-flow-strip-types"],
   "presets": ["env", "react"],
   "ignore": ["node_modules"]
 }

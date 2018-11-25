@@ -1,12 +1,4 @@
 
-export const getFeeds = () => db => {
-  return db.find({
-    selector: {
-      type: {$eq: 'feed'}
-    }
-  }).then(res => res.docs)
-}
-
 export const upsert = (doc) => db => {
   if (Array.isArray(doc)) {
     return Promise.all(doc.map(singleDoc => upsert(singleDoc)(db)))
@@ -27,4 +19,21 @@ export const remove = id => db => {
   return db.get(id).then(existingDoc => {
     return db.remove(existingDoc)
   })
+}
+
+export const getFeeds = () => db => {
+  return db.find({
+    selector: {
+      type: {$eq: 'feed'}
+    }
+  }).then(res => res.docs)
+}
+
+export const loadPostsByFeed = feedUrl => db => {
+  return db.find({
+    selector: {
+      type: {$eq: 'post'},
+      parent: {$eq: feedUrl}
+    }
+  }).then(res => res.docs)
 }

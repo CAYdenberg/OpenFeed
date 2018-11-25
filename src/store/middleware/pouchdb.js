@@ -23,7 +23,7 @@ export function createMiddleware(db) {
 export default (dbName) => {
   const db = new PouchDB(dbName)
   db.createIndex({
-    index: {fields: ['type', 'modified']}
+    index: {fields: ['type', 'modified', 'parent']}
   })
   window.db = db
   return createMiddleware(db)

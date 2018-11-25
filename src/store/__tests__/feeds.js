@@ -20,14 +20,14 @@ const feed = {
 describe('action creators', () => {
   describe('upsertFeed', () => {
     it('should autogenerate modified data, _id and type', () => {
-      const result = upsertFeed(feed, 'http://feed.com')
+      const result = upsertFeed(feed, 'pheed|feed|http://feed.com')
       expect(result.doc).toHaveProperty('_id')
       expect(result.doc).toHaveProperty('modified')
       expect(result.doc).toHaveProperty('type', 'feed')
     })
 
     it('should filter out unrecognized data', () => {
-      const result = upsertFeed(feed, 'http://feed.com')
+      const result = upsertFeed(feed, 'pheed|feed|http://feed.com')
       expect(result.doc).not.toHaveProperty('foo')
     })
   })
@@ -36,7 +36,7 @@ describe('action creators', () => {
 describe('upsertFeed', () => {
   it('should place a new feed in the store', () => {
     const finalState = reducer(nullState,
-      upsertFeed(feed, 'http://feed.com')
+      upsertFeed(feed, 'pheed|feed|http://feed.com')
     )
     expect(finalState.feeds).toHaveLength(1)
     expect(finalState.feeds[0]).toHaveProperty('_id')
@@ -45,9 +45,9 @@ describe('upsertFeed', () => {
 
   it('should replace an existing feed with the same id', () => {
     const finalState = runActions([
-      upsertFeed(feed, 'http://feed.com'),
+      upsertFeed(feed, 'feed|pheed|http://feed.com'),
       upsertFeedOk({ok: true, id: 'pheed|feed|http://feed.com', rev: 'revision'}),
-      upsertFeed(feed, 'http://feed.com')
+      upsertFeed(feed, 'feed|pheed|http://feed.com')
     ])
     expect(finalState.feeds).toHaveLength(1)
     expect(finalState.feeds[0]).toHaveProperty('_id')
@@ -58,7 +58,7 @@ describe('upsertFeed', () => {
 describe('upsertFeedOk', () => {
   it('should add a revision to the existing document', () => {
     const finalState = runActions([
-      upsertFeed(feed, 'http://feed.com'),
+      upsertFeed(feed, 'pheed|feed|http://feed.com'),
       upsertFeedOk({ok: true, id: 'pheed|feed|http://feed.com', rev: 'revision'})
     ])
     expect(finalState.feeds).toHaveLength(1)
