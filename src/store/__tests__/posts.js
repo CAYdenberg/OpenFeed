@@ -47,7 +47,7 @@ describe('reducer', () => {
       expect(finalState.posts).toHaveLength(2)
       expect(finalState.posts[0]).toHaveProperty('_id')
       expect(finalState.posts[0]).not.toHaveProperty('_rev')
-      expect(finalState.view).toEqual('feed=http://feed.com')
+      expect(finalState.view).toEqual({type: 'feed', id: 'http://feed.com'})
       expect(finalState.loadState).toEqual(2)
     })
   })

@@ -2,18 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 
-const Post = ({post, feedTitle, feedAuthor}) => {
-  const mDate = post.date_published ? moment(post.date_published) : null
+const Post = (props) => {
+  const {feed, title, summary} = props
+  const mDate = props.date_published ? moment(props.date_published) : null
 
   return (
     <div className="card card--post">
       <a href="#" className="card-header">
-        <h3 className="card-header-title">{post.title}</h3>
+        <h3 className="card-header-title">{title}</h3>
       </a>
 
       <div className="card-content">
         <div className="columns" style={{fontWeight: 700, fontSize: '0.8rem'}}>
-          <div className="column">{feedAuthor}</div>
+          <div className="column">{feed.author}</div>
 
           <div className="column">
             {mDate &&
@@ -21,9 +22,9 @@ const Post = ({post, feedTitle, feedAuthor}) => {
             }
           </div>
 
-          <div className="column">{feedTitle}</div>
+          <div className="column">{feed.title}</div>
         </div>
-        <p>{post.summary}</p>
+        <p>{summary}</p>
       </div>
 
       <footer className="card-footer">
@@ -34,6 +35,16 @@ const Post = ({post, feedTitle, feedAuthor}) => {
 
     </div>
   )
+}
+
+Post.propTypes = {
+  title: PropTypes.string.isRequired,
+  date_published: PropTypes.string.isRequired,
+  summary: PropTypes.string.isRequired,
+  feed: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string
+  })
 }
 
 export default Post

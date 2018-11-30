@@ -1,38 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import _get from 'lodash.get'
 
+import {timelinePosts} from '../../store/selectors'
+import {getId} from '../../helpers'
 import Post from './Post'
 
 const mapStateToProps = state => {
   return {
-    posts: state.newFeed.posts,
-    feedTitle: _get(state, 'newFeed.feed.title', null),
-    feedAuthor: _get(state, 'newFeed.feed.author', null)
+    posts: timelinePosts(state)
   }
 }
 
-const Timeline = ({posts, feedTitle, feedAuthor}) => {
+const Timeline = ({posts}) => {
   if (!posts.length) {
     return <h3 className="is-size-3 has-text-centered">No posts</h3>
   }
 
   return (
     (posts.map(post =>
-      <Post post={post} key={post.id} feedTitle={feedTitle} feedAuthor={feedAuthor} />
+      <Post {...post} key={getId(post)} />
     ))
   )
 }
 
 Timeline.propTypes = {
-  posts: PropTypes.array.isRequired,
-  feedTitle: PropTypes.string,
-  feedAuthor: PropTypes.shape({
-    name: PropTypes.string,
-    url: PropTypes.string,
-    avatar: PropTypes.string
-  })
+  posts: PropTypes.array.isRequired
 }
 
 export default connect(mapStateToProps)(Timeline)

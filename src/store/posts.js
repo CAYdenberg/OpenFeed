@@ -1,6 +1,7 @@
 import update from 'immutability-helper'
 import {wrapReducer} from './reduxHelpers'
-import {filterObjectByKeys, getId} from '../helpers'
+import {filterObjectByKeys} from '../helpers'
+import {constants as newFeedConstants} from './newFeed'
 
 import {loadPostsByFeed, upsert} from '../db'
 
@@ -28,7 +29,7 @@ export const actions = {
     return {
       type: c.POPULATE,
       docs,
-      view: `feed=${feedId}`,
+      view: {type: 'feed', id: feedId},
       pouch: upsert(docs),
       response: actions.populateOk,
       error: actions.populateErr
@@ -47,7 +48,7 @@ export const actions = {
     return {
       type: c.LOAD,
       pouch: loadPostsByFeed(id),
-      view: `feed=${id}`,
+      view: {type: 'feed', id},
       response: actions.loadOk,
       error: actions.loadErr
     }
@@ -64,7 +65,7 @@ export const actions = {
 
 export const reducer = wrapReducer({
   loadState: 0,
-  view: '',
+  view: null,
   posts: []
 }, (initialState, action) => {
   switch (action.type) {
@@ -96,6 +97,12 @@ export const reducer = wrapReducer({
       return update(initialState, {
         loadState: {$set: 2},
         posts: {$set: action.posts}
+      })
+    }
+
+    case newFeedConstants.NEW_FEED_RES: {
+      return update(initialState, {
+        view: {$set: {type: 'newFeed'}}
       })
     }
   }
