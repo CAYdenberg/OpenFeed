@@ -14,6 +14,8 @@ const ControlPanel = () => {
       <FeedsList />
 
       <AddFeed />
+
+      <a href="http://localhost:5000/auth/twitter">Twitter</a>
     </nav>
   )
 }

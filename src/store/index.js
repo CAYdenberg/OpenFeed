@@ -9,8 +9,7 @@ import {
   reducer as newFeedReducer
 } from './newFeed'
 import {
-  reducer as feedsReducer,
-  actions as feedsActions,
+  reducer as feedsReducer
 } from './feeds'
 import {
   reducer as postsReducer,
@@ -23,7 +22,5 @@ const reducer = combineReducers({
 })
 
 const store = createStore(reducer, composeWithDevTools(middleware))
-
-store.dispatch(feedsActions.loadFeeds())
 
 export default store

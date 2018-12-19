@@ -2,8 +2,9 @@ import {applyMiddleware} from 'redux'
 import reduxPopsicle from 'redux-popsicle'
 import thunk from 'redux-thunk'
 
-import createPouchMiddleware from './pouchdb'
+import KoalaMiddleware from './redux-koala'
+import {actions as feedsActions} from '../feeds'
 
-const pouchMiddleware = createPouchMiddleware('pheed-default')
+const koalaMiddleware = KoalaMiddleware([feedsActions.loadFeeds], 'http://localhost:5000')
 
-export default applyMiddleware(reduxPopsicle, pouchMiddleware, thunk)
+export default applyMiddleware(reduxPopsicle, koalaMiddleware, thunk)

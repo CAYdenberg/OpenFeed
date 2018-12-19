@@ -13,6 +13,8 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
+window.popsicle = require('popsicle')
+
 if (window.__REDUX_DEVTOOLS_EXTENSION__) {
   window.__REDUX_DEVTOOLS_EXTENSION__()
 }
