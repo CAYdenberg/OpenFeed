@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
-import {actions} from '../../store/feeds'
-import {actions as postsActions} from '../../store/posts'
-import {activeFeed} from '../../store/selectors'
+import {actions} from '../../../store/feeds'
+import {actions as postsActions} from '../../../store/posts'
+import {activeFeed} from '../../../store/selectors'
 
 const mapStateToProps = state => {
   return {

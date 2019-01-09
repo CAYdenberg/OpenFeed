@@ -1,9 +1,17 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
 import ControlPanel from './ControlPanel'
 import Timeline from './Timeline'
+import Account from './Account'
 
-const App = props => {
+const mapStateToProps = (state) => {
+  return {
+    view: state.posts.view
+  }
+}
+
+const App = ({view}) => {
   return (
     <div className="app-inner container">
       <nav className="navbar">
@@ -32,7 +40,10 @@ const App = props => {
         </div>
 
         <div className="column">
-          <Timeline />
+          {(view && view.type === 'page' && view.id === 'Account')
+            ? <Account />
+            : <Timeline />
+          }
         </div>
       </div>
 
@@ -40,4 +51,4 @@ const App = props => {
   )
 }
 
-export default App
+export default connect(mapStateToProps)(App)

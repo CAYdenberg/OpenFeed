@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Icon, {valid, invalid} from '../../Icons'
+import Icon, {valid, invalid} from '../../../Icons'
 
 const AddFeedField = ({loadState, value, onChange}) => {
   const inputClassName = (loadState === 2)

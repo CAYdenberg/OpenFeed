@@ -7,7 +7,8 @@ export const constants = {
   NEW_FEED_REQ: 'NEW_FEED/REQ',
   NEW_FEED_RES: 'NEW_FEED/RES',
   NEW_FEED_ERROR: 'NEW_FEED/ERROR',
-  NOOP: 'NOOP'
+  RESET: 'NEW_FEED/RESET',
+  NOOP: 'NOOP',
 }
 const c = constants
 
@@ -38,7 +39,11 @@ export const actions = {
     if (loadState < 2) dispatch({type: c.NOOP})
     dispatch(feedActions.upsertFeed(feed, newFeedId))
     dispatch(postActions.populate(posts, newFeedId))
+    dispatch(actions.reset())
   },
+
+  reset: () =>
+    ({type: c.RESET}),
 }
 
 export const reducer = (inputState = {}, action) => {
@@ -80,6 +85,10 @@ export const reducer = (inputState = {}, action) => {
         feed: {$set: defaultState.feed},
         posts: {$set: defaultState.posts}
       })
+    }
+
+    case c.RESET: {
+      return defaultState
     }
   }
   return initialState

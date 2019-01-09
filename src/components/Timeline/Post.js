@@ -14,7 +14,7 @@ const Post = (props) => {
 
       <div className="card-content">
         <div className="columns" style={{fontWeight: 700, fontSize: '0.8rem'}}>
-          <div className="column">{feed.author}</div>
+          <div className="column">{feed && feed.author}</div>
 
           <div className="column">
             {mDate &&
@@ -22,7 +22,7 @@ const Post = (props) => {
             }
           </div>
 
-          <div className="column">{feed.title}</div>
+          <div className="column">{feed && feed.title}</div>
         </div>
         <p>{summary}</p>
       </div>

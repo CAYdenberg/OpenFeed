@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
-import {actions} from '../../../store/newFeed'
+import {actions} from '../../../../store/newFeed'
 import Field from './Field'
 
 const mapStateToProps = state => {

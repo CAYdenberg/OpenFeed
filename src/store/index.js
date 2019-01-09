@@ -14,11 +14,19 @@ import {
 import {
   reducer as postsReducer,
 } from './posts'
+import {
+  reducer as statusReducer,
+} from './status'
+import {
+  reducer as uiReducer,
+} from './ui'
 
 const reducer = combineReducers({
   newFeed: newFeedReducer,
   feeds: feedsReducer,
-  posts: postsReducer
+  posts: postsReducer,
+  status: statusReducer,
+  ui: uiReducer
 })
 
 const store = createStore(reducer, composeWithDevTools(middleware))
