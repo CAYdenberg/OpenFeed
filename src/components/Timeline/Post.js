@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment'
+import {DateTime} from 'luxon'
 
 const Post = (props) => {
   const {feed, title, summary} = props
-  const mDate = props.date_published ? moment(props.date_published) : null
+  const date = props.date_published ? DateTime.fromISO(props.date_published) : null
 
   return (
     <div className="card card--post">
@@ -17,8 +17,8 @@ const Post = (props) => {
           <div className="column">{feed && feed.author}</div>
 
           <div className="column">
-            {mDate &&
-              <time dateTime={mDate}>{mDate.format('MMM Do')}</time>
+            {date &&
+              <time dateTime={props.date_published}>{date.toLocaleString()}</time>
             }
           </div>
 
