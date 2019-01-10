@@ -24,8 +24,10 @@ export const remove = id => db => {
 export const getFeeds = () => db => {
   return db.find({
     selector: {
-      type: {$eq: 'feed'}
-    }
+      type: {$eq: 'feed'},
+      modified: {$gt: null},
+    },
+    sort: ['modified']
   }).then(res => res.docs)
 }
 
@@ -33,7 +35,9 @@ export const loadPostsByFeed = feedUrl => db => {
   return db.find({
     selector: {
       type: {$eq: 'post'},
-      parent: {$eq: feedUrl}
-    }
+      parent: {$eq: feedUrl},
+      modified: {$gt: null},
+    },
+    sort: ['modified']
   }).then(res => res.docs)
 }

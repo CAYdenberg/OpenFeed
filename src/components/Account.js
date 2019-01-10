@@ -34,7 +34,7 @@ const Account = ({authenticated, provider, name}) => {
     return (
       <section className="content">
         <h3>To sign up for an account, choose one of the providers below:</h3>
-        <p className="buttons">
+        <div className="buttons">
           <a
             href={`${process.env.KOALA_URI}/auth/twitter`}
             className="button is-large is-info"
@@ -44,7 +44,7 @@ const Account = ({authenticated, provider, name}) => {
               <Icon icon={twitter} size={36} />
             </span>
           </a>
-        </p>
+        </div>
       </section>
     )
   }

@@ -1,11 +1,9 @@
 import update from 'immutability-helper'
 import {wrapReducer} from './reduxHelpers'
-import {filterObjectByKeys} from '../helpers'
-import {constants as newFeedConstants} from './newFeed'
 
 import {loadPostsByFeed, upsert} from '../db'
-
-const ALLOWED_KEYS = ['external_url', 'title', 'content_html', 'content_text', 'summary', 'image', 'banner_image', 'date_published', 'date_modified', 'author', 'tags']
+import Posts from '../db/Posts'
+import {constants as newFeedConstants} from './newFeed'
 
 const constants = {
   SET_VIEW: 'POSTS/SET_VIEW',
@@ -23,13 +21,7 @@ export const actions = {
     ({type: c.SET_VIEW, page}),
 
   populate: (data, feedId) => {
-    const docs = data.map(item => ({
-      modified: new Date().getTime(),
-      type: 'post',
-      parent: feedId,
-      _id: `pheed|post|${item.id}`,
-      ...filterObjectByKeys(item, ALLOWED_KEYS),
-    }))
+    const docs = Posts(data, feedId)
     return {
       type: c.POPULATE,
       docs,
@@ -62,7 +54,8 @@ export const actions = {
     return {type: c.LOAD_OK, posts}
   },
 
-  loadErr: (status) => {
+  loadErr: (status, err) => {
+    console.log(err)
     return {type: c.LOAD_ERR, status}
   }
 }

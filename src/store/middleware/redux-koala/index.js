@@ -18,7 +18,7 @@ export default (readyTasks, remoteUrl) => store => {
   // provision our new database
   const db = new PouchDB(dbName)
   db.createIndex({
-    index: {fields: ['type', 'modified', 'parent']}
+    index: {fields: ['modified', 'type', 'parent']}
   })
 
   // on signup, we take the special action of replicating the unauthenticated
@@ -61,6 +61,7 @@ export default (readyTasks, remoteUrl) => store => {
       operation.then(operationResult => {
         return store.dispatch(action.response(operationResult))
       }).catch(err => {
+        console.error(err)
         return store.dispatch(action.error(err.status, err))
       })
     }
