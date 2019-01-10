@@ -1,5 +1,5 @@
 {
-  "plugins": ["syntax-flow", "syntax-object-rest-spread", "transform-flow-strip-types"],
+  "plugins": ["syntax-flow", "syntax-object-rest-spread", "transform-flow-strip-types", "transform-regenerator"],
   "presets": ["env", "react"],
   "ignore": ["node_modules"]
 }

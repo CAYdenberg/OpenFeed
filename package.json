@@ -13,7 +13,6 @@
     "lodash.get": "^4.4.2",
     "luxon": "^1.9.0",
     "morgan": "^1.9.1",
-    "popsicle": "^10.0.1",
     "pouchdb": "^7.0.0",
     "pouchdb-find": "^7.0.0",
     "prop-types": "^15.6.2",
@@ -25,7 +24,8 @@
     "redux": "^4.0.0",
     "redux-devtools-extension": "^2.13.5",
     "redux-popsicle": "^0.2.1",
-    "redux-thunk": "^2.3.0",
+    "redux-saga": "^0.16.2",
+    "regenerator-runtime": "^0.13.1",
     "rss-to-json-feed": "0.0.1"
   },
   "devDependencies": {

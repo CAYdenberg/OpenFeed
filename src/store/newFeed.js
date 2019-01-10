@@ -1,12 +1,11 @@
 import update from 'immutability-helper'
-import {actions as feedActions} from './feeds'
-import {actions as postActions} from './posts'
 
 export const constants = {
   UPDATE_VALUE: 'NEW_FEED/UPDATE_VALUE',
   NEW_FEED_REQ: 'NEW_FEED/REQ',
   NEW_FEED_RES: 'NEW_FEED/RES',
   NEW_FEED_ERROR: 'NEW_FEED/ERROR',
+  ADD_FEED_TO_DB: 'NEW_FEED/ADD_FEED_TO_DB',
   RESET: 'NEW_FEED/RESET',
   NOOP: 'NOOP',
 }
@@ -33,14 +32,8 @@ export const actions = {
   newFeedError: status =>
     ({type: c.NEW_FEED_ERROR, status}),
 
-  addFeedToDB: () => (dispatch, getState) => {
-    const {loadState, feed, posts, value} = getState().newFeed
-    const newFeedId = `pheed|feed|${value}`
-    if (loadState < 2) dispatch({type: c.NOOP})
-    dispatch(feedActions.upsertFeed(feed, newFeedId))
-    dispatch(postActions.populate(posts, newFeedId))
-    dispatch(actions.reset())
-  },
+  addFeedToDB: () =>
+    ({type: c.ADD_FEED_TO_DB}),
 
   reset: () =>
     ({type: c.RESET}),

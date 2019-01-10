@@ -9,7 +9,7 @@ PouchDB.plugin(Find)
 
 window.PouchDB = PouchDB
 
-export default (readyTasks, remoteUrl) => store => {
+export default (remoteUrl) => store => {
   const actions = mapDispatchToPouch(store.dispatch)
 
   const {action, username, token} = getUser()
@@ -27,12 +27,12 @@ export default (readyTasks, remoteUrl) => store => {
     const oldDb = new PouchDB(NOUSER_DB)
     PouchDB.replicate(oldDb, db).on('complete', () => {
       oldDb.destroy()
-      actions.onReady(readyTasks, username)
+      actions.onReady(username, dbName)
     })
   } else {
     // dispatch on next tick because we can't dispatch during middleware
     // contruction
-    setTimeout(() => actions.onReady(readyTasks, username), 0)
+    setTimeout(() => actions.onReady(username, dbName), 0)
   }
 
   // sync only if this is a real user database (not unauthenticated)

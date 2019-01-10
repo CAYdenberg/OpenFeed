@@ -2,7 +2,7 @@
 const PREFIX = '@@koala-redux'
 
 export default {
-  SET_USER: `${PREFIX}/SET_USER`,
+  DB_READY: `${PREFIX}/DB_READY`,
   CHANGE: `${PREFIX}/CHANGE`,
   PAUSED: `${PREFIX}/PAUSED`,
   ACTIVE: `${PREFIX}/ACTIVE`,

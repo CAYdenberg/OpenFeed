@@ -1,10 +1,15 @@
 import {
   createStore,
+  applyMiddleware
 } from 'redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
+import reduxPopsicle from 'redux-popsicle'
+import SagaMiddleware from 'redux-saga'
 
-import middleware from './middleware'
+import KoalaMiddleware from './middleware/redux-koala'
+import rootSaga from './sagas'
 import {combineReducers} from './reduxHelpers'
+
 import {
   reducer as newFeedReducer
 } from './newFeed'
@@ -29,6 +34,16 @@ const reducer = combineReducers({
   ui: uiReducer
 })
 
-const store = createStore(reducer, composeWithDevTools(middleware))
+const koalaMiddleware = KoalaMiddleware(
+  process.env.KOALA_URI
+)
+
+const sagaMiddleware = SagaMiddleware()
+
+const store = createStore(reducer, composeWithDevTools(
+  applyMiddleware(reduxPopsicle, koalaMiddleware, sagaMiddleware)
+))
+
+sagaMiddleware.run(rootSaga)
 
 export default store

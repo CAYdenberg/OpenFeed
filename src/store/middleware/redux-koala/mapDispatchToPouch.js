@@ -3,11 +3,8 @@ import c from './types'
 
 export default (dispatch) => {
   return {
-    onReady(tasks, username) {
-      dispatch({type: c.SET_USER, username})
-      tasks.forEach(task => {
-        dispatch(task())
-      })
+    onReady(username, dbName) {
+      dispatch({type: c.DB_READY, username, dbName})
     },
 
     onChange(change) {
