@@ -1,10 +1,16 @@
 import _get from 'lodash.get'
 
-export const activeFeed = state => {
+export const viewType = state => {
   const view = _get(state, 'posts.view')
 
   if (!view) return null
-  return (view.type === 'feed') ? view.id : null
+  return view.type || null
+}
+
+export const activeFeed = state => {
+  const view = _get(state, 'posts.view')
+  const type = viewType(state)
+  return (type === 'feed') ? view.id : null
 }
 
 export const timelinePosts = state => {

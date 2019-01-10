@@ -4,12 +4,13 @@ import {connect} from 'react-redux'
 
 import {actions} from '../../../store/feeds'
 import {actions as postsActions} from '../../../store/posts'
-import {activeFeed} from '../../../store/selectors'
+import {viewType, activeFeed} from '../../../store/selectors'
 
 const mapStateToProps = state => {
   return {
     feeds: state.feeds.feeds,
-    activeFeed: activeFeed(state)
+    activeFeed: activeFeed(state),
+    isAll: viewType(state) === 'all'
   }
 }
 
@@ -18,6 +19,11 @@ const mapDispatchToProps = dispatch => {
     remove: (id, e) => {
       e.stopPropagation()
       dispatch(actions.removeFeed(id))
+    },
+
+    loadAll: (e) => {
+      e.preventDefault()
+      dispatch(postsActions.load())
     },
 
     load: (id, e) => {
@@ -30,6 +36,13 @@ const mapDispatchToProps = dispatch => {
 export const FeedsList = props => {
   return (
     <React.Fragment>
+
+      <a
+        className={`panel-block is-flex ${props.isAll ? 'is-active' : ''}`}
+        onClick={props.loadAll}
+      >
+        All
+      </a>
 
       {props.feeds.map(feed => {
         const isActive = props.activeFeed === feed._id ? 'is-active' : ''

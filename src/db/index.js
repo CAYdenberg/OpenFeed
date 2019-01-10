@@ -25,9 +25,18 @@ export const getFeeds = () => db => {
   return db.find({
     selector: {
       type: {$eq: 'feed'},
+    },
+  }).then(res => res.docs)
+}
+
+export const loadPosts = () => db => {
+  return db.find({
+    selector: {
+      type: {$eq: 'post'},
       modified: {$gt: null},
     },
-    sort: ['modified']
+    sort: [{'modified': 'desc'}],
+    limit: 50
   }).then(res => res.docs)
 }
 
@@ -38,6 +47,7 @@ export const loadPostsByFeed = feedUrl => db => {
       parent: {$eq: feedUrl},
       modified: {$gt: null},
     },
-    sort: ['modified']
+    sort: [{'modified': 'desc'}],
+    limit: 50
   }).then(res => res.docs)
 }

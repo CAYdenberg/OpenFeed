@@ -1,7 +1,7 @@
 import update from 'immutability-helper'
 import {wrapReducer} from './reduxHelpers'
 
-import {loadPostsByFeed, upsert} from '../db'
+import {loadPosts, loadPostsByFeed, upsert} from '../db'
 import Posts from '../db/Posts'
 import {constants as newFeedConstants} from './newFeed'
 
@@ -40,6 +40,16 @@ export const actions = {
     return {type: c.POPULATE_ERR, status}
   },
 
+  load: () => {
+    return {
+      type: c.LOAD,
+      pouch: loadPosts(),
+      view: {type: 'all'},
+      response: actions.loadOk,
+      error: actions.loadErr,
+    }
+  },
+
   loadByFeed: (id) => {
     return {
       type: c.LOAD,
@@ -55,8 +65,7 @@ export const actions = {
   },
 
   loadErr: (status, err) => {
-    console.log(err)
-    return {type: c.LOAD_ERR, status}
+    return {type: c.LOAD_ERR, status, err}
   }
 }
 

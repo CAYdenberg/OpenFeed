@@ -1,9 +1,30 @@
 import _clone from 'lodash.clone'
 
 import {
+  viewType,
   activeFeed,
   timelinePosts
 } from '../selectors'
+
+describe('viewType', () => {
+  it('should be true if the current view is set to all', () => {
+    const state = {
+      posts: {
+        view: {type: 'all'}
+      }
+    }
+    expect(viewType(state)).toEqual('all')
+  })
+
+  it('should be false if the current view is not set', () => {
+    const state = {
+      posts: {
+        view: null
+      }
+    }
+    expect(activeFeed(state)).toBeFalsy()
+  })
+})
 
 describe('activeFeed', () => {
   it('should return the id of the active feed', () => {

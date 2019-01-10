@@ -1,3 +1,4 @@
+import {DateTime} from 'luxon'
 import {filterObjectByKeys} from '../helpers'
 
 const ALLOWED_KEYS = [
@@ -14,9 +15,15 @@ const ALLOWED_KEYS = [
   'tags'
 ]
 
+export const determineModified = (item) => {
+  return item.date_modified ||
+    item.date_published ||
+    DateTime.local().toISO()
+}
+
 export default (data, feedId) => {
   return data.map(item => ({
-    modified: new Date().getTime(),
+    modified: determineModified(item),
     type: 'post',
     parent: feedId,
     _id: `pheed|post|${item.id}`,
