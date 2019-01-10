@@ -2,6 +2,7 @@ import update from 'immutability-helper'
 import {wrapReducer} from './reduxHelpers'
 
 import {loadPosts, loadPostsByFeed, upsert} from '../db'
+import {getId} from '../helpers'
 import Posts from '../db/Posts'
 import {constants as newFeedConstants} from './newFeed'
 
@@ -12,7 +13,10 @@ const constants = {
   POPULATE_ERR: 'POSTS/POPULATE_ERR',
   LOAD: 'POSTS/LOAD',
   LOAD_OK: 'POSTS/LOAD_OK',
-  LOAD_ERR: 'POSTS/LOAD_ERR'
+  LOAD_ERR: 'POSTS/LOAD_ERR',
+  CHECK_FOR_NEW: 'POSTS/CHECK_FOR_NEW',
+  ADD_NEW: 'POSTS/ADD_NEW',
+  ADD_NEW_OK: 'POSTS/ADD_NEW_OK'
 }
 const c = constants
 
@@ -66,7 +70,33 @@ export const actions = {
 
   loadErr: (status, err) => {
     return {type: c.LOAD_ERR, status, err}
-  }
+  },
+
+  checkForNewPosts: (feed) => {
+    const url = getId(feed)
+    return {
+      type: c.CHECK_FOR_NEW,
+      popsicle: {
+        url: `/convert?url=${encodeURIComponent(url)}`
+      },
+      response: (res) => actions.addNewPosts(res, feed._id),
+      error: console.error
+    }
+  },
+
+  addNewPosts: (res, feedId) => {
+    const posts = Posts(res.items, feedId)
+    return {
+      type: c.ADD_NEW,
+      pouch: upsert(posts),
+      response: actions.addNewPostsOk,
+      posts,
+      feed: feedId
+    }
+  },
+
+  addNewPostsOk: posts =>
+    ({type: c.ADD_NEW_OK, posts})
 }
 
 export const reducer = wrapReducer({

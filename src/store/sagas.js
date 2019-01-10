@@ -5,14 +5,15 @@ import regeneratorRuntime from 'regenerator-runtime/runtime'
 import {call, all, put, select, takeEvery} from 'redux-saga/effects'
 
 import {
+  determineFeedId
+} from '../helpers'
+import {
   constants as newFeedConstants,
   actions as newFeedActions
 } from './newFeed'
-
 import {
   actions as feedsActions
 } from './feeds'
-
 import {
   actions as postsActions
 } from './posts'
@@ -26,7 +27,8 @@ function * dbReadySaga() {
 
 function * addFeedToDBSaga() {
   const {loadState, feed, posts, value} = yield select(state => state.newFeed)
-  const newFeedId = `pheed|feed|${value}`
+  const newFeedId = determineFeedId(value)
+  console.log(newFeedId)
 
   // if no feed has been staged, dont bother trying to add it to the DB
   if (loadState < 2) return

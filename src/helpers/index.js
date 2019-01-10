@@ -16,6 +16,13 @@ export const getId = (record: Object): string => {
   }
 }
 
+export const determineFeedId = (url: string): string => {
+  const normalizedUrl = url.charAt(url.length - 1) === '/'
+    ? url.substring(0, url.length - 1)
+    : url
+  return `pheed|feed|${normalizedUrl}`
+}
+
 export const filterObject = (obj: Object, f: Function = (x => x)) => {
   if (!obj) return {}
 

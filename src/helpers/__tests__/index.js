@@ -1,6 +1,7 @@
 import deepFreeze from 'deep-freeze'
 import {
   getId,
+  determineFeedId,
   filterObject,
   filterObjectByKeys
 } from '../index'
@@ -46,6 +47,18 @@ describe('getId', () => {
       nickname: 'Gollum'
     }
     expect(() => getId(record)).toThrow()
+  })
+})
+
+describe('determineFeedId', () => {
+  it('should create a new pheed id without a trailing slash', () => {
+    const result = determineFeedId('http://reactjsnewsletter.com/issues.rss')
+    expect(result).toEqual('pheed|feed|http://reactjsnewsletter.com/issues.rss')
+  })
+
+  it('should remove the trailing slash if one is present', () => {
+    const result = determineFeedId('http://reactjsnewsletter.com/issues.rss/')
+    expect(result).toEqual('pheed|feed|http://reactjsnewsletter.com/issues.rss')
   })
 })
 

@@ -9,7 +9,6 @@ import SagaMiddleware from 'redux-saga'
 import KoalaMiddleware from './middleware/redux-koala'
 import rootSaga from './sagas'
 import {combineReducers} from './reduxHelpers'
-
 import {
   reducer as newFeedReducer
 } from './newFeed'
@@ -45,5 +44,7 @@ const store = createStore(reducer, composeWithDevTools(
 ))
 
 sagaMiddleware.run(rootSaga)
+
+window.store = store
 
 export default store

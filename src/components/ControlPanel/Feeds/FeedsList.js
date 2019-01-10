@@ -21,6 +21,11 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.removeFeed(id))
     },
 
+    checkNew: (feed, e) => {
+      e.stopPropagation()
+      dispatch(postsActions.checkForNewPosts(feed))
+    },
+
     loadAll: (e) => {
       e.preventDefault()
       dispatch(postsActions.load())
