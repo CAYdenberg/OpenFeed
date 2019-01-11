@@ -1,54 +1,51 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import {actions} from '../store/ui'
+import NavBar from './NavBar'
 import ControlPanel from './ControlPanel'
 import Timeline from './Timeline'
 import Account from './Account'
 
 const mapStateToProps = (state) => {
   return {
-    view: state.posts.view
+    view: state.posts.view,
+    hamburgerIsOpen: state.ui.hamburgerIsOpen
   }
 }
 
-const App = ({view}) => {
+const mapDispatchToProps = (dispatch) => {
+  return {
+    toggleHamburger: () => dispatch(actions.toggleHamburger())
+  }
+}
+
+const App = ({view, hamburgerIsOpen, toggleHamburger}) => {
   return (
-    <div className="app-inner container">
-      <nav className="navbar">
+    <React.Fragment>
+      <NavBar
+        hamburgerIsOpen={hamburgerIsOpen}
+        toggleHamburger={toggleHamburger}
+      />
 
-        <div className="navbar-brand">
-          <a className="navbar-item">Pheed</a>
+      <main>
+        <div className="container">
+          <div className="columns">
+            <div className="column is-one-third">
+              <ControlPanel />
+            </div>
 
-          <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-
-        </div>
-        <div className="navbar-menu">
-          <div className="navbar-end">
-            <a className="navbar-item">About</a>
-            <a className="navbar-item">GitHub</a>
+            <div className="column">
+              {(view && view.type === 'page' && view.id === 'Account')
+                ? <Account />
+                : <Timeline />
+              }
+            </div>
           </div>
         </div>
-      </nav>
-
-      <div className="columns">
-        <div className="column is-one-third">
-          <ControlPanel />
-        </div>
-
-        <div className="column">
-          {(view && view.type === 'page' && view.id === 'Account')
-            ? <Account />
-            : <Timeline />
-          }
-        </div>
-      </div>
-
-    </div>
+      </main>
+    </React.Fragment>
   )
 }
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)

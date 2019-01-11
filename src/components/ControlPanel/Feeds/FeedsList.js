@@ -14,7 +14,7 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     remove: (id, e) => {
       e.stopPropagation()
@@ -28,11 +28,13 @@ const mapDispatchToProps = dispatch => {
 
     loadAll: (e) => {
       e.preventDefault()
+      ownProps.reqCloseMobile()
       dispatch(postsActions.load())
     },
 
     load: (id, e) => {
       e.preventDefault()
+      ownProps.reqCloseMobile()
       dispatch(postsActions.loadByFeed(id))
     }
   }

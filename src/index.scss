@@ -1,15 +1,35 @@
 @import "../node_modules/bulmaswatch/journal/_variables.scss";
 
-// variable overrides here
+$family-sans-serif: 'Open Sans', sans-serif;
+$family-heading: $family-sans-serif;
+$bulmaswatch-import-font: false;
 
 @import "../node_modules/bulma/bulma.sass";
 @import "../node_modules/bulmaswatch/journal/_overrides.scss";
 
 .card--post {
-  margin-top: 1px;
   margin-bottom: 1rem;
 }
 
 .is-expanded {
   flex-grow: 1;
+}
+
+main {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.control-panel {
+  position: fixed;
+  top: $navbar-height;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: white;
+  box-shadow: $card-shadow;
+  @media (min-width: $tablet) {
+    position: sticky;
+    top: $navbar-height + 3rem;
+  }
 }

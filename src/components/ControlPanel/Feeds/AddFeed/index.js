@@ -60,7 +60,7 @@ class AddFeed extends React.Component {
       <form onSubmit={props.addFeed} className="panel-block" disabled="true">
         <label className="label sr-only" htmlFor="addFeed">Add Feed</label>
 
-        <div className="field has-addons is-full-width">
+        <div className="field has-addons is-expanded">
           <Field
             value={props.value}
             loadState={props.loadState}

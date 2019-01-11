@@ -9,6 +9,7 @@ import {actions as postsActions} from '../../store/posts'
 const mapStateToProps = (state) => {
   return {
     panel: state.ui.panel,
+    panelHiddenMobile: state.ui.panelHiddenMobile,
     view: state.posts.view
   }
 }
@@ -16,17 +17,21 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setPanel: panel => dispatch(actions.setControlPanel(panel)),
-    setView: view => dispatch(postsActions.setView(view))
+    reqCloseMobile: () => dispatch(actions.reqCloseMobile()),
+    setView: view => {
+      dispatch(postsActions.setView(view))
+      dispatch(actions.reqCloseMobile())
+    },
   }
 }
 
-const ControlPanel = ({panel, setPanel, view, setView}) => {
+const ControlPanel = ({panel, setPanel, view, setView, panelHiddenMobile, reqCloseMobile}) => {
   return (
-    <nav className="panel">
+    <nav className="panel control-panel">
       <p className="panel-tabs">
         {['Feeds', 'Settings'].map(name =>
           <a
-            className={panel === name ? 'is-active' : ''}
+            className={(panel === name && !panelHiddenMobile) ? 'is-active' : ''}
             onClick={() => setPanel(name)}
             key={name}
           >
@@ -35,10 +40,12 @@ const ControlPanel = ({panel, setPanel, view, setView}) => {
         )}
       </p>
 
-      {panel === 'Feeds'
-        ? <Feeds />
-        : <Settings view={view} setView={setView} />
-      }
+      <div className={panelHiddenMobile ? 'is-hidden-mobile' : undefined}>
+        {panel === 'Feeds'
+          ? <Feeds reqCloseMobile={reqCloseMobile} />
+          : <Settings view={view} setView={setView} />
+        }
+      </div>
     </nav>
   )
 }
