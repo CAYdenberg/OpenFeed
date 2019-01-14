@@ -13,26 +13,19 @@ const Post = (props) => {
       </a>
 
       <div className="card-content">
-        <div className="columns" style={{fontWeight: 700, fontSize: '0.8rem'}}>
-          <div className="column">{feed && feed.author}</div>
-
-          <div className="column">
-            {date &&
-              <time dateTime={props.date_published}>{date.toLocaleString()}</time>
-            }
-          </div>
-
-          <div className="column">{feed && feed.title}</div>
-        </div>
         <p>{summary}</p>
+        <p className="is-size-7 has-text-grey metadata">
+          <time dateTime={props.date_published} className="metadata__item">
+            {date.toLocaleString()}
+          </time>
+          <span className="metadata__item">
+            {feed && feed.author}
+          </span>
+          <span className="metadata__item">
+            {feed && feed.title}
+          </span>
+        </p>
       </div>
-
-      <footer className="card-footer">
-        <a href="#" className="card-footer-item">Open</a>
-        <a href="#" className="card-footer-item">Original</a>
-        <a href="#" className="card-footer-item">Mark Read</a>
-      </footer>
-
     </div>
   )
 }

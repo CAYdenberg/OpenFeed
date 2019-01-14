@@ -7,10 +7,6 @@ $bulmaswatch-import-font: false;
 @import "../node_modules/bulma/bulma.sass";
 @import "../node_modules/bulmaswatch/journal/_overrides.scss";
 
-.card--post {
-  margin-bottom: 1rem;
-}
-
 .is-expanded {
   flex-grow: 1;
 }
@@ -31,5 +27,26 @@ main {
   @media (min-width: $tablet) {
     position: sticky;
     top: $navbar-height + 3rem;
+  }
+}
+
+.card--post {
+  margin-bottom: 1rem;
+  position: relative;
+
+  .card-header::after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.metadata {
+  margin-top: 1em;
+  &__item {
+    margin-right: 0.5em;
   }
 }
