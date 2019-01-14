@@ -16,7 +16,9 @@ const constants = {
   LOAD_ERR: 'POSTS/LOAD_ERR',
   CHECK_FOR_NEW: 'POSTS/CHECK_FOR_NEW',
   ADD_NEW: 'POSTS/ADD_NEW',
-  ADD_NEW_OK: 'POSTS/ADD_NEW_OK'
+  ADD_NEW_OK: 'POSTS/ADD_NEW_OK',
+  OPEN_POST: 'POSTS/OPEN_POST',
+  CLOSE_POST: 'POSTS/CLOSE_POST'
 }
 const c = constants
 
@@ -96,13 +98,20 @@ export const actions = {
   },
 
   addNewPostsOk: posts =>
-    ({type: c.ADD_NEW_OK, posts})
+    ({type: c.ADD_NEW_OK, posts}),
+
+  openPost: (_id) =>
+    ({type: c.OPEN_POST, _id}),
+
+  closePost: () =>
+    ({type: c.CLOSE_POST})
 }
 
 export const reducer = wrapReducer({
-  loadState: 0,
   view: null,
-  posts: []
+  loadState: 0,
+  posts: [],
+  openPost: null
 }, (initialState, action) => {
   switch (action.type) {
     case c.SET_VIEW: {
@@ -145,6 +154,18 @@ export const reducer = wrapReducer({
     case newFeedConstants.NEW_FEED_RES: {
       return update(initialState, {
         view: {$set: {type: 'newFeed'}}
+      })
+    }
+
+    case c.OPEN_POST: {
+      return update(initialState, {
+        openPost: {$set: action._id}
+      })
+    }
+
+    case c.CLOSE_POST: {
+      return update(initialState, {
+        openPost: {$set: null}
       })
     }
   }

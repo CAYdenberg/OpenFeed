@@ -26,3 +26,9 @@ export const timelinePosts = state => {
       ...post
     }))
 }
+
+export const openPost = state => {
+  const openPostId = _get(state, 'posts.openPost')
+  const post = state.posts.posts.find(post => post._id === openPostId)
+  return post || null
+}

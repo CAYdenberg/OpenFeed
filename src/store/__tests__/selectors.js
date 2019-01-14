@@ -3,7 +3,8 @@ import _clone from 'lodash.clone'
 import {
   viewType,
   activeFeed,
-  timelinePosts
+  timelinePosts,
+  openPost
 } from '../selectors'
 
 describe('viewType', () => {
@@ -82,5 +83,48 @@ describe('timelinePosts', () => {
     expect(result).toHaveLength(2)
     expect(result[0]).toHaveProperty('title', 'Old post 1')
     expect(result[0].feed).toHaveProperty('title', 'Old Feed')
+  })
+})
+
+describe('openPost', () => {
+  const state = {
+    posts: {
+      posts: [
+        {_id: 'old post 1', title: 'Old post 1', parent: 'oldfeed'},
+        {_id: 'old post 2', title: 'Old post 2', parent: 'oldfeed'}
+      ],
+      view: {type: 'newFeed'},
+      openPost: 'old post 1'
+    },
+    newFeed: {
+      posts: [
+        {_id: 'new post 1', title: 'New post 1'}
+      ],
+      feed: {title: 'New Feed'}
+    },
+    feeds: {
+      feeds: [
+        {_id: 'oldfeed', title: 'Old Feed'}
+      ]
+    }
+  }
+
+  it('should return all data for the currently open post', () => {
+    const result = openPost(state)
+    expect(result).toHaveProperty('title', 'Old post 1')
+  })
+
+  it('should return null if there is no post open', () => {
+    const _state = _clone(state)
+    _state.posts.openPost = null
+    const result = openPost(state)
+    expect(result).toBeFalsy()
+  })
+
+  it('should return null if the open post is not currently loaded', () => {
+    const _state = _clone(state)
+    _state.posts.openPost = 'foo'
+    const result = openPost(state)
+    expect(result).toBeFalsy()
   })
 })
