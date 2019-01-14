@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 require('dotenv').config()
 
-const Koala = require('koala')
+const Koala = require('koala-server')
 const rss2json = require('rss-to-json-feed')
 
 Koala(router => {
