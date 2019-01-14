@@ -3,8 +3,7 @@ package-lock.json
 yarn.lock
 dist/*
 .cache
-.feedcache/*
-!.feedcache/.gitkeep
+.env
 
 # Logs
 logs

@@ -61,7 +61,6 @@ export default (remoteUrl) => store => {
       operation.then(operationResult => {
         return store.dispatch(action.response(operationResult))
       }).catch(err => {
-        console.error(err)
         return store.dispatch(action.error(err.status, err))
       })
     }
