@@ -79,7 +79,7 @@ export const actions = {
     return {
       type: c.CHECK_FOR_NEW,
       popsicle: {
-        url: `http://localhost:5000/api/convert?url=${encodeURIComponent(url)}`
+        url: `${process.env.KOALA_URI}/api/convert?url=${encodeURIComponent(url)}`
       },
       response: (res) => actions.addNewPosts(res, feed._id),
       error: console.error

@@ -19,7 +19,7 @@ export const actions = {
     return {
       type: c.NEW_FEED_REQ,
       popsicle: state => ({
-        url: `http://localhost:5000/api/convert?url=${encodeURIComponent(state.newFeed.value)}`
+        url: `${process.env.KOALA_URI}/api/convert?url=${encodeURIComponent(state.newFeed.value)}`
       }),
       response: actions.newFeedRes,
       error: actions.newFeedError
