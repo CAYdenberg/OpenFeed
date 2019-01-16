@@ -57,7 +57,7 @@ class AddFeed extends React.Component {
     const {props} = this
 
     return (
-      <form onSubmit={props.addFeed} className="panel-block" disabled="true">
+      <form onSubmit={props.addFeed} className="panel-block" disabled={props.loadState}>
         <label className="label sr-only" htmlFor="addFeed">Add Feed</label>
 
         <div className="field has-addons is-expanded">
