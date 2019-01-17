@@ -117,6 +117,8 @@ export const actions = {
 
   markRead: (id) => actions.modify(id, {isRead: true}),
 
+  markUnread: (id) => actions.modify(id, {isRead: false}),
+
   modifyOk: (post) =>
     ({type: c.MODIFY_OK, post}),
 

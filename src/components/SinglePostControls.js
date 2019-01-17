@@ -1,21 +1,23 @@
 import React from 'react'
 
-import Icon, {back, read} from './Icons'
+import IsReadSwitch from './IsReadSwitch'
+import Icon, {back, openOriginal} from './Icons'
+import {getId} from '../helpers'
 
-const SinglePostControls = ({closePost}) => {
+const SinglePostControls = ({post, closePost}) => {
   return (
-    <div className="buttons">
-      <button type="button" className="button" onClick={closePost}>
+    <div className="single-post-controls">
+      <button type="button" className="plain-button" onClick={closePost}>
         <span className="icon">
           <Icon icon={back} title="Go back" />
         </span>
       </button>
 
-      <button type="button" className="button" onClick={closePost}>
-        <span className="icon">
-          <Icon icon={read} title="Go back" />
-        </span>
-      </button>
+      <IsReadSwitch isRead={post.isRead} id={post._id} />
+
+      <a href={getId(post)} target="_blank" className="plain-button">
+        <span className="icon"><Icon icon={openOriginal} /></span>
+      </a>
     </div>
   )
 }

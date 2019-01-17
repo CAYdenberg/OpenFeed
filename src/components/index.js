@@ -40,7 +40,7 @@ const App = ({view, hamburgerIsOpen, toggleHamburger, openPost, closePost}) => {
             {openPost
               ? (
                 <div className="column is-two-thirds-tablet">
-                  <SinglePostControls closePost={closePost} />
+                  <SinglePostControls closePost={closePost} post={openPost} />
                   <SinglePost post={openPost} />
                 </div>
               )

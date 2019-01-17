@@ -17,18 +17,21 @@ const mapDispatchToProps = dispatch => {
     openPost: (_id) => {
       dispatch(actions.openPost(_id))
       dispatch(actions.markRead(_id))
+    },
+    markRead: (_id) => {
+      dispatch(actions.markRead(_id))
     }
   }
 }
 
-const Timeline = ({posts, openPost}) => {
+const Timeline = ({posts, openPost, markRead}) => {
   if (!posts.length) {
     return <h3 className="is-size-3 has-text-centered">No posts</h3>
   }
 
   return (
     (posts.map(post =>
-      <Post {...post} openPost={openPost} key={post._id} />
+      <Post {...post} openPost={openPost} markRead={markRead} key={post._id} />
     ))
   )
 }

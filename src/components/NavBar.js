@@ -2,7 +2,7 @@ import React from 'react'
 
 const NavBar = ({hamburgerIsOpen, toggleHamburger}) => {
   return (
-    <nav className="navbar is-fixed-top is-light">
+    <nav className="navbar is-fixed-top is-light is-primary">
 
       <div className="container">
         <div className="navbar-brand">

@@ -1,9 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {DateTime} from 'luxon'
+import IsReadSwitch from '../IsReadSwitch'
+import {getId} from '../../helpers'
+import Icon, {openOriginal} from '../Icons'
 
 const Post = (props) => {
-  const {feed, title, summary} = props
+  const {feed, title, summary, markRead} = props
   const date = props.date_published ? DateTime.fromISO(props.date_published) : null
 
   return (
@@ -12,11 +15,12 @@ const Post = (props) => {
         <h3 className="card-header-title">
           {title}
         </h3>
+        <IsReadSwitch isRead={props.isRead} id={props._id} />
       </a>
 
       <div className="card-content">
         <p>{summary}</p>
-        <p className="is-size-7 has-text-grey metadata">
+        <div className="is-size-7 has-text-grey metadata">
           <time dateTime={props.date_published} className="metadata__item">
             {date.toLocaleString()}
           </time>
@@ -26,7 +30,12 @@ const Post = (props) => {
           <span className="metadata__item">
             {feed && feed.title}
           </span>
-        </p>
+          <span className="metadata__item">
+            <a href={getId(props)} target="_blank" onClick={() => markRead(props._id)}>
+              <span className="icon"><Icon icon={openOriginal} /></span>
+            </a>
+          </span>
+        </div>
       </div>
     </div>
   )
