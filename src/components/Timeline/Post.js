@@ -9,7 +9,9 @@ const Post = (props) => {
   return (
     <div className="card card--post">
       <a href="#" className="card-header" onClick={() => props.openPost(props._id)}>
-        <h3 className="card-header-title">{title}</h3>
+        <h3 className="card-header-title">
+          {title}
+        </h3>
       </a>
 
       <div className="card-content">

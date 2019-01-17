@@ -14,7 +14,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    openPost: (_id) => dispatch(actions.openPost(_id))
+    openPost: (_id) => {
+      dispatch(actions.openPost(_id))
+      dispatch(actions.markRead(_id))
+    }
   }
 }
 

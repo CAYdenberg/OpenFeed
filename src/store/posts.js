@@ -1,9 +1,10 @@
 import update from 'immutability-helper'
 import {wrapReducer} from './reduxHelpers'
 
-import {loadPosts, loadPostsByFeed, upsert} from '../db'
+import {loadPosts, loadPostsByFeed, upsert, upsertFromStore} from '../db'
 import {getId} from '../helpers'
 import Posts from '../db/Posts'
+import {postFromId} from './selectors'
 import {constants as newFeedConstants} from './newFeed'
 
 const constants = {
@@ -17,8 +18,10 @@ const constants = {
   CHECK_FOR_NEW: 'POSTS/CHECK_FOR_NEW',
   ADD_NEW: 'POSTS/ADD_NEW',
   ADD_NEW_OK: 'POSTS/ADD_NEW_OK',
+  MODIFY: 'POSTS/MODIFY',
+  MODIFY_OK: 'POSTS/MODIFY_OK',
   OPEN_POST: 'POSTS/OPEN_POST',
-  CLOSE_POST: 'POSTS/CLOSE_POST'
+  CLOSE_POST: 'POSTS/CLOSE_POST',
 }
 const c = constants
 
@@ -100,6 +103,23 @@ export const actions = {
   addNewPostsOk: posts =>
     ({type: c.ADD_NEW_OK, posts}),
 
+  modify: (id, changes) => {
+    const findPost = postFromId(id)
+    return {
+      type: c.MODIFY,
+      id,
+      changes,
+      pouch: upsertFromStore(findPost),
+      response: actions.modifyOk,
+      error: console.error
+    }
+  },
+
+  markRead: (id) => actions.modify(id, {isRead: true}),
+
+  modifyOk: (post) =>
+    ({type: c.MODIFY_OK, post}),
+
   openPost: (_id) =>
     ({type: c.OPEN_POST, _id}),
 
@@ -128,15 +148,6 @@ export const reducer = wrapReducer({
       })
     }
 
-    case c.POPULATE_OK: {
-      return update(initialState, {
-        posts: {$map: (post, i) => ({
-          ...post,
-          _rev: action.res[i].rev
-        })}
-      })
-    }
-
     case c.LOAD: {
       return update(initialState, {
         loadState: {$set: 1},
@@ -154,6 +165,14 @@ export const reducer = wrapReducer({
     case newFeedConstants.NEW_FEED_RES: {
       return update(initialState, {
         view: {$set: {type: 'newFeed'}}
+      })
+    }
+
+    case c.MODIFY: {
+      const i = initialState.posts.findIndex(post => post._id === action.id)
+      if (i === -1) return initialState
+      return update(initialState, {
+        posts: {[i]: {$merge: action.changes}}
       })
     }
 

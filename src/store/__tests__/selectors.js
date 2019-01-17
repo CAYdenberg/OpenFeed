@@ -4,7 +4,8 @@ import {
   viewType,
   activeFeed,
   timelinePosts,
-  openPost
+  openPost,
+  postFromId
 } from '../selectors'
 
 describe('viewType', () => {
@@ -126,5 +127,39 @@ describe('openPost', () => {
     _state.posts.openPost = 'foo'
     const result = openPost(state)
     expect(result).toBeFalsy()
+  })
+})
+
+describe('postFromId', () => {
+  const state = {
+    posts: {
+      posts: [
+        {_id: 'old post 1', title: 'Old post 1', parent: 'oldfeed'},
+        {_id: 'old post 2', title: 'Old post 2', parent: 'oldfeed'}
+      ],
+      view: {type: 'newFeed'},
+      openPost: 'old post 1'
+    },
+    newFeed: {
+      posts: [
+        {_id: 'new post 1', title: 'New post 1'}
+      ],
+      feed: {title: 'New Feed'}
+    },
+    feeds: {
+      feeds: [
+        {_id: 'oldfeed', title: 'Old Feed'}
+      ]
+    }
+  }
+
+  it('should return a post by its id', () => {
+    const result = postFromId('old post 1')(state)
+    return expect(result).toHaveProperty('title', 'Old post 1')
+  })
+
+  it('should be falsy if no post can be found', () => {
+    const result = postFromId('foobar')(state)
+    return expect(result).toBeFalsy()
   })
 })

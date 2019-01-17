@@ -3,12 +3,9 @@ import deepFreeze from 'deep-freeze'
 import '../../helpers/immutability'
 
 const nullState = reducer(undefined, {type: 'noop'})
-const runActions = actions => actions.reduce((state, action) => {
-  deepFreeze(state)
-  return reducer(state, action)
-}, nullState)
+deepFreeze(nullState)
 
-const {populate, populateOk} = actions
+const {populate, modify} = actions
 
 const posts = [
   {
@@ -52,18 +49,48 @@ describe('reducer', () => {
     })
   })
 
-  describe('populateOk', () => {
-    it('should endow the documents in the store with revisions', () => {
-      const finalState = runActions([
-        populate(posts, 'http://feed.com'),
-        populateOk([
-          {ok: true, rev: 'revisionDoc1'},
-          {ok: true, rev: 'revisionDoc2'}
-        ])
-      ])
+  describe('modify', () => {
+    const initialState = Object.assign({}, nullState, {posts:
+      [
+        {
+          title: 'What’s New In CSS?',
+          url: 'https://www.smashingmagazine.com/2018/10/tpac-css-working-group-new/',
+          _id: 'id1',
+          date_published: '2018-11-02T16:44:06-06:00'
+        },
+        {
+          title: 'Understanding React Render Props and HOC',
+          url: 'https://blog.bitsrc.io/understanding-react-render-props-and-hoc-b37a9576e196',
+          _id: 'id2',
+          date_published: '2018-11-01T13:25:40-06:00'
+        }
+      ]
+    })
+    deepFreeze(initialState)
 
+    it('should modify any property of a post', () => {
+      const finalState = reducer(initialState,
+        modify('id1', {date_published: 'NOW!'})
+      )
       expect(finalState.posts).toHaveLength(2)
-      expect(finalState.posts[0]).toHaveProperty('_rev')
+      expect(finalState.posts[0]).toHaveProperty('date_published', 'NOW!')
+      expect(finalState.posts[1]).toEqual(initialState.posts[1])
+    })
+
+    it('should add any property if it isnt there', () => {
+      const finalState = reducer(initialState,
+        modify('id1', {isRead: true})
+      )
+      expect(finalState.posts).toHaveLength(2)
+      expect(finalState.posts[0]).toHaveProperty('isRead', true)
+      expect(finalState.posts[1]).toEqual(initialState.posts[1])
+    })
+
+    it('should not change anything if the id is not present', () => {
+      const finalState = reducer(initialState,
+        modify('foo', {isRead: true})
+      )
+      expect(finalState).toEqual(initialState)
     })
   })
 })

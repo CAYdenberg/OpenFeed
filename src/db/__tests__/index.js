@@ -1,4 +1,4 @@
-import {upsert, remove} from '../index'
+import {upsert, remove, upsertFromStore} from '../index'
 
 let CustomPouchError = new Error()
 CustomPouchError.status = 404
@@ -61,4 +61,33 @@ describe('remove', () => {
   })
 })
 
-// TODO: get, patch, generic find
+describe('upsertFromStore', () => {
+  const getState = jest.fn(() => ({
+    doc: {_id: 'existingdoc', title: 'A new title'},
+    arrayOfDocs: [
+      {_id: 'newdoc', title: 'New doc'},
+      {_id: 'anothernewdoc', title: 'New doc'}
+    ],
+    badDoc: {notanid: 'notanid'}
+  }))
+
+  it('should upsert the single document that is selected', () => {
+    const result = upsertFromStore(state => state.doc)(db, getState)
+    return expect(result).resolves.toEqual({ok: true})
+  })
+
+  it('should upsert multiple documents', () => {
+    const result = upsertFromStore(state => state.arrayOfDocs)(db, getState)
+    return expect(result).resolves.toEqual([
+      {ok: true},
+      {ok: true}
+    ])
+  })
+
+  it('should reject if the document is not a real Pouch document', () => {
+    const result = upsertFromStore(state => state.badDoc)(db, getState)
+    return expect(result).rejects.toBeInstanceOf(Error)
+  })
+})
+
+// TODO: get, generic find

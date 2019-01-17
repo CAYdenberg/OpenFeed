@@ -1,11 +1,18 @@
 
+function isValidPouch(doc) {
+  if (Array.isArray(doc)) {
+    return doc.every(isValidPouch)
+  }
+  return !!doc._id
+}
+
 export const upsert = (doc) => db => {
   if (Array.isArray(doc)) {
     return Promise.all(doc.map(singleDoc => upsert(singleDoc)(db)))
   }
 
   return db.get(doc._id).then(existingDoc => {
-    const newDoc = Object.assign({}, doc, {_rev: existingDoc._rev})
+    const newDoc = Object.assign({}, existingDoc, doc, {_rev: existingDoc._rev})
     return db.put(newDoc)
   }).catch(err => {
     if (err.status === 404) {
@@ -19,6 +26,15 @@ export const remove = id => db => {
   return db.get(id).then(existingDoc => {
     return db.remove(existingDoc)
   })
+}
+
+export const upsertFromStore = selector => (db, getState) => {
+  const state = getState()
+  const docs = selector(state)
+  if (!isValidPouch(docs)) {
+    return Promise.reject(new Error('Attempting to save to Pouch without an _id'))
+  }
+  return upsert(docs)(db)
 }
 
 export const getFeeds = () => db => {

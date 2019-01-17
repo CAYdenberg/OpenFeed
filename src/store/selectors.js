@@ -32,3 +32,8 @@ export const openPost = state => {
   const post = state.posts.posts.find(post => post._id === openPostId)
   return post || null
 }
+
+export const postFromId = id => state => {
+  const posts = _get(state, 'posts.posts')
+  return posts.find(post => post._id === id) || null
+}
