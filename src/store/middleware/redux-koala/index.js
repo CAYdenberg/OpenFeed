@@ -1,55 +1,9 @@
-import PouchDB from 'pouchdb'
-import Find from 'pouchdb-find'
-
-import getUser from './getUser'
+import koalaClient from './koala-client'
 import mapDispatchToPouch from './mapDispatchToPouch'
-import {NOUSER_DB} from './constants'
-
-PouchDB.plugin(Find)
-
-window.PouchDB = PouchDB
 
 export default (remoteUrl) => store => {
   const actions = mapDispatchToPouch(store.dispatch)
-
-  const {action, username, token} = getUser()
-  const dbName = username || NOUSER_DB
-
-  // provision our new database
-  const db = new PouchDB(dbName)
-  db.createIndex({
-    index: {fields: ['modified', 'type', 'parent']}
-  })
-
-  // on signup, we take the special action of replicating the unauthenticated
-  // database into the user's newly provisioned database
-  if (action === 'signup') {
-    const oldDb = new PouchDB(NOUSER_DB)
-    PouchDB.replicate(oldDb, db).on('complete', () => {
-      oldDb.destroy()
-      actions.onReady(username, dbName)
-    })
-  } else {
-    // dispatch on next tick because we can't dispatch during middleware
-    // contruction
-    setTimeout(() => actions.onReady(username, dbName), 0)
-  }
-
-  // sync only if this is a real user database (not unauthenticated)
-  if (username) {
-    const remoteDb = new PouchDB(`${remoteUrl}/${username}`, {
-      headers: {
-        'x-jwt': token
-      }
-    })
-    PouchDB.sync(remoteDb, db, {live: true, retry: true})
-      .on('change', actions.onChange)
-      .on('paused', actions.onPaused)
-      .on('active', actions.onActive)
-      .on('denied', actions.onDenied)
-      .on('complete', actions.onComplete)
-      .on('error', actions.onError)
-  }
+  const db = koalaClient(remoteUrl, actions)
 
   return next => action => {
     next(action)
