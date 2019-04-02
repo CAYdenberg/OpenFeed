@@ -93,4 +93,12 @@ describe('reducer', () => {
       expect(finalState).toEqual(initialState)
     })
   })
+
+  describe('addNewPosts', () => {
+    it('should insert new posts at the start of the posts list')
+
+    it('should not insert any duplicate posts')
+
+    it('should not insert any posts if the view is set to a feed that is different from the one this post is in')
+  })
 })
