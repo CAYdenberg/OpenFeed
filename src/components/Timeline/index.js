@@ -8,7 +8,8 @@ import Post from './Post'
 
 const mapStateToProps = state => {
   return {
-    posts: timelinePosts(state)
+    posts: timelinePosts(state),
+    loadState: state.posts.loadState,
   }
 }
 
@@ -24,7 +25,11 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const Timeline = ({posts, openPost, markRead}) => {
+const Timeline = ({loadState, posts, openPost, markRead}) => {
+  if (loadState < 2) {
+    return <div className="loading" />
+  }
+
   if (!posts.length) {
     return <h3 className="is-size-3 has-text-centered">No posts</h3>
   }

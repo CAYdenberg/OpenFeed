@@ -75,3 +75,11 @@ main {
   flex-direction: row;
   align-items: center;
 }
+
+.loading {
+  @extend .loader;
+  margin-left: 0;
+  margin-right: 0;
+  width: 6rem;
+  height: 6rem;
+}
