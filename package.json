@@ -6,6 +6,7 @@
   "dependencies": {
     "bulma": "^0.7.2",
     "bulmaswatch": "^0.7.1",
+    "dompurify": "^1.0.10",
     "dotenv": "^6.0.0",
     "immutability-helper": "^2.7.1",
     "koala-server": "0.0.4",
