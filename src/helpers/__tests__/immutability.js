@@ -73,3 +73,35 @@ describe('$where', () => {
     expect(final.data).toEqual(['odd', 2, 'odd', 4, 'odd'])
   })
 })
+
+describe('$mergeSort', () => {
+  it('should merge new items into an array and produce a sorted array', () => {
+    const initial = [1, 10]
+    deepFreeze(initial)
+    const toBeAdded = [3, 15]
+    deepFreeze(toBeAdded)
+
+    const final = update(initial, {$mergeSort: [toBeAdded, (a, b) => a - b]})
+    expect(final).toEqual([1, 3, 10, 15])
+  })
+
+  it('should assume the old array is already in order', () => {
+    const initial = [5, 1, 2, 3, 4]
+    deepFreeze(initial)
+    const toBeAdded = [1.5, 3.5, 5.5]
+    deepFreeze(toBeAdded)
+
+    const final = update(initial, {$mergeSort: [toBeAdded, (a, b) => a - b]})
+    expect(final).toEqual([1.5, 3.5, 5, 1, 2, 3, 4, 5.5])
+  })
+
+  it('should place new items at the beginning of the feed', () => {
+    const initial = [5, 10]
+    deepFreeze(initial)
+    const toBeAdded = [1]
+    deepFreeze(toBeAdded)
+
+    const final = update(initial, {$mergeSort: [toBeAdded, (a, b) => a - b]})
+    expect(final).toEqual([1, 5, 10])
+  })
+})

@@ -10,6 +10,7 @@ import SinglePost from './SinglePost'
 import ControlPanel from './ControlPanel'
 import Timeline from './Timeline'
 import Account from './Account'
+import Alert from './Alert'
 
 const mapStateToProps = (state) => {
   return {
@@ -61,6 +62,8 @@ const App = ({view, hamburgerIsOpen, toggleHamburger, openPost, closePost}) => {
           </div>
         </div>
       </main>
+
+      <Alert />
     </React.Fragment>
   )
 }

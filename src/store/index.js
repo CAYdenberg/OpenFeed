@@ -24,13 +24,17 @@ import {
 import {
   reducer as uiReducer,
 } from './ui'
+import {
+  reducer as errorsRedcuer,
+} from './errors'
 
 const reducer = combineReducers({
   newFeed: newFeedReducer,
   feeds: feedsReducer,
   posts: postsReducer,
   status: statusReducer,
-  ui: uiReducer
+  ui: uiReducer,
+  errors: errorsRedcuer,
 })
 
 const koalaMiddleware = KoalaMiddleware(
@@ -46,5 +50,14 @@ const store = createStore(reducer, composeWithDevTools(
 sagaMiddleware.run(rootSaga)
 
 window.store = store
+
+// const handleScroll = debounce(() => {
+//   const postsList = document.querySelectorAll('.post')
+//   const scrollPosition = window.scrollY
+//   // find first post with a positive value or null if none
+//   store.dispatch(updateScrollPosition(id of post))
+// })
+
+// window.addEventListener('scroll', handleScroll)
 
 export default store

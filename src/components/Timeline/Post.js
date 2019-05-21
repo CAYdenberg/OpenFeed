@@ -19,7 +19,7 @@ const Post = (props) => {
       </a>
 
       <div className="card-content">
-        <p>{summary}</p>
+        <p className="card__summary">{summary}</p>
         <div className="is-size-7 has-text-grey metadata">
           <time dateTime={props.date_published} className="metadata__item">
             {date.toLocaleString()}

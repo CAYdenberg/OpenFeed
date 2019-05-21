@@ -29,7 +29,7 @@ export const actions = {
   newFeedRes: res =>
     ({type: c.NEW_FEED_RES, res}),
 
-  newFeedError: status =>
+  newFeedError: (status) =>
     ({type: c.NEW_FEED_ERROR, status}),
 
   addFeedToDB: () =>

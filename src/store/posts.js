@@ -3,9 +3,11 @@ import {wrapReducer} from './reduxHelpers'
 
 import {loadPosts, loadPostsByFeed, upsert, upsertFromStore} from '../db'
 import {getId} from '../helpers'
+import comparePosts from '../helpers/comparePosts'
 import Posts from '../db/Posts'
 import {postFromId} from './selectors'
 import {constants as newFeedConstants} from './newFeed'
+import {actions as error} from './errors'
 
 const constants = {
   SET_VIEW: 'POSTS/SET_VIEW',
@@ -85,7 +87,7 @@ export const actions = {
         url: `${process.env.KOALA_URI}/api/convert?url=${encodeURIComponent(url)}`
       },
       response: (res) => actions.addNewPosts(res, feed._id),
-      error: console.error
+      error: () => error.set('Error checking for new posts')
     }
   },
 
@@ -111,7 +113,7 @@ export const actions = {
       changes,
       pouch: upsertFromStore(findPost),
       response: actions.modifyOk,
-      error: console.error
+      error: () => error.set('Error saving post')
     }
   },
 
@@ -167,6 +169,16 @@ export const reducer = wrapReducer({
     case newFeedConstants.NEW_FEED_RES: {
       return update(initialState, {
         view: {$set: {type: 'newFeed'}}
+      })
+    }
+
+    case c.ADD_NEW: {
+      const initialPostIds = initialState.posts.map(post => post._id)
+      const newPosts = action.posts.filter(post =>
+        initialPostIds.indexOf(post._id) === -1
+      )
+      return update(initialState, {
+        posts: {$mergeSort: [newPosts, comparePosts]}
       })
     }
 
