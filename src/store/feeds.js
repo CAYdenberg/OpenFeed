@@ -2,6 +2,7 @@ import update from 'immutability-helper'
 
 import {getFeeds, upsert, remove} from '../db'
 import Feed from '../db/Feed'
+import {actions as error} from './errors'
 
 export const constants = {
   LOAD_FEEDS: 'FEEDS/LOAD_FEEDS',
@@ -10,7 +11,6 @@ export const constants = {
 
   UPSERT_FEED: 'FEEDS/UPSERT_FEED',
   UPSERT_FEED_OK: 'FEEDS/UPSERT_FEED_OK',
-  UPSERT_FEED_ERR: 'FEEDS/UPSERT_FEED_ERR',
 
   REMOVE_FEED: 'FEEDS/REMOVE_FEED'
 }
@@ -30,8 +30,8 @@ export const actions = {
     return {type: c.LOAD_FEEDS_OK, feeds}
   },
 
-  loadFeedsErr: status => {
-    console.log(status)
+  loadFeedsErr: () => {
+    return error.set('Unable to load feeds')
   },
 
   upsertFeed: (data, id) => {
@@ -49,9 +49,8 @@ export const actions = {
     return {type: c.UPSERT_FEED_OK, ok, id, rev}
   },
 
-  upsertFeedErr: (status, error) => {
-    console.error(error)
-    return {type: c.UPSERT_FEED_ERR, status}
+  upsertFeedErr: () => {
+    return error.set('Unable to update feed')
   },
 
   removeFeed: (id) => {

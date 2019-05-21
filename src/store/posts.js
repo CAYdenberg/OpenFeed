@@ -7,6 +7,7 @@ import comparePosts from '../helpers/comparePosts'
 import Posts from '../db/Posts'
 import {postFromId} from './selectors'
 import {constants as newFeedConstants} from './newFeed'
+import {actions as error} from './errors'
 
 const constants = {
   SET_VIEW: 'POSTS/SET_VIEW',
@@ -86,7 +87,7 @@ export const actions = {
         url: `${process.env.KOALA_URI}/api/convert?url=${encodeURIComponent(url)}`
       },
       response: (res) => actions.addNewPosts(res, feed._id),
-      error: console.error
+      error: () => error.set('Error checking for new posts')
     }
   },
 
@@ -112,7 +113,7 @@ export const actions = {
       changes,
       pouch: upsertFromStore(findPost),
       response: actions.modifyOk,
-      error: console.error
+      error: () => error.set('Error saving post')
     }
   },
 
