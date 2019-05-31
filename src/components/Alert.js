@@ -19,7 +19,7 @@ export const Alert = props => {
   if (!props.message) return null
 
   return (
-    <div class="message-wrapper">
+    <div className="message-wrapper">
       <div className="message is-warning" aria-live="polite">
         <div className="message-header">
           {props.message}
