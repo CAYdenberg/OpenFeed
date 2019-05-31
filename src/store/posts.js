@@ -16,7 +16,6 @@ const constants = {
   POPULATE_ERR: 'POSTS/POPULATE_ERR',
   LOAD: 'POSTS/LOAD',
   LOAD_OK: 'POSTS/LOAD_OK',
-  LOAD_ERR: 'POSTS/LOAD_ERR',
   CHECK_FOR_NEW: 'POSTS/CHECK_FOR_NEW',
   ADD_NEW: 'POSTS/ADD_NEW',
   ADD_NEW_OK: 'POSTS/ADD_NEW_OK',
@@ -57,7 +56,7 @@ export const actions = {
       pouch: loadPosts(),
       view: {type: 'all'},
       response: actions.loadOk,
-      error: actions.loadErr,
+      error: (e) => error.set('Error loading posts', e),
     }
   },
 
@@ -67,16 +66,12 @@ export const actions = {
       pouch: loadPostsByFeed(id),
       view: {type: 'feed', id},
       response: actions.loadOk,
-      error: actions.loadErr
+      error: (e) => error.set('Error loading posts', e)
     }
   },
 
   loadOk: posts => {
     return {type: c.LOAD_OK, posts}
-  },
-
-  loadErr: (status, err) => {
-    return {type: c.LOAD_ERR, status, err}
   },
 
   checkForNewPosts: (feed) => {

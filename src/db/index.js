@@ -53,6 +53,14 @@ export const loadPosts = () => db => {
     },
     sort: [{'modified': 'desc'}],
     limit: 50
+  // })
+  // .catch(() => {
+  //   return db.find({
+  //     selector: {
+  //       type: {$eq: 'post'},
+  //     },
+  //     limit: 50
+  //   })
   }).then(res => res.docs)
 }
 

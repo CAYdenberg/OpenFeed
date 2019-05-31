@@ -15,7 +15,7 @@ export default (remoteUrl) => store => {
       operation.then(operationResult => {
         return store.dispatch(action.response(operationResult))
       }).catch(err => {
-        return store.dispatch(action.error(err.status, err))
+        return store.dispatch(action.error(err))
       })
     }
   }

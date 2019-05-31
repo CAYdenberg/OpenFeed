@@ -26,7 +26,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 const Timeline = ({loadState, posts, openPost, markRead}) => {
-  if (loadState < 2) {
+  if (loadState === 1) {
     return <div className="loading" />
   }
 
