@@ -5,6 +5,7 @@ const Koala = require('koala-server')
 const rss2json = require('rss-to-json-feed')
 const axios = require('axios')
 const { getContentType, findFeed } = require('./utils')
+const Url = require('url-parse')
 
 Koala(router => {
   router.get('/convert', (req, res) => {
@@ -20,8 +21,9 @@ Koala(router => {
 
         case 'text/html':
           const feedUrl = findFeed(externalRes.data)
+          const qualifiedFeedUrl = new Url(feedUrl, req.query.url).toString()
           if (feedUrl) {
-            res.redirect(`/api/convert?url=${encodeURI(feedUrl)}`)
+            res.redirect(`/api/convert?url=${encodeURI(qualifiedFeedUrl)}`)
           } else {
             res.status(400).json({error: 'Unable to locate feed url'})
           }

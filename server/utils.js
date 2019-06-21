@@ -3,12 +3,6 @@ const _get = require('lodash.get')
 const jsdom = require('jsdom')
 const { JSDOM } = jsdom
 
-export function getContentType(res) {
-  const ctHeader = res.headers['content-type']
-  if (!ctHeader) return null
-  return _get(ContentType.parse(ctHeader), 'type', null)
-}
-
 const FEED_TYPES = [
   'application/rss+xml',
   'application/atom+xml',
@@ -24,7 +18,13 @@ const FEED_TYPES = [
   'text/rdf'
 ]
 
-export function findFeed(html) {
+exports.getContentType = (res) => {
+  const ctHeader = res.headers['content-type']
+  if (!ctHeader) return null
+  return _get(ContentType.parse(ctHeader), 'type', null)
+}
+
+exports.findFeed = (html) => {
   const {document} = new JSDOM(html).window
   const links = document.querySelectorAll('link')
   let i
@@ -35,8 +35,4 @@ export function findFeed(html) {
     }
   }
   return null
-}
-
-export function qualifyUrl(url, origin) {
-  return url
 }
