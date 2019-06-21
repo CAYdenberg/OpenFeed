@@ -29,7 +29,8 @@
     "redux-popsicle": "^0.2.1",
     "redux-saga": "^0.16.2",
     "regenerator-runtime": "^0.13.1",
-    "rss-to-json-feed": "0.0.1"
+    "rss-to-json-feed": "0.0.1",
+    "url-parse": "^1.4.7"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
