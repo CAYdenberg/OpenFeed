@@ -11,7 +11,7 @@ const Post = (props) => {
   const date = props.date_published ? DateTime.fromISO(props.date_published) : null
 
   return (
-    <div className="card card--post">
+    <div className="card card--post" id={props._id}>
       <a href="#" className="card-header" onClick={(e) => props.openPost(e, props._id)}>
         <h3 className="card-header-title">
           {title}

@@ -18,7 +18,7 @@ PouchDB.plugin(Find)
 window.PouchDB = PouchDB
 
 export default (remoteUrl, actions) => {
-  const {onReady, onChange, onPaused, onActive, onDenied, onComplete, onError} = {
+  const {onReady, onChange, onDenied, onComplete, onError} = {
     ...defaultActions,
     ...actions
   }
@@ -55,8 +55,6 @@ export default (remoteUrl, actions) => {
         })
         PouchDB.sync(remoteDb, db, {live: true, retry: true})
           .on('change', onChange)
-          .on('paused', onPaused)
-          .on('active', onActive)
           .on('denied', onDenied)
           .on('complete', onComplete)
           .on('error', onError)
