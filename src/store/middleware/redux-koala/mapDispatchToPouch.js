@@ -11,14 +11,6 @@ export default (dispatch) => {
       console.log(change)
     },
 
-    onPaused() {
-      dispatch({type: c.PAUSED})
-    },
-
-    onActive() {
-      dispatch({type: c.ACTIVE})
-    },
-
     onDenied() {
       dispatch({type: c.DENIED})
     },

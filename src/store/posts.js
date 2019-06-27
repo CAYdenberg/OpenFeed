@@ -9,7 +9,7 @@ import {postFromId} from './selectors'
 import {constants as newFeedConstants} from './newFeed'
 import {actions as error} from './errors'
 
-const constants = {
+export const constants = {
   SET_VIEW: 'POSTS/SET_VIEW',
   POPULATE: 'POSTS/POPULATE',
   POPULATE_OK: 'POSTS/POPULATE_OK',

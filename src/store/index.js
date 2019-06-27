@@ -1,13 +1,10 @@
 import {
   createStore,
-  applyMiddleware
 } from 'redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
-import reduxPopsicle from 'redux-popsicle'
-import SagaMiddleware from 'redux-saga'
-
-import KoalaMiddleware from './middleware/redux-koala'
+import middleware, { sagaMiddleware } from './middleware'
 import rootSaga from './sagas'
+
 import {combineReducers} from './reduxHelpers'
 import {
   reducer as newFeedReducer
@@ -37,27 +34,10 @@ const reducer = combineReducers({
   errors: errorsRedcuer,
 })
 
-const koalaMiddleware = KoalaMiddleware(
-  process.env.KOALA_URI
-)
-
-const sagaMiddleware = SagaMiddleware()
-
-const store = createStore(reducer, composeWithDevTools(
-  applyMiddleware(reduxPopsicle, koalaMiddleware, sagaMiddleware)
-))
+const store = createStore(reducer, composeWithDevTools(middleware))
 
 sagaMiddleware.run(rootSaga)
 
 window.store = store
-
-// const handleScroll = debounce(() => {
-//   const postsList = document.querySelectorAll('.post')
-//   const scrollPosition = window.scrollY
-//   // find first post with a positive value or null if none
-//   store.dispatch(updateScrollPosition(id of post))
-// })
-
-// window.addEventListener('scroll', handleScroll)
 
 export default store
