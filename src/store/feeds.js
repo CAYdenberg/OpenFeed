@@ -2,7 +2,10 @@ import update from 'immutability-helper'
 
 import {getFeeds, upsert, remove} from '../db'
 import Feed from '../db/Feed'
+import reconcileDocs from '../helpers/reconcileDocs'
 import {actions as error} from './errors'
+
+const reconciler = reconcileDocs('feed', true)
 
 export const constants = {
   LOAD_FEEDS: 'FEEDS/LOAD_FEEDS',
@@ -106,6 +109,12 @@ export const reducer = (inputState = {}, action) => {
       const i = initialState.feeds.findIndex(feed => feed._id === action.id)
       return update(initialState, {
         feeds: {$splice: [[i, 1]]}
+      })
+    }
+
+    case '@@koala-redux/CHANGE': {
+      return update(initialState, {
+        feeds: {$set: reconciler(initialState.feeds, action.changes, action.deletions)}
       })
     }
   }
