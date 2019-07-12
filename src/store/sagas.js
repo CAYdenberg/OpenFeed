@@ -19,6 +19,9 @@ import {
 import {
   actions as postsActions
 } from './posts'
+import {
+  actions as uiActions
+} from './ui'
 
 function * checkForNewPosts() {
   // get an array of all feeds
@@ -37,7 +40,6 @@ function * dbReadySaga() {
   // load the feeds, and the posts (default view)
   yield all([
     put(feedsActions.loadFeeds()),
-    put(postsActions.load())
   ])
 
   // wait until the feeds have been loaded and then ...
@@ -62,8 +64,9 @@ function * addFeedToDBSaga() {
 
   yield all([
     put(feedsActions.upsertFeed(feed, newFeedId)),
-    put(postsActions.populate(posts, newFeedId)),
-    put(newFeedActions.reset())
+    put(uiActions.setView({type: 'posts', filter: newFeedId})),
+    put(postsActions.addNewPosts(posts, newFeedId)),
+    put(newFeedActions.reset()),
   ])
 }
 

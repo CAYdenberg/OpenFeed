@@ -14,7 +14,7 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     remove: (id, e) => {
       e.stopPropagation()
@@ -24,18 +24,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     checkNew: (feed, e) => {
       e.stopPropagation()
       dispatch(postsActions.checkForNewPosts(feed))
-    },
-
-    loadAll: (e) => {
-      e.preventDefault()
-      ownProps.reqCloseMobile()
-      dispatch(postsActions.load())
-    },
-
-    load: (id, e) => {
-      e.preventDefault()
-      ownProps.reqCloseMobile()
-      dispatch(postsActions.loadByFeed(id))
     }
   }
 }
@@ -46,7 +34,7 @@ export const FeedsList = props => {
 
       <a
         className={`panel-block is-flex ${props.isAll ? 'is-active' : ''}`}
-        onClick={props.loadAll}
+        onClick={() => props.setView({type: 'posts'})}
       >
         All
       </a>
@@ -57,7 +45,7 @@ export const FeedsList = props => {
           <a
             className={`panel-block is-flex ${isActive}`}
             key={feed._id}
-            onClick={e => props.load(feed._id, e)}
+            onClick={() => props.setView({type: 'posts', filter: {feed: feed._id}})}
           >
             <span className="is-expanded">{feed.title}</span>
             <button
@@ -79,7 +67,7 @@ FeedsList.propTypes = {
     title: PropTypes.string.isRequired
   })).isRequired,
   remove: PropTypes.func.isRequired,
-  load: PropTypes.func.isRequired,
+  setView: PropTypes.func.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeedsList)

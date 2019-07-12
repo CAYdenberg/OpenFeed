@@ -9,7 +9,6 @@ import Post from './Post'
 const mapStateToProps = state => {
   return {
     posts: timelinePosts(state),
-    loadState: state.posts.loadState,
     openPost: openPost(state)
   }
 }
@@ -23,7 +22,6 @@ const mapDispatchToProps = dispatch => {
     handleOpenPost: (e, _id) => {
       e.preventDefault()
       dispatch(actions.openPost(_id))
-      dispatch(actions.markRead(_id))
     },
     handleClosePost: (e) => {
       e.preventDefault()
@@ -32,11 +30,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const Timeline = ({loadState, posts, markRead, openPost, handleOpenPost}) => {
-  if (loadState === 1) {
-    return <div className="loading" />
-  }
-
+const Timeline = ({posts, openPost, handleOpenPost}) => {
   if (!posts.length) {
     return <h3 className="is-size-3 has-text-centered">No posts</h3>
   }
@@ -47,7 +41,6 @@ const Timeline = ({loadState, posts, markRead, openPost, handleOpenPost}) => {
         {...post}
         openPost={handleOpenPost}
         isOpen={openPost && (openPost._id === post._id)}
-        markRead={markRead}
         key={post._id}
       />
     ))

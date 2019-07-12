@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import Feeds from './Feeds'
 import Settings from './Settings'
 import {actions} from '../../store/ui'
-import {actions as postsActions} from '../../store/posts'
 
 const mapStateToProps = (state) => {
   return {
@@ -18,10 +17,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setPanel: panel => dispatch(actions.setControlPanel(panel)),
     reqCloseMobile: () => dispatch(actions.reqCloseMobile()),
-    setView: view => {
-      dispatch(postsActions.setView(view))
-      dispatch(actions.reqCloseMobile())
-    },
+    setView: view => dispatch(actions.setView(view)),
   }
 }
 
@@ -42,7 +38,7 @@ const ControlPanel = ({panel, setPanel, view, setView, panelHiddenMobile, reqClo
 
       <div className={panelHiddenMobile ? 'is-hidden-mobile' : undefined}>
         {panel === 'Feeds'
-          ? <Feeds reqCloseMobile={reqCloseMobile} />
+          ? <Feeds reqCloseMobile={reqCloseMobile} setView={setView} />
           : <Settings view={view} setView={setView} />
         }
       </div>
