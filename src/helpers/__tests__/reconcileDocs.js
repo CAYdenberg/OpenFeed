@@ -36,9 +36,11 @@ describe('reconcileDocs', () => {
     expect(final[1]).toHaveProperty('_id', 'anewfeed')
   })
 
-  it('should not add new docs when the second argument is false', () => {
+  it('should reconcile a change event without adding new docs', () => {
     const reconciler = reconcileDocs('feed', false)
+
     const final = reconciler(initial, changes, deletions)
+
     expect(final).toHaveLength(1)
     expect(final[0]).toHaveProperty('_id', 'afeed')
     expect(final[0]).toHaveProperty('title', 'Updated Title')
