@@ -26,6 +26,7 @@ export default (data, feedId) => {
     modified: determineModified(item),
     type: 'post',
     parent: feedId,
+    id: `pheed|post|${item.id}`,
     _id: `pheed|post|${item.id}`,
     ...filterObjectByKeys(item, ALLOWED_KEYS),
   }))

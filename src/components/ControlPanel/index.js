@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
   return {
     panel: state.ui.panel,
     panelHiddenMobile: state.ui.panelHiddenMobile,
-    view: state.posts.view
+    view: state.ui.view
   }
 }
 

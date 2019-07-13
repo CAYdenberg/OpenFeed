@@ -40,8 +40,8 @@ const Timeline = ({posts, openPost, handleOpenPost}) => {
       <Post
         {...post}
         openPost={handleOpenPost}
-        isOpen={openPost && (openPost._id === post._id)}
-        key={post._id}
+        isOpen={openPost && (openPost.id === post.id)}
+        key={post.id}
       />
     ))
   )

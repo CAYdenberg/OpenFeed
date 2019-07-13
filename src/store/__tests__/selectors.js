@@ -1,50 +1,38 @@
 import _clone from 'lodash.clone'
 
 import {
-  viewType,
-  activeFeed,
+  activeFeedId,
   timelinePosts,
   openPost,
   postFromId
 } from '../selectors'
 
 describe('viewType', () => {
-  it('should be true if the current view is set to all', () => {
+  it('should be a sentinel if the current view is set to all', () => {
     const state = {
-      posts: {
-        view: {type: 'all'}
+      ui: {
+        view: {type: 'posts'}
       }
     }
-    expect(viewType(state)).toEqual('all')
+    expect(activeFeedId(state)).toEqual('ALL')
   })
 
-  it('should be false if the current view is not set', () => {
+  it('should be false if the current view is a page', () => {
     const state = {
-      posts: {
-        view: null
+      ui: {
+        view: {type: 'page'}
       }
     }
-    expect(activeFeed(state)).toBeFalsy()
-  })
-})
-
-describe('activeFeed', () => {
-  it('should return the id of the active feed', () => {
-    const state = {
-      posts: {
-        view: {type: 'feed', id: 'pheed|feed|https://feeds.feedburner.com/CssTricks'}
-      }
-    }
-    expect(activeFeed(state)).toEqual('pheed|feed|https://feeds.feedburner.com/CssTricks')
+    expect(activeFeedId(state)).toBeFalsy()
   })
 
-  it('should be null if the current view is not a feed', () => {
+  it('should be a feed id if the current view is filtered', () => {
     const state = {
-      posts: {
-        view: {type: 'all', order: 'latest'}
+      ui: {
+        view: {type: 'posts', filter: {feed: 'http://example.com/feed.xml'}}
       }
     }
-    expect(activeFeed(state)).toBeNull()
+    expect(activeFeedId(state)).toEqual('http://example.com/feed.xml')
   })
 })
 

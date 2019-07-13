@@ -8,7 +8,7 @@ export const Settings = ({view, setView}) => {
   return (
     <a
       className={`panel-block ${isActive ? 'is-active' : ''}`}
-      onClick={() => setView('Account')}
+      onClick={() => setView({type: 'page', id: 'Account'})}
     >
       Account
     </a>
