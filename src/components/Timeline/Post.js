@@ -2,12 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {DateTime} from 'luxon'
 import DOMPurify from 'dompurify'
-import IsReadSwitch from '../IsReadSwitch'
 import {getId} from '../../helpers'
 import Icon, {openOriginal} from '../Icons'
 
 const Post = (props) => {
-  const {feed, title, summary, markRead, isOpen, content_html} = props
+  const {feed, title, summary, isOpen, content_html} = props
   const date = props.date_published ? DateTime.fromISO(props.date_published) : null
 
   return (
@@ -16,7 +15,6 @@ const Post = (props) => {
         <h3 className="card-header-title">
           {title}
         </h3>
-        <IsReadSwitch isRead={props.isRead} id={props._id} />
       </a>
 
       <div className="card-content">
@@ -39,7 +37,7 @@ const Post = (props) => {
             {feed && feed.title}
           </span>
           <span className="metadata__item">
-            <a href={getId(props)} target="_blank" onClick={() => markRead(props._id)}>
+            <a href={getId(props)} target="_blank">
               <span className="icon"><Icon icon={openOriginal} /></span>
             </a>
           </span>

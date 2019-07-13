@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import {actions} from '../store/ui'
-import {actions as postsActions} from '../store/posts'
 import NavBar from './NavBar'
 import ControlPanel from './ControlPanel'
 import Timeline from './Timeline'
@@ -11,7 +10,7 @@ import Alert from './Alert'
 
 const mapStateToProps = (state) => {
   return {
-    view: state.posts.view,
+    view: state.ui.view,
     hamburgerIsOpen: state.ui.hamburgerIsOpen,
   }
 }
@@ -19,11 +18,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     toggleHamburger: () => dispatch(actions.toggleHamburger()),
-    closePost: () => dispatch(postsActions.closePost())
   }
 }
 
-const App = ({view, hamburgerIsOpen, toggleHamburger, openPost, closePost}) => {
+const App = ({view, hamburgerIsOpen, toggleHamburger}) => {
   return (
     <React.Fragment>
       <NavBar

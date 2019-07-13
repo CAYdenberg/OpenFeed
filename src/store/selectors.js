@@ -1,30 +1,26 @@
 import _get from 'lodash.get'
 
-export const viewType = state => {
-  const view = _get(state, 'posts.view')
-
-  if (!view) return null
-  return view.type || null
-}
-
-export const activeFeed = state => {
-  const view = _get(state, 'posts.view')
-  const type = viewType(state)
-  return (type === 'feed') ? view.id : null
+export const activeFeedId = state => {
+  const view = state.ui.view
+  if (view.type !== 'posts') return ''
+  return _get(view, 'filter.feed', 'ALL')
 }
 
 export const timelinePosts = state => {
-  const currentViewType = _get(state, 'posts.view.type')
+  const currentViewType = _get(state, 'ui.view.type')
+  const currentFilter = _get(state, 'ui.view.filter.feed')
 
   return (currentViewType === 'newFeed')
     ? state.newFeed.posts.map(post => ({
       feed: state.newFeed.feed,
       ...post
     }))
-    : state.posts.posts.map(post => ({
-      feed: state.feeds.feeds.find(feed => post.parent === feed._id),
-      ...post
-    }))
+    : state.posts.posts.filter(post =>
+      currentFilter ? currentFilter === post.parent : true)
+      .map(post => ({
+        feed: state.feeds.feeds.find(feed => post.parent === feed._id),
+        ...post
+      }))
 }
 
 export const openPost = state => {

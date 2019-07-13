@@ -1,50 +1,38 @@
 import _clone from 'lodash.clone'
 
 import {
-  viewType,
-  activeFeed,
+  activeFeedId,
   timelinePosts,
   openPost,
   postFromId
 } from '../selectors'
 
 describe('viewType', () => {
-  it('should be true if the current view is set to all', () => {
+  it('should be a sentinel if the current view is set to all', () => {
     const state = {
-      posts: {
-        view: {type: 'all'}
+      ui: {
+        view: {type: 'posts'}
       }
     }
-    expect(viewType(state)).toEqual('all')
+    expect(activeFeedId(state)).toEqual('ALL')
   })
 
-  it('should be false if the current view is not set', () => {
+  it('should be false if the current view is a page', () => {
     const state = {
-      posts: {
-        view: null
+      ui: {
+        view: {type: 'page'}
       }
     }
-    expect(activeFeed(state)).toBeFalsy()
-  })
-})
-
-describe('activeFeed', () => {
-  it('should return the id of the active feed', () => {
-    const state = {
-      posts: {
-        view: {type: 'feed', id: 'pheed|feed|https://feeds.feedburner.com/CssTricks'}
-      }
-    }
-    expect(activeFeed(state)).toEqual('pheed|feed|https://feeds.feedburner.com/CssTricks')
+    expect(activeFeedId(state)).toBeFalsy()
   })
 
-  it('should be null if the current view is not a feed', () => {
+  it('should be a feed id if the current view is filtered', () => {
     const state = {
-      posts: {
-        view: {type: 'all', order: 'latest'}
+      ui: {
+        view: {type: 'posts', filter: {feed: 'http://example.com/feed.xml'}}
       }
     }
-    expect(activeFeed(state)).toBeNull()
+    expect(activeFeedId(state)).toEqual('http://example.com/feed.xml')
   })
 })
 
@@ -53,9 +41,10 @@ describe('timelinePosts', () => {
     posts: {
       posts: [
         {_id: 'old post 1', title: 'Old post 1', parent: 'oldfeed'},
-        {_id: 'old post 2', title: 'Old post 2', parent: 'oldfeed'}
+        {_id: 'old post 2', title: 'Old post 2', parent: 'oldfeed'},
+        {_id: 'old post 3', title: 'Old post 3', parent: 'reallyoldfeed'}
+
       ],
-      view: {type: 'newFeed'}
     },
     newFeed: {
       posts: [
@@ -67,6 +56,9 @@ describe('timelinePosts', () => {
       feeds: [
         {_id: 'oldfeed', title: 'Old Feed'}
       ]
+    },
+    ui: {
+      view: {type: 'newFeed'}
     }
   }
 
@@ -77,9 +69,18 @@ describe('timelinePosts', () => {
     expect(result[0].feed).toHaveProperty('title', 'New Feed')
   })
 
-  it('should show the posts in the posts store when the view is set to anything else', () => {
+  it('should show all the posts in the posts store when the view is set to posts', () => {
     const _state = _clone(state)
-    _state.posts.view = {type: 'feed', id: 'oldfeed'}
+    _state.ui.view = {type: 'posts'}
+    const result = timelinePosts(_state)
+    expect(result).toHaveLength(3)
+    expect(result[0]).toHaveProperty('title', 'Old post 1')
+    expect(result[0].feed).toHaveProperty('title', 'Old Feed')
+  })
+
+  it('should filter the posts', () => {
+    const _state = _clone(state)
+    _state.ui.view = {type: 'posts', filter: {feed: 'oldfeed'}}
     const result = timelinePosts(_state)
     expect(result).toHaveLength(2)
     expect(result[0]).toHaveProperty('title', 'Old post 1')

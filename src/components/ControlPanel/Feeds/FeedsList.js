@@ -4,17 +4,16 @@ import {connect} from 'react-redux'
 
 import {actions} from '../../../store/feeds'
 import {actions as postsActions} from '../../../store/posts'
-import {viewType, activeFeed} from '../../../store/selectors'
+import {activeFeedId} from '../../../store/selectors'
 
 const mapStateToProps = state => {
   return {
     feeds: state.feeds.feeds,
-    activeFeed: activeFeed(state),
-    isAll: viewType(state) === 'all'
+    activeFeedId: activeFeedId(state),
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     remove: (id, e) => {
       e.stopPropagation()
@@ -24,18 +23,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     checkNew: (feed, e) => {
       e.stopPropagation()
       dispatch(postsActions.checkForNewPosts(feed))
-    },
-
-    loadAll: (e) => {
-      e.preventDefault()
-      ownProps.reqCloseMobile()
-      dispatch(postsActions.load())
-    },
-
-    load: (id, e) => {
-      e.preventDefault()
-      ownProps.reqCloseMobile()
-      dispatch(postsActions.loadByFeed(id))
     }
   }
 }
@@ -45,19 +32,21 @@ export const FeedsList = props => {
     <React.Fragment>
 
       <a
-        className={`panel-block is-flex ${props.isAll ? 'is-active' : ''}`}
-        onClick={props.loadAll}
+        className={`panel-block is-flex ${
+          props.activeFeedId === 'ALL' ? 'is-active' : ''
+        }`}
+        onClick={() => props.setView({type: 'posts'})}
       >
         All
       </a>
 
       {props.feeds.map(feed => {
-        const isActive = props.activeFeed === feed._id ? 'is-active' : ''
+        const isActive = props.activeFeedId === feed._id ? 'is-active' : ''
         return (
           <a
             className={`panel-block is-flex ${isActive}`}
             key={feed._id}
-            onClick={e => props.load(feed._id, e)}
+            onClick={() => props.setView({type: 'posts', filter: {feed: feed._id}})}
           >
             <span className="is-expanded">{feed.title}</span>
             <button
@@ -79,7 +68,7 @@ FeedsList.propTypes = {
     title: PropTypes.string.isRequired
   })).isRequired,
   remove: PropTypes.func.isRequired,
-  load: PropTypes.func.isRequired,
+  setView: PropTypes.func.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeedsList)
