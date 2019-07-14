@@ -113,8 +113,9 @@ export const reducer = (inputState = {}, action) => {
     }
 
     case '@@koala-redux/CHANGE': {
+      const nextFeeds = reconciler(initialState.feeds, action.updates, action.deletions)
       return update(initialState, {
-        feeds: {$set: reconciler(initialState.feeds, action.changes, action.deletions)}
+        feeds: {$set: nextFeeds}
       })
     }
   }

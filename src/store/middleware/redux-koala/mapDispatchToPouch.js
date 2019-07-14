@@ -8,7 +8,6 @@ export default (dispatch) => {
     },
 
     onChange({direction, change}) {
-      console.log(change)
       if (direction !== 'push') return
       if (!change.ok) return // onError will also be triggered
       const {docs} = change
