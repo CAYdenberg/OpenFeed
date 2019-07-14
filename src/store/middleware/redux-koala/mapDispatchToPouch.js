@@ -7,8 +7,16 @@ export default (dispatch) => {
       dispatch({type: c.DB_READY, username, dbName})
     },
 
-    onChange(change) {
-      console.log(change)
+    onChange({direction, change}) {
+      if (direction !== 'push') return
+      if (!change.ok) return // onError will also be triggered
+      const {docs} = change
+
+      dispatch({
+        type: c.CHANGE,
+        updates: docs.filter(doc => !doc._deleted),
+        deletions: docs.filter(doc => doc._deleted),
+      })
     },
 
     onDenied() {

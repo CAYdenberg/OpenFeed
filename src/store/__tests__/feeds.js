@@ -1,7 +1,7 @@
 import {actions, reducer} from '../feeds'
 import deepFreeze from 'deep-freeze'
 
-const {upsertFeed, upsertFeedOk, removeFeed} = actions
+const {upsertFeed, upsertFeedOk, removeFeed, sync} = actions
 
 const nullState = reducer(undefined, {type: 'noop'})
 const runActions = actions => actions.reduce((state, action) => {
