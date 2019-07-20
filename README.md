@@ -1,11 +1,11 @@
-Open Feed
+Open Feed 🌎
 ==
 
 Open Feed is a web-based syndicated content reader, aggregator and writer. It works just like Google Reader (RIP) or other feed aggregators, but intentionally designed to satisfy the social-network experience on the independent web (see "Why does this exist?", below).
 
 It works similar to existing RSS readers: just add a web or feed URL in the text box. You only need to create an account to sync between different browsers/devices.
 
-## Contributing
+## Contributing ⌨️
 
 ### Setting up a development environment
 
