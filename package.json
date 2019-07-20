@@ -1,8 +1,8 @@
 {
-  "name": "pheed",
+  "name": "Open Feed",
   "version": "0.0.1",
-  "description": "Pheed is an installable feed aggregation server that aims to give control of the content you see back to you.",
-  "main": "index.js",
+  "description": "Open Feed is a syndicated feed aggregator based on the JSON Feed specification. Take back control of online world.",
+  "main": "server/index.js",
   "dependencies": {
     "axios": "^0.18.0",
     "bulma": "^0.7.2",
