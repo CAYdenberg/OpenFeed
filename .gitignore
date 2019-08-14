@@ -2,6 +2,7 @@
 package-lock.json
 yarn.lock
 dist/*
+report.html
 .cache
 .env
 
