@@ -1,9 +1,13 @@
 import qs from 'query-string'
 
 export const getCredentials = () => {
+  const username = localStorage.getItem('koala|username')
+  const token = localStorage.getItem('koala|token')
+
   return {
-    username: localStorage.getItem('koala|username') || '',
-    token: localStorage.getItem('koala|token') || ''
+    username: username || '',
+    isFirstLoad: username === null,
+    token: token || ''
   }
 }
 

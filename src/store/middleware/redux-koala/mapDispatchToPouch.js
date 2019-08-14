@@ -3,8 +3,8 @@ import c from './types'
 
 export default (dispatch) => {
   return {
-    onReady(username, dbName) {
-      dispatch({type: c.DB_READY, username, dbName})
+    onReady(username, dbName, isFirstLoad) {
+      dispatch({type: c.DB_READY, username, dbName, isFirstLoad})
     },
 
     onChange({direction, change}) {

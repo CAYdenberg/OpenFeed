@@ -39,6 +39,7 @@ export default () => {
   return {
     username: newCredentials.username,
     token: newCredentials.token,
+    isFirstLoad: existingCredentials.isFirstLoad,
     action
   }
 }

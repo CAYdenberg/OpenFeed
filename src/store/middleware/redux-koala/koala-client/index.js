@@ -23,7 +23,7 @@ export default (remoteUrl, actions) => {
     ...actions
   }
 
-  const {action, username, token} = getUser()
+  const {action, username, token, isFirstLoad} = getUser()
   const dbName = username || NOUSER_DB
 
   // provision our new database
@@ -61,7 +61,7 @@ export default (remoteUrl, actions) => {
       }
     })
   ]).then(() => {
-    onReady(username, dbName)
+    onReady(username, dbName, isFirstLoad)
   })
 
   return db
