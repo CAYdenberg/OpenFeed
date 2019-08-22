@@ -36,7 +36,14 @@ function * checkForNewPosts() {
   }
 }
 
-function * dbReadySaga() {
+function * dbReadySaga(action) {
+  if (action.isFirstLoad) {
+    yield put(feedsActions.upsertFeed(
+      {title: 'About Open Feed'},
+      'internal://about/about.json'
+    ))
+  }
+
   // load the feeds, and the posts (default view)
   yield all([
     put(feedsActions.loadFeeds()),

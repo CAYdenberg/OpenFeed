@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 require('dotenv').config()
+const path = require('path')
 
 const Koala = require('koala-server')
 const rss2json = require('rss-to-json-feed')
@@ -9,9 +10,15 @@ const Url = require('url-parse')
 
 Koala(router => {
   router.get('/convert', (req, res) => {
+    const convertUrlParts = new Url(req.query.url)
+
+    if (convertUrlParts.protocol === 'internal:') {
+      res.sendFile(path.join(__dirname, convertUrlParts.pathname))
+      return
+    }
+
     axios(req.query.url).then(externalRes => {
       const contentType = getContentType(externalRes)
-      console.log(contentType)
 
       switch (contentType) {
         case 'application/json':

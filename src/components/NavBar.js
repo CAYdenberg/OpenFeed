@@ -6,7 +6,7 @@ const NavBar = ({hamburgerIsOpen, toggleHamburger}) => {
 
       <div className="container">
         <div className="navbar-brand">
-          <a className="navbar-item">Pheed</a>
+          <a className="navbar-item">Open Feed</a>
 
           <a
             role="button"
@@ -23,8 +23,7 @@ const NavBar = ({hamburgerIsOpen, toggleHamburger}) => {
         </div>
         <div className={`navbar-menu ${hamburgerIsOpen ? 'is-active' : ''}`}>
           <div className="navbar-end">
-            <a className="navbar-item">About</a>
-            <a className="navbar-item">GitHub</a>
+            <a className="navbar-item" href="https://github.com/CAYdenberg/OpenFeed">GitHub</a>
           </div>
         </div>
       </div>

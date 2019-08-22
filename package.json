@@ -1,5 +1,5 @@
 {
-  "name": "Open Feed",
+  "name": "OpenFeed",
   "version": "0.0.1",
   "description": "A syndicated feed aggregator based on the JSON Feed specification. The web belongs to us. 🌎",
   "main": "server/index.js",
