@@ -6,7 +6,7 @@ const NavBar = ({hamburgerIsOpen, toggleHamburger}) => {
 
       <div className="container">
         <div className="navbar-brand">
-          <a className="navbar-item">Pheed</a>
+          <a className="navbar-item">Open Feed</a>
 
           <a
             role="button"
