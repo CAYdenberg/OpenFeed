@@ -4,7 +4,7 @@
   "description": "A syndicated feed aggregator based on the JSON Feed specification. The web belongs to us. 🌎",
   "main": "server/index.js",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "bulma": "^0.7.2",
     "bulmaswatch": "^0.7.1",
     "content-type": "^1.0.4",
@@ -13,7 +13,6 @@
     "htmlparser2": "^3.10.1",
     "immutability-helper": "^2.7.1",
     "jsdom": "^15.1.0",
-    "koala-server": "0.0.4",
     "lodash.get": "^4.4.2",
     "luxon": "^1.9.0",
     "pouchdb": "^7.0.0",
