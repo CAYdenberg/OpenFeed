@@ -1,66 +1,17 @@
 {
-  "plugins": ["react", "flowtype-errors"],
-
+  "plugins": [
+    "react",
+    "prettier"
+  ],
   "parser": "babel-eslint",
-
   "settings": {
     "react": {
       "pragma": "React",
       "version": "16.2.0"
     }
   },
-
-  "env": {
-    "es6": true,
-    "node": true,
-    "jest": true,
-    "browser": true
-  },
-
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
-
-  "globals": {
-    "React": true
-  },
-
-  "extends": "standard",
-
+  "extends": "prettier",
   "rules": {
-    "indent": [
-      "error",
-      2,
-      {"SwitchCase": 1}
-    ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "semi": [
-      "error",
-      "never"
-    ],
-    "space-before-function-paren": [
-      "error",
-      "never"
-    ],
-    "no-console": [
-      "warn"
-    ],
-    "no-unused-vars": [
-      "warn", {
-        "varsIgnorePattern": "React|regeneratorRuntime"
-      }
-    ],
-    "comma-dangle": 0,
-    "react/jsx-uses-vars": 1,
-    "flowtype-errors/show-errors": 2
+    "prettier/prettier": "error"
   }
 }

@@ -1,11 +1,11 @@
-import update from 'immutability-helper'
+import update from 'immutability-helper';
 
 export function wrapReducer(defaultState, reducer) {
   return (inputState = {}, action) => {
-    const initialState = update(defaultState, {$merge: inputState})
-    const finalState = reducer(initialState, action)
-    return finalState || initialState
-  }
+    const initialState = update(defaultState, { $merge: inputState });
+    const finalState = reducer(initialState, action);
+    return finalState || initialState;
+  };
 }
 
 /**
@@ -15,11 +15,11 @@ export function wrapReducer(defaultState, reducer) {
 export function combineReducers(reducers) {
   return (initialState = {}, action) => {
     return Object.keys(reducers).reduce((state, key) => {
-      const reducer = reducers[key]
+      const reducer = reducers[key];
       state = update(state, {
-        [key]: {$set: reducer(state[key], action, state)}
-      })
-      return state
-    }, initialState)
-  }
+        [key]: { $set: reducer(state[key], action, state) },
+      });
+      return state;
+    }, initialState);
+  };
 }

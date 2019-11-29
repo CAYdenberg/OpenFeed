@@ -1,8 +1,4 @@
 {
-  "plugins": [
-    "@babel/syntax-flow",
-    "@babel/transform-flow-strip-types",
-  ],
-  "presets": ["@babel/env", "@babel/react"],
+  "presets": ["@babel/react"],
   "ignore": ["node_modules"]
 }

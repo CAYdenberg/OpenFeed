@@ -1,6 +1,6 @@
 @import "../node_modules/bulmaswatch/journal/_variables.scss";
 
-$family-sans-serif: 'Open Sans', sans-serif;
+$family-sans-serif: "Open Sans", sans-serif;
 $family-heading: $family-sans-serif;
 $bulmaswatch-import-font: false;
 
@@ -46,7 +46,7 @@ main {
   position: relative;
 
   .card-header::after {
-    content: ' ';
+    content: " ";
     position: absolute;
     top: 0;
     right: 0;
@@ -59,14 +59,17 @@ main {
     overflow: hidden;
     position: relative;
     &::after {
-      content: ' ';
+      content: " ";
       position: absolute;
       bottom: 0;
       top: 4.5rem;
       left: 0;
       right: 0;
       height: 2rem;
-      background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+      background: linear-gradient(
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 1)
+      );
     }
   }
 

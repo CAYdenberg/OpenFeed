@@ -1,20 +1,20 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import PropTypes from 'prop-types'
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import Icon, {twitter} from './Icons'
+import Icon, { twitter } from './Icons';
 
-const mapStateToProps = (state) => {
-  const username = state.status.username
-  const [provider, name] = username.split('-')
+const mapStateToProps = state => {
+  const username = state.status.username;
+  const [provider, name] = username.split('-');
   return {
     authenticated: !!username,
     provider,
     name,
-  }
-}
+  };
+};
 
-const Account = ({authenticated, provider, name}) => {
+const Account = ({ authenticated, provider, name }) => {
   if (authenticated) {
     return (
       <section className="content">
@@ -24,12 +24,10 @@ const Account = ({authenticated, provider, name}) => {
         <h4>Username</h4>
         <p>{name}</p>
         <h4>
-          <a href={`${process.env.KOALA_URI}/auth/logout`}>
-            Logout
-          </a>
+          <a href={`${process.env.KOALA_URI}/auth/logout`}>Logout</a>
         </h4>
       </section>
-    )
+    );
   } else {
     return (
       <section className="content">
@@ -46,8 +44,8 @@ const Account = ({authenticated, provider, name}) => {
           </a>
         </div>
       </section>
-    )
+    );
   }
-}
+};
 
-export default connect(mapStateToProps)(Account)
+export default connect(mapStateToProps)(Account);
