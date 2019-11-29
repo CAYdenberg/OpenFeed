@@ -27,7 +27,7 @@
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-icons-kit": "^1.2.0",
-    "react-redux": "^5.0.7",
+    "react-redux": "^5.1.2",
     "redux": "^4.0.0",
     "redux-devtools-extension": "^2.13.5",
     "redux-popsicle": "^0.2.1",
@@ -38,26 +38,33 @@
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.7.4",
     "@babel/plugin-syntax-object-rest-spread": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.4",
     "babel-eslint": "^10.0.1",
-    "babel-jest": "^24.7.1",
+    "babel-jest": "^24.9.0",
     "deep-freeze": "^0.0.1",
+    "eslint-plugin-react": "^7.17.0",
     "jest": "^24.7.1",
     "lodash.clone": "^4.5.0",
     "nodemon": "^1.18.4",
     "npm-run-all": "^4.1.5",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-bundle-visualiser": "^1.2.0",
-    "sass": "^1.23.7"
+    "sass": "^1.23.7",
+    "typescript": "^3.7.2"
   },
   "scripts": {
     "server": "node server",
-    "build": "npx parcel build src/index.html",
     "start:server": "NODE_ENV=development nodemon server",
     "start:client": "NODE_ENV=development npx parcel --port 9876 src/index.html",
     "start": "npm-run-all --parallel start:*",
-    "test": "npx jest --watch --env=jsdom"
+    "test": "jest --watch --env=jsdom",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/**/* server/**/*.js",
+    "build": "npm run typecheck && npm run lint && parcel build src/index.html"
   },
   "repository": {
     "type": "git",

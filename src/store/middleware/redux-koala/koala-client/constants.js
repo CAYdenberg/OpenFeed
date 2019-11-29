@@ -1,2 +1,1 @@
-
-export const NOUSER_DB = 'user-none'
+export const NOUSER_DB = 'user-none';

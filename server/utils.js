@@ -1,7 +1,7 @@
-const ContentType = require('content-type')
-const _get = require('lodash.get')
-const jsdom = require('jsdom')
-const { JSDOM } = jsdom
+const ContentType = require('content-type');
+const _get = require('lodash.get');
+const jsdom = require('jsdom');
+const { JSDOM } = jsdom;
 
 const FEED_TYPES = [
   'application/rss+xml',
@@ -15,24 +15,24 @@ const FEED_TYPES = [
   'text/rdf+xml',
   'text/rss',
   'text/atom',
-  'text/rdf'
-]
+  'text/rdf',
+];
 
-exports.getContentType = (res) => {
-  const ctHeader = res.headers['content-type']
-  if (!ctHeader) return null
-  return _get(ContentType.parse(ctHeader), 'type', null)
-}
+exports.getContentType = res => {
+  const ctHeader = res.headers['content-type'];
+  if (!ctHeader) return null;
+  return _get(ContentType.parse(ctHeader), 'type', null);
+};
 
-exports.findFeed = (html) => {
-  const {document} = new JSDOM(html).window
-  const links = document.querySelectorAll('link')
-  let i
+exports.findFeed = html => {
+  const { document } = new JSDOM(html).window;
+  const links = document.querySelectorAll('link');
+  let i;
   for (i = 0; i < links.length; i++) {
-    const link = links[i]
+    const link = links[i];
     if (FEED_TYPES.indexOf(link.getAttribute('type')) !== -1) {
-      return link.getAttribute('href')
+      return link.getAttribute('href');
     }
   }
-  return null
-}
+  return null;
+};

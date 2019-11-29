@@ -1,6 +1,15 @@
-// @flow
+interface PouchDoc {
+  [key: string]: string | number | boolean | null | undefined;
+  _id: string;
+  _rev?: string;
+  id?: string;
+}
 
-export const getId = (record: Object): string => {
+interface Generic {
+  [key: string]: string | number | boolean | null | undefined;
+}
+
+export const getId = (record: PouchDoc): string => {
   const idField = record.id || record._id;
   if (!idField) {
     throw new Error('Attempted to extract id from record without one');
@@ -22,10 +31,10 @@ export const determineFeedId = (url: string): string => {
   return `pheed|feed|${normalizedUrl}`;
 };
 
-export const filterObject = (obj: Object, f: Function = x => x) => {
+export const filterObject = (obj: Generic, f: Function = Boolean) => {
   if (!obj) return {};
 
-  return Object.keys(obj).reduce((acc, key) => {
+  return Object.keys(obj).reduce((acc: Generic, key: string) => {
     const value = obj[key];
     if (f(value, key)) {
       acc[key] = value;
@@ -34,8 +43,8 @@ export const filterObject = (obj: Object, f: Function = x => x) => {
   }, {});
 };
 
-export const filterObjectByKeys = (obj: Object, keys: Array<string>) =>
-  filterObject(obj, (value, key) => keys.indexOf(key) !== -1);
+export const filterObjectByKeys = (obj: Generic, keys: string[]) =>
+  filterObject(obj, (value: any, key: string) => keys.indexOf(key) !== -1);
 
-export const excludeKeysFromObject = (obj: Object, keys: Array<string>) =>
-  filterObject(obj, (value, key) => keys.indexOf(key) === -1);
+export const excludeKeysFromObject = (obj: Generic, keys: string[]) =>
+  filterObject(obj, (value: any, key: string) => keys.indexOf(key) === -1);
