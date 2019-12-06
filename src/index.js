@@ -8,7 +8,6 @@ import './helpers/immutability';
 ReactDOM.render(
   <Provider store={store}>
     <h1>Hello world</h1>
-    <p>{JSON.stringify(state)}</p>
     {/* <App /> */}
   </Provider>,
   document.getElementById('root')

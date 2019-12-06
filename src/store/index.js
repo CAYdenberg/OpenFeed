@@ -1,15 +1,25 @@
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import middleware from './middleware';
+import { getInitialState } from './shape';
+import reducer from './reducer';
+import tasks from './tasks';
 
-import { combineReducers } from './shape';
+const store = createStore(
+  reducer,
+  getInitialState(),
+  composeWithDevTools(middleware)
+);
 
-import { reducer as system } from './system';
+let currentState = getInitialState();
+store.subscribe(() => {
+  let previousState = currentState;
+  currentState = store.getState();
 
-const reducer = combineReducers({ system });
-
-const store = createStore(reducer, composeWithDevTools(middleware));
+  tasks.forEach(task => {
+    if (task[0](currentState, previousState)) store.dispatch(task[1]);
+  });
+});
 
 window.store = store;
-
 export default store;

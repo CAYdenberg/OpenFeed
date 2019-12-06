@@ -1,6 +1,12 @@
 import update from 'immutability-helper';
 import { Reducer } from 'redux';
-import { ExternalPost, JsonFeedData, LoadState, Message } from '../types';
+import {
+  ExternalPost,
+  JsonFeedData,
+  LoadState,
+  Message,
+  SavedFeed,
+} from '../types';
 
 export interface State {
   system: {
@@ -15,13 +21,17 @@ export interface State {
     url: string;
     loadState: LoadState;
     posts: ExternalPost[];
-    meta: JsonFeedData;
+    meta: JsonFeedData | null;
   };
 
   timeline: {
-    feeds: ExternalPost[];
     loadState: LoadState;
-    responses: Array<{ loadState: LoadState; posts: ExternalPost[] }>;
+    feeds: Array<{
+      feed: SavedFeed;
+      checkedAt: number | null;
+      loadState: LoadState;
+    }>;
+    posts: ExternalPost[];
   };
 
   posts: {
@@ -30,17 +40,53 @@ export interface State {
   };
 
   view: {
-    route: {
-      selectedFeed: string;
-      selectedPost: string;
-      type: 'all' | 'feed' | 'settings' | 'preview';
-    };
-    panel: string;
+    selectedFeed: string | null;
+    selectedPost: string | null;
+    routeType: 'all' | 'feed' | 'settings' | 'preview';
+    panel: 'Feeds' | 'Settings';
     menuIsOpen: boolean;
   };
 
   messages: Message[];
 }
+
+export const getInitialState = (): State => ({
+  system: {
+    isOffline: false,
+    isDbAvailable: false,
+    isFirstLoad: false,
+    isSyncing: false,
+    username: null,
+  },
+
+  preview: {
+    url: '',
+    loadState: LoadState.Ready,
+    posts: [],
+    meta: null,
+  },
+
+  timeline: {
+    loadState: LoadState.Loading,
+    feeds: [],
+    posts: [],
+  },
+
+  posts: {
+    loadState: LoadState.Ready,
+    data: [],
+  },
+
+  view: {
+    routeType: 'all',
+    selectedFeed: null,
+    selectedPost: null,
+    panel: 'Feeds',
+    menuIsOpen: false,
+  },
+
+  messages: [],
+});
 
 export type AugmentedReducer<T> = (
   intialState: T,

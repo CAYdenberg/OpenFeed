@@ -44,8 +44,13 @@ export interface JsonFeedPostData {
   tags: string[];
 }
 
+export interface JsonFeed extends JsonFeedData {
+  items: JsonFeedPostData[];
+}
+
 export interface ExternalPost {
   jsonFeed: JsonFeedPostData;
+  parent: string;
 }
 
 export interface SavedPost extends ExternalPost {

@@ -29,6 +29,7 @@
     "redux-devtools-extension": "^2.13.5",
     "redux-popsicle": "^0.2.1",
     "redux-saga": "^0.16.2",
+    "redux-thunk": "^2.3.0",
     "regenerator-runtime": "^0.13.1",
     "rss-to-json-feed": "0.0.1",
     "url-parse": "^1.4.7"
