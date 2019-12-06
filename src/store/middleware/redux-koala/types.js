@@ -1,5 +1,4 @@
-
-const PREFIX = '@@koala-redux'
+const PREFIX = '@@koala-redux';
 
 export default {
   DB_READY: `${PREFIX}/DB_READY`,
@@ -8,5 +7,5 @@ export default {
   ACTIVE: `${PREFIX}/ACTIVE`,
   DENIED: `${PREFIX}/DENIED`,
   COMPLETE: `${PREFIX}/COMPLETE`,
-  ERROR: `${PREFIX}/ERROR`
-}
+  ERROR: `${PREFIX}/ERROR`,
+};

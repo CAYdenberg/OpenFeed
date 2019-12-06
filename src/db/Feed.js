@@ -1,4 +1,4 @@
-import {filterObjectByKeys} from '../helpers'
+import { filterObjectByKeys } from '../helpers';
 
 const FEED_KEYS = [
   'version',
@@ -6,14 +6,14 @@ const FEED_KEYS = [
   'home_page_url',
   'feed_url',
   'description',
-  'author'
-]
+  'author',
+];
 
 export default (data, id) => {
   return {
     modified: new Date().getTime(),
     type: 'feed',
     _id: id,
-    ...filterObjectByKeys(data, FEED_KEYS)
-  }
-}
+    ...filterObjectByKeys(data, FEED_KEYS),
+  };
+};

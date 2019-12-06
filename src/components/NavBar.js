@@ -1,9 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-const NavBar = ({hamburgerIsOpen, toggleHamburger}) => {
+const NavBar = ({ hamburgerIsOpen, toggleHamburger }) => {
   return (
     <nav className="navbar is-fixed-top is-light is-primary">
-
       <div className="container">
         <div className="navbar-brand">
           <a className="navbar-item">Open Feed</a>
@@ -19,16 +18,20 @@ const NavBar = ({hamburgerIsOpen, toggleHamburger}) => {
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </a>
-
         </div>
         <div className={`navbar-menu ${hamburgerIsOpen ? 'is-active' : ''}`}>
           <div className="navbar-end">
-            <a className="navbar-item" href="https://github.com/CAYdenberg/OpenFeed">GitHub</a>
+            <a
+              className="navbar-item"
+              href="https://github.com/CAYdenberg/OpenFeed"
+            >
+              GitHub
+            </a>
           </div>
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

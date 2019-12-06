@@ -1,18 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-export const Settings = ({view, setView}) => {
-  const isActive = view &&
-    (view.type === 'page') &&
-    (view.id === 'Account')
+export const Settings = ({ view, setView }) => {
+  const isActive = view && view.type === 'page' && view.id === 'Account';
 
   return (
     <a
       className={`panel-block ${isActive ? 'is-active' : ''}`}
-      onClick={() => setView({type: 'page', id: 'Account'})}
+      onClick={() => setView({ type: 'page', id: 'Account' })}
     >
       Account
     </a>
-  )
-}
+  );
+};
 
-export default Settings
+export default Settings;

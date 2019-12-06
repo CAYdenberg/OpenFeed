@@ -1,5 +1,5 @@
-import {DateTime} from 'luxon'
-import {filterObjectByKeys} from '../helpers'
+import { DateTime } from 'luxon';
+import { filterObjectByKeys } from '../helpers';
 
 const ALLOWED_KEYS = [
   'external_url',
@@ -12,14 +12,12 @@ const ALLOWED_KEYS = [
   'date_published',
   'date_modified',
   'author',
-  'tags'
-]
+  'tags',
+];
 
-export const determineModified = (item) => {
-  return item.date_modified ||
-    item.date_published ||
-    DateTime.local().toISO()
-}
+export const determineModified = item => {
+  return item.date_modified || item.date_published || DateTime.local().toISO();
+};
 
 export default (data, feedId) => {
   return data.map(item => ({
@@ -29,5 +27,5 @@ export default (data, feedId) => {
     id: `pheed|post|${item.id}`,
     _id: `pheed|post|${item.id}`,
     ...filterObjectByKeys(item, ALLOWED_KEYS),
-  }))
-}
+  }));
+};
