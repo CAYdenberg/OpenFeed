@@ -1,8 +1,5 @@
 {
-  "plugins": [
-    "react",
-    "prettier"
-  ],
+  "plugins": ["react", "prettier"],
   "parser": "babel-eslint",
   "settings": {
     "react": {

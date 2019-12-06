@@ -10,9 +10,6 @@
     "content-type": "^1.0.4",
     "dompurify": "^2.0.3",
     "dotenv": "^6.0.0",
-    "eslint": "^6.7.1",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-plugin-prettier": "^3.1.1",
     "htmlparser2": "^3.10.1",
     "immutability-helper": "^2.7.1",
     "jsdom": "^15.1.0",
@@ -46,6 +43,9 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.9.0",
     "deep-freeze": "^0.0.1",
+    "eslint": "^6.7.1",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.17.0",
     "jest": "^24.7.1",
     "lodash.clone": "^4.5.0",
@@ -54,6 +54,10 @@
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-bundle-visualiser": "^1.2.0",
     "sass": "^1.23.7",
+    "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^4.1.0",
     "typescript": "^3.7.2"
   },
   "scripts": {
@@ -63,7 +67,7 @@
     "start": "npm-run-all --parallel start:*",
     "test": "jest --watch --env=jsdom",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint src/**/* server/**/*.js",
+    "lint": "eslint src/**/*.js server/**/*.js && tslint src/**/*.ts",
     "build": "npm run typecheck && npm run lint && parcel build src/index.html"
   },
   "repository": {
