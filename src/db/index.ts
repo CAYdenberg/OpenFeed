@@ -1,6 +1,5 @@
 import * as PouchDB from 'pouchdb';
 import { Store } from 'redux';
-import { timelineActions } from '../store/actions';
 import * as selectors from '../store/selectors';
 import { SavedFeed } from '../types';
 import { createFeed } from './factory';

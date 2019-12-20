@@ -88,6 +88,19 @@ export const reducer: Reducer<State['timeline']> = (
         },
       });
     }
+
+    case c.CHECK_FEED_OK: {
+      const i = initialState.feeds.findIndex(
+        feed => feed.feed._id === action.id
+      );
+      if (i === -1) return initialState;
+      return update(initialState, {
+        feeds: {
+          [i]: { loadState: { $set: LoadState.Loaded } },
+        },
+        posts: { $push: action.posts },
+      });
+    }
   }
 
   return initialState;

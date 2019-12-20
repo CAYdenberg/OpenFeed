@@ -52,7 +52,7 @@ export interface JsonFeedPostData {
   banner_image?: string;
   date_published?: string;
   date_modified?: string;
-  author: JsonFeedAuthorData;
+  author?: JsonFeedAuthorData;
   tags: string[];
 }
 

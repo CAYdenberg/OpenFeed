@@ -1,21 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { actions } from '../store/errors';
 
-const mapStateToProps = state => {
-  const message = state.errors.message;
-  return {
-    message,
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    dismiss: () => dispatch(actions.dismiss()),
-  };
-};
-
-export const Alert = props => {
+export const Alert = () => {
   if (!props.message) return null;
 
   return (
@@ -34,4 +19,4 @@ export const Alert = props => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Alert);
+export default Alert;

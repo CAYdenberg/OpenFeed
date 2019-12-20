@@ -13,3 +13,5 @@ const db = {
       : Promise.reject(CustomPouchError)
   ),
 };
+
+test.todo('write tests for db methods using mock');
