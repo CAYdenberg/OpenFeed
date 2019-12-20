@@ -1,7 +1,7 @@
 import * as PouchDB from 'pouchdb';
 import { Store } from 'redux';
 import * as selectors from '../store/selectors';
-import { SavedFeed } from '../types';
+import { SavedFeed, JsonFeed } from '../types';
 import { createFeed } from './factory';
 
 export const getFeeds = () => (db: PouchDB.Database, store: Store) => {
@@ -25,4 +25,14 @@ export const getFeeds = () => (db: PouchDB.Database, store: Store) => {
   }
 
   return query;
+};
+
+export const putFeed = (url: string, jsonFeed: JsonFeed) => (
+  db: PouchDB.Database
+) => {
+  const feed = createFeed(url, jsonFeed);
+
+  return db.put(feed).then(({ rev }) => {
+    return { ...feed, _rev: rev };
+  });
 };

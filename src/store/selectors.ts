@@ -10,8 +10,27 @@ export const findStaleFeed = (state: State) =>
 
 export const timelineFeeds = (state: State) => state.timeline.feeds;
 
-export const timelinePosts = (state: State) =>
-  state.timeline.posts.map(post => {
+export const previewForm = (state: State) => ({
+  url: state.preview.url,
+  loadState: state.preview.loadState,
+  jsonFeed: state.preview.feed,
+  isAddable:
+    state.preview.loadState === LoadState.Loaded &&
+    state.preview.feed &&
+    state.preview.feed.items,
+});
+
+export const visiblePosts = (state: State) => {
+  if (state.view.routeType === 'preview') {
+    if (!state.preview.feed) return [];
+    return state.preview.feed.items.map(post => ({
+      id: post.id,
+      post,
+      feed: state.preview.feed!.title || '',
+    }));
+  }
+
+  return state.timeline.posts.map(post => {
     const feed = state.timeline.feeds.find(
       feed => feed.feed._id === post.parent
     );
@@ -21,3 +40,4 @@ export const timelinePosts = (state: State) =>
       feed: feed ? feed.feed.displayName : '',
     };
   });
+};

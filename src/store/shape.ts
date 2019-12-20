@@ -2,10 +2,10 @@ import update from 'immutability-helper';
 import { Reducer } from 'redux';
 import {
   ExternalPost,
-  JsonFeedData,
   LoadState,
   Message,
   SavedFeed,
+  JsonFeed,
 } from '../types';
 
 export interface State {
@@ -20,8 +20,7 @@ export interface State {
   preview: {
     url: string;
     loadState: LoadState;
-    posts: ExternalPost[];
-    meta: JsonFeedData | null;
+    feed: JsonFeed | null;
   };
 
   timeline: {
@@ -42,7 +41,7 @@ export interface State {
   view: {
     selectedFeed: string | null;
     selectedPost: string | null;
-    routeType: 'all' | 'feed' | 'settings' | 'preview';
+    routeType: 'timeline' | 'feed' | 'settings' | 'preview';
     panel: 'Feeds' | 'Settings';
     menuIsOpen: boolean;
   };
@@ -62,8 +61,7 @@ export const getInitialState = (): State => ({
   preview: {
     url: '',
     loadState: LoadState.Ready,
-    posts: [],
-    meta: null,
+    feed: null,
   },
 
   timeline: {
@@ -78,7 +76,7 @@ export const getInitialState = (): State => ({
   },
 
   view: {
-    routeType: 'all',
+    routeType: 'timeline',
     selectedFeed: null,
     selectedPost: null,
     panel: 'Feeds',

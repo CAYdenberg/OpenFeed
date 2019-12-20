@@ -31,13 +31,13 @@ export interface JsonFeedAuthorData {
 
 export interface JsonFeedData {
   version: string;
-  title: string;
-  home_page_url: string;
-  feed_url: string;
+  title?: string;
+  home_page_url?: string;
+  feed_url?: string;
   description?: string;
   icon?: string;
   favicon?: string;
-  author: JsonFeedAuthorData;
+  author?: JsonFeedAuthorData;
 }
 
 export interface JsonFeedPostData {
@@ -53,7 +53,7 @@ export interface JsonFeedPostData {
   date_published?: string;
   date_modified?: string;
   author?: JsonFeedAuthorData;
-  tags: string[];
+  tags?: string[];
 }
 
 export interface JsonFeed extends JsonFeedData {
