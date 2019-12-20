@@ -9,4 +9,8 @@ export default [
       !selectors.isDbAvailable(prevState),
     timelineActions.requestFeeds(),
   ],
+  [
+    (currentState: State) => selectors.findStaleFeed(currentState),
+    timelineActions.debouncedCheckFeeds(),
+  ],
 ];

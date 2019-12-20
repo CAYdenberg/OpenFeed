@@ -5,6 +5,18 @@ export enum LoadState {
   Loaded = 2,
 }
 
+export enum OFDocumentType {
+  Feed = 'feed',
+  ExternalPost = 'external-post',
+}
+
+export interface OFDocument<T> {
+  _id: string;
+  _rev?: string;
+  type: T;
+  parent?: string;
+}
+
 export interface Message {
   text: string;
   level: 'info' | 'warning' | 'error';
@@ -53,13 +65,10 @@ export interface ExternalPost {
   parent: string;
 }
 
-export interface SavedPost extends ExternalPost {
-  _id: string;
-  _rev: string;
-}
+export type SavedPost = ExternalPost & OFDocument<OFDocumentType.ExternalPost>;
 
-export interface SavedFeed {
-  jsonFeed: JsonFeedData;
-  _id: string;
-  _rev: string;
+export interface SavedFeed extends OFDocument<OFDocumentType.Feed> {
+  jsonFeed: Partial<JsonFeedData>;
+  displayName: string;
+  url: string;
 }

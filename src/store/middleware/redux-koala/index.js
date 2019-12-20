@@ -10,7 +10,7 @@ export default remoteUrl => store => {
 
     const { pouch } = action;
     if (pouch) {
-      const operation = pouch(db, store.getState);
+      const operation = pouch(db, store);
 
       operation
         .then(operationResult => {

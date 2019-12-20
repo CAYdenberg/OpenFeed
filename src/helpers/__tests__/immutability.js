@@ -48,7 +48,7 @@ describe('$filter', () => {
 // const obj = {$map: {$set: 10}}
 
 describe('$where', () => {
-  it('should update items in an array that satisty some criteria', () => {
+  it('should update items in an array that satifty some criteria', () => {
     const initial = [1, 2, 3, 4, 5];
     deepFreeze(initial);
     const final = update(initial, {

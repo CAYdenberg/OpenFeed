@@ -1,8 +1,9 @@
-import { Reducer } from 'redux';
+import { Reducer, Dispatch, Store } from 'redux';
 import { getFeeds } from '../../db';
 import { JsonFeed, JsonFeedPostData, LoadState, SavedFeed } from '../../types';
 import { State } from '../shape';
 import update from 'immutability-helper';
+import { findStaleFeed } from '../selectors';
 
 export const constants = {
   REQUEST_FEEDS: 'timeline:requestFeeds',
@@ -17,7 +18,6 @@ export const actions = {
     type: c.REQUEST_FEEDS,
     pouch: getFeeds(),
     response: actions.requestFeedsOk,
-    error: console.error,
   }),
 
   requestFeedsOk: (feeds: SavedFeed[]) => ({
@@ -26,7 +26,7 @@ export const actions = {
   }),
 
   checkFeed: (feed: SavedFeed) => {
-    const url = feed.jsonFeed.feed_url;
+    const { url } = feed;
     return {
       type: c.CHECK_FEED,
       id: feed._id,
@@ -36,13 +36,22 @@ export const actions = {
         )}`,
       },
       response: (res: JsonFeed) => actions.checkFeedOk(res.items, feed._id),
-      error: console.error,
     };
+  },
+
+  debouncedCheckFeeds: () => (
+    dispatch: Dispatch,
+    getState: Store['getState']
+  ) => {
+    const staleFeed = findStaleFeed(getState());
+    if (!staleFeed) return;
+    setTimeout(() => dispatch(actions.checkFeed(staleFeed.feed)), 200);
   },
 
   checkFeedOk: (res: JsonFeedPostData[], id: string) => {
     return {
       type: c.CHECK_FEED_OK,
+      id,
       posts: res.map(post => ({
         jsonFeed: post,
         parent: id,
@@ -65,6 +74,18 @@ export const reducer: Reducer<State['timeline']> = (
       return update(initialState, {
         loadState: { $set: LoadState.Loaded },
         feeds: { $set: feeds },
+      });
+    }
+
+    case c.CHECK_FEED: {
+      const i = initialState.feeds.findIndex(
+        feed => feed.feed._id === action.id
+      );
+      if (i === -1) return initialState;
+      return update(initialState, {
+        feeds: {
+          [i]: { loadState: { $set: LoadState.Loading } },
+        },
       });
     }
   }
