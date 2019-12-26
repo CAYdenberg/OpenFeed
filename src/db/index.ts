@@ -36,3 +36,8 @@ export const putFeed = (url: string, jsonFeed: JsonFeed) => (
     return { ...feed, _rev: rev };
   });
 };
+
+export const deleteFeed = (feed: SavedFeed) => (db: PouchDB.Database) => {
+  if (!feed._rev) return;
+  return db.remove(feed._id, feed._rev);
+};

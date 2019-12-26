@@ -17,6 +17,12 @@ export const reducer: Reducer<State['view']> = (
         routeType: { $set: 'preview' },
       });
     }
+
+    case previewConstants.ADD_FEED_OK: {
+      return update(initialState, {
+        routeType: { $set: 'timeline' },
+      });
+    }
   }
 
   return initialState;

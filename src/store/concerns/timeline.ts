@@ -1,15 +1,26 @@
 import { Reducer, Dispatch, Store } from 'redux';
-import { getFeeds } from '../../db';
-import { JsonFeed, JsonFeedPostData, LoadState, SavedFeed } from '../../types';
-import { State } from '../shape';
 import update from 'immutability-helper';
+import { getFeeds, deleteFeed } from '../../db';
+import {
+  JsonFeed,
+  JsonFeedPostData,
+  LoadState,
+  SavedFeed,
+  ExternalPost,
+} from '../../types';
+import { State } from '../shape';
 import { findStaleFeed } from '../selectors';
+import { constants as previewConstants } from './preview';
+import { mergeArrays } from '../../helpers';
+import * as comparePosts from '../../helpers/comparePosts';
 
 export const constants = {
   REQUEST_FEEDS: 'timeline:requestFeeds',
   REQUEST_FEEDS_OK: 'timeline:requestFeeds:ok',
   CHECK_FEED: 'timeline:checkFeed',
   CHECK_FEED_OK: 'timeline:checkFeed:ok',
+  DELETE_FEED: 'timeline:deleteFeed',
+  DELETE_FEED_OK: 'timeline:deletedFeed:ok',
 };
 const c = constants;
 
@@ -58,7 +69,25 @@ export const actions = {
       })),
     };
   },
+
+  deleteFeed: (feed: SavedFeed) => {
+    return {
+      type: c.DELETE_FEED,
+      id: feed._id,
+      pouch: deleteFeed(feed),
+      response: actions.deleteFeedOk,
+    };
+  },
+
+  deleteFeedOk: ({ id }: { id: string }) => {
+    return {
+      type: c.DELETE_FEED_OK,
+      id,
+    };
+  },
 };
+
+const mergeTimeline = mergeArrays<ExternalPost>(comparePosts.isNewerThan);
 
 export const reducer: Reducer<State['timeline']> = (
   initialState: State['timeline'],
@@ -98,7 +127,38 @@ export const reducer: Reducer<State['timeline']> = (
         feeds: {
           [i]: { loadState: { $set: LoadState.Loaded } },
         },
-        posts: { $push: action.posts },
+        posts: {
+          $apply: (posts: State['timeline']['posts']) =>
+            mergeTimeline(posts, action.posts),
+        },
+      });
+    }
+
+    case c.DELETE_FEED: {
+      return update(initialState, {
+        feeds: {
+          $apply: (feeds: State['timeline']['feeds']) =>
+            feeds.filter(feed => feed.feed._id !== action.id),
+        },
+        posts: {
+          $apply: (posts: State['timeline']['posts']) =>
+            posts.filter(post => post.parent !== action.id),
+        },
+      });
+    }
+
+    case previewConstants.ADD_FEED_OK: {
+      const feed = {
+        feed: action.feed,
+        checkedAt: null,
+        loadState: LoadState.Loaded,
+      };
+      return update(initialState, {
+        feeds: { $push: [feed] },
+        posts: {
+          $apply: (posts: State['timeline']['posts']) =>
+            mergeTimeline(posts, action.posts),
+        },
       });
     }
   }

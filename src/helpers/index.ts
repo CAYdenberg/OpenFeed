@@ -6,7 +6,7 @@ interface PouchDoc {
 }
 
 interface Generic {
-  [key: string]: string | number | boolean | null | undefined;
+  [key: string]: string | number | boolean | null | undefined | object;
 }
 
 export const getId = (record: PouchDoc): string => {
@@ -48,3 +48,22 @@ export const filterObjectByKeys = (obj: Generic, keys: string[]) =>
 
 export const excludeKeysFromObject = (obj: Generic, keys: string[]) =>
   filterObject(obj, (value: any, key: string) => keys.indexOf(key) === -1);
+
+export const mergeArrays = <T>(compare: (a: T, b: T) => number) => (
+  oldItems: T[],
+  newItems: T[]
+) => {
+  return newItems.reduce((acc, newItem) => {
+    const indexOfInsertion = acc.findIndex(
+      oldItem => compare(oldItem, newItem) > 0
+    );
+    if (indexOfInsertion === -1) {
+      return [...acc, newItem];
+    }
+    return [
+      ...acc.slice(0, indexOfInsertion),
+      newItem,
+      ...acc.slice(indexOfInsertion),
+    ];
+  }, oldItems);
+};

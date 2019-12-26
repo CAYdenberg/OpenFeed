@@ -1,9 +1,17 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { timelineActions } from '../../../store/actions';
 import { timelineFeeds } from '../../../store/selectors';
+import { SavedFeed } from '../../../types';
 
 export const FeedsList = () => {
   const feeds = useSelector(timelineFeeds);
+  const dispatch = useDispatch();
+
+  const handleDelete = useCallback(
+    (feed: SavedFeed) => dispatch(timelineActions.deleteFeed(feed)),
+    [timelineActions.deleteFeed]
+  );
 
   return (
     <React.Fragment>
@@ -23,7 +31,11 @@ export const FeedsList = () => {
             onClick={Boolean}
           >
             <span className="is-expanded">{feed.feed.displayName}</span>
-            <button type="button" className="delete is-small" onClick={Boolean}>
+            <button
+              type="button"
+              className="delete is-small"
+              onClick={() => handleDelete(feed.feed)}
+            >
               Remove
             </button>
           </a>

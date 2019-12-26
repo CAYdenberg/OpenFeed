@@ -1,9 +1,9 @@
 import { Reducer, Dispatch, Store } from 'redux';
-import { State } from '../shape';
+import { State, getInitialState } from '../shape';
 import update from 'immutability-helper';
 import * as urls from 'valid-url';
 import { putFeed } from '../../db';
-import { JsonFeed, LoadState, SavedFeed } from '../../types';
+import { JsonFeed, LoadState, SavedFeed, JsonFeedPostData } from '../../types';
 
 export const constants = {
   CHANGE_URL: 'preview:changeUrl',
@@ -54,17 +54,19 @@ export const actions = {
   },
 
   addFeed: (url: string, jsonFeed: JsonFeed) => {
+    const posts = jsonFeed.items;
     return {
       type: c.ADD_FEED,
-      posts: jsonFeed.items,
+      posts,
       pouch: putFeed(url, jsonFeed),
-      response: actions.addFeedOk,
+      response: (feed: SavedFeed) => actions.addFeedOk(feed, posts),
     };
   },
 
-  addFeedOk: (feed: SavedFeed) => ({
+  addFeedOk: (feed: SavedFeed, posts: JsonFeedPostData[]) => ({
     type: c.ADD_FEED_OK,
     feed,
+    posts: posts.map(post => ({ jsonFeed: post, parent: feed._id })),
   }),
 };
 
@@ -90,6 +92,10 @@ export const reducer: Reducer<State['preview']> = (
         loadState: { $set: LoadState.Loaded },
         feed: { $set: action.feed },
       });
+    }
+
+    case c.ADD_FEED_OK: {
+      return getInitialState().preview;
     }
   }
 
