@@ -52,6 +52,24 @@ describe('visiblePosts', () => {
     expect(result[0]).toHaveProperty('feed', 'Saved Feed');
   });
 
+  it('when view a specific feed', () => {
+    const state = clone(_base);
+    state.view.routeType = 'feed';
+    state.view.selectedFeed = 'feed1';
+    const result = selectors.visiblePosts(state);
+    expect(result).toHaveLength(1);
+    expect(result[0]).toHaveProperty('id', 'post1');
+    expect(result[0]).toHaveProperty('feed', 'Saved Feed');
+  });
+
+  it('when view a specific, empty, feed', () => {
+    const state = clone(_base);
+    state.view.routeType = 'feed';
+    state.view.selectedFeed = 'nofeed';
+    const result = selectors.visiblePosts(state);
+    expect(result).toHaveLength(0);
+  });
+
   it('when previewing a feed', () => {
     const state = clone(_base);
     state.view.routeType = 'preview';

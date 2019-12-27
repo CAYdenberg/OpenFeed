@@ -2,10 +2,10 @@ import React from 'react';
 import FeedsList from './FeedsList';
 import AddFeed from './AddFeed';
 
-const Feeds = ({ reqCloseMobile, setView }) => {
+const Feeds = () => {
   return (
     <React.Fragment>
-      <FeedsList reqCloseMobile={reqCloseMobile} setView={setView} />
+      <FeedsList />
       <AddFeed />
     </React.Fragment>
   );

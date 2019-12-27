@@ -43,7 +43,8 @@ export interface State {
     selectedPost: string | null;
     routeType: 'timeline' | 'feed' | 'settings' | 'preview';
     panel: 'Feeds' | 'Settings';
-    menuIsOpen: boolean;
+    menuOpenMobile: boolean;
+    panelOpenMobile: boolean;
   };
 
   messages: Message[];
@@ -80,7 +81,8 @@ export const getInitialState = (): State => ({
     selectedFeed: null,
     selectedPost: null,
     panel: 'Feeds',
-    menuIsOpen: false,
+    menuOpenMobile: false,
+    panelOpenMobile: false,
   },
 
   messages: [],

@@ -10,6 +10,14 @@ export const findStaleFeed = (state: State) =>
 
 export const timelineFeeds = (state: State) => state.timeline.feeds;
 
+export const selectedPanel = (state: State) => state.view.panel.toLowerCase();
+
+export const isAllSelected = (state: State) =>
+  state.view.routeType === 'timeline';
+
+export const selectedFeed = (state: State) =>
+  state.view.routeType === 'feed' && state.view.selectedFeed;
+
 export const previewForm = (state: State) => ({
   url: state.preview.url,
   loadState: state.preview.loadState,
@@ -30,14 +38,19 @@ export const visiblePosts = (state: State) => {
     }));
   }
 
-  return state.timeline.posts.map(post => {
-    const feed = state.timeline.feeds.find(
-      feed => feed.feed._id === post.parent
-    );
-    return {
-      id: post.jsonFeed.id,
-      post: post.jsonFeed,
-      feed: feed ? feed.feed.displayName : '',
-    };
-  });
+  return state.timeline.posts
+    .filter(post => {
+      if (!state.view.selectedFeed) return true;
+      return state.view.selectedFeed === post.parent;
+    })
+    .map(post => {
+      const feed = state.timeline.feeds.find(
+        feed => feed.feed._id === post.parent
+      );
+      return {
+        id: post.jsonFeed.id,
+        post: post.jsonFeed,
+        feed: feed ? feed.feed.displayName : '',
+      };
+    });
 };
