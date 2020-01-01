@@ -1,12 +1,14 @@
 import React, { useCallback } from 'react';
-import Feeds from './Feeds';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectedPanel } from '../../store/selectors';
+import { selectedPanel, panelOpenMobile } from '../../store/selectors';
 import { viewActions } from '../../store/actions';
+import Feeds from './Feeds';
+import Settings from './Settings';
 
 const ControlPanel = () => {
-  const panel = useSelector(selectedPanel);
   const dispatch = useDispatch();
+  const panel = useSelector(selectedPanel);
+  const isPanelOpenMobile = useSelector(panelOpenMobile);
 
   const setPanel = useCallback(panel => {
     dispatch(viewActions.viewPanel(panel));
@@ -18,7 +20,11 @@ const ControlPanel = () => {
         {['Feeds', 'Settings'].map(name => (
           <a
             className={
-              panel.toLowerCase() === name.toLowerCase() ? 'is-active' : ''
+              panel.toLowerCase() === name.toLowerCase() && isPanelOpenMobile
+                ? 'is-active'
+                : panel.toLowerCase() === name.toLowerCase()
+                ? 'is-active-tablet'
+                : ''
             }
             onClick={() => setPanel(name)}
             key={name}
@@ -28,14 +34,8 @@ const ControlPanel = () => {
         ))}
       </p>
 
-      <div className={/*panelHiddenMobile ? 'is-hidden-mobile' :*/ undefined}>
-        <Feeds />
-
-        {/** panel === 'Feeds' ? (
-          <Feeds reqCloseMobile={reqCloseMobile} setView={setView} />
-        ) : (
-          <Settings view={view} setView={setView} />
-        ) **/}
+      <div className={isPanelOpenMobile ? undefined : 'is-hidden-mobile'}>
+        {panel === 'feeds' ? <Feeds /> : <Settings />}
       </div>
     </nav>
   );

@@ -95,14 +95,6 @@ main {
   align-items: center;
 }
 
-.loading {
-  @extend .loader;
-  margin-left: 0;
-  margin-right: 0;
-  width: 6rem;
-  height: 6rem;
-}
-
 .message-wrapper {
   position: fixed;
   bottom: 0;
@@ -113,4 +105,11 @@ main {
 .message {
   max-width: $tablet;
   margin: 0 auto;
+}
+
+.panel-tabs a.is-active-tablet {
+  @media (min-width: $tablet) {
+    border-bottom-color: $panel-tab-active-border-bottom-color;
+    color: $panel-tab-active-color;
+  }
 }

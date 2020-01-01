@@ -8,6 +8,7 @@ export const constants = {
   FEED: 'view:feed',
   ALL: 'view:all',
   SETTINGS: 'view:pickSettings',
+  TOGGLE_MENU: 'view:toggleMenu',
 };
 const c = constants;
 export const actions = {
@@ -31,6 +32,12 @@ export const actions = {
     return {
       type: c.SETTINGS,
       slug,
+    };
+  },
+
+  toggleMenu: () => {
+    return {
+      type: c.TOGGLE_MENU,
     };
   },
 };
@@ -58,6 +65,7 @@ export const reducer: Reducer<State['view']> = (
     case c.ALL: {
       return update(initialState, {
         routeType: { $set: 'timeline' },
+        selectedFeed: { $set: null },
         panelOpenMobile: { $set: false },
       });
     }
@@ -66,6 +74,12 @@ export const reducer: Reducer<State['view']> = (
       return update(initialState, {
         routeType: { $set: 'settings' },
         panelOpenMobile: { $set: false },
+      });
+    }
+
+    case c.TOGGLE_MENU: {
+      return update(initialState, {
+        menuOpenMobile: { $set: !initialState.menuOpenMobile },
       });
     }
 

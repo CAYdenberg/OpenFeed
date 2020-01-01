@@ -1,21 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-
 import Icon, { twitter } from './Icons';
+import { useSelector } from 'react-redux';
+import { authInfo } from '../store/selectors';
 
-const mapStateToProps = state => {
-  const username = state.status.username;
-  const [provider, name] = username.split('-');
-  return {
-    authenticated: !!username,
-    provider,
-    name,
-  };
-};
+const Account: React.FC = () => {
+  const { isAuthenticated, provider, name } = useSelector(authInfo);
 
-const Account = ({ authenticated, provider, name }) => {
-  if (authenticated) {
+  if (isAuthenticated) {
     return (
       <section className="content">
         <h3>Account Information</h3>
@@ -48,4 +39,4 @@ const Account = ({ authenticated, provider, name }) => {
   }
 };
 
-export default connect(mapStateToProps)(Account);
+export default Account;

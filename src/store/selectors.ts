@@ -5,6 +5,21 @@ export const isDbAvailable = (state: State) => state.system.isDbAvailable;
 
 export const isFirstLoad = (state: State) => state.system.isFirstLoad;
 
+interface AuthInfo {
+  isAuthenticated: boolean;
+  provider: string;
+  name: string;
+}
+export const authInfo = (state: State): AuthInfo => {
+  const username = state.system.username;
+  if (!username) {
+    return { isAuthenticated: false, provider: '', name: '' };
+  }
+
+  const [provider, name] = username.split('-');
+  return { isAuthenticated: true, provider, name };
+};
+
 export const findStaleFeed = (state: State) =>
   state.timeline.feeds.find(feed => feed.loadState === LoadState.Ready);
 
@@ -17,6 +32,13 @@ export const isAllSelected = (state: State) =>
 
 export const selectedFeed = (state: State) =>
   state.view.routeType === 'feed' && state.view.selectedFeed;
+
+export const isSettingsOpen = (state: State) =>
+  state.view.routeType === 'settings';
+
+export const panelOpenMobile = (state: State) => state.view.panelOpenMobile;
+
+export const menuOpenMobile = (state: State) => state.view.menuOpenMobile;
 
 export const previewForm = (state: State) => ({
   url: state.preview.url,
