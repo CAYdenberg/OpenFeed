@@ -29,6 +29,8 @@ export const actions = {
     setTimeout(() => {
       if (urls.isUri(value) && value === getState().preview.url) {
         dispatch(actions.requestPreview(value));
+      } else {
+        dispatch(actions.requestPreviewError());
       }
     }, 200);
   },
@@ -43,6 +45,7 @@ export const actions = {
         )}`,
       },
       response: actions.requestPreviewOk,
+      error: actions.requestPreviewError,
     };
   },
 
@@ -50,6 +53,13 @@ export const actions = {
     return {
       type: c.REQUEST_PREVIEW_OK,
       feed: res,
+    };
+  },
+
+  requestPreviewError: (status?: number) => {
+    return {
+      type: c.REQUEST_PREVIEW_ERROR,
+      status,
     };
   },
 
@@ -91,6 +101,13 @@ export const reducer: Reducer<State['preview']> = (
       return update(initialState, {
         loadState: { $set: LoadState.Loaded },
         feed: { $set: action.feed },
+      });
+    }
+
+    case c.REQUEST_PREVIEW_ERROR: {
+      return update(initialState, {
+        loadState: { $set: LoadState.Error },
+        feed: { $set: null },
       });
     }
 

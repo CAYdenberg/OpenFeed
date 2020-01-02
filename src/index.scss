@@ -19,6 +19,21 @@ main {
   margin-bottom: 3rem;
 }
 
+.tick {
+  display: flex;
+  flex-direction: row;
+
+  &__left {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  &__text {
+    padding-right: 0.25rem;
+  }
+}
+
 .control-panel {
   position: fixed;
   top: $navbar-height;

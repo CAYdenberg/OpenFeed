@@ -16,8 +16,8 @@ const AddFeed: React.FC = () => {
   const onAdd = useCallback(
     e => {
       e.preventDefault();
-      if (!isAddable) return;
-      dispatch(previewActions.addFeed(url, jsonFeed!));
+      if (!isAddable || !jsonFeed) return;
+      dispatch(previewActions.addFeed(url, jsonFeed));
     },
     [jsonFeed, url, isAddable]
   );

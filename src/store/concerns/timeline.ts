@@ -19,6 +19,7 @@ export const constants = {
   REQUEST_FEEDS_OK: 'timeline:requestFeeds:ok',
   CHECK_FEED: 'timeline:checkFeed',
   CHECK_FEED_OK: 'timeline:checkFeed:ok',
+  CHECK_FEED_ERROR: 'timeline:checkFeed:error',
   DELETE_FEED: 'timeline:deleteFeed',
   DELETE_FEED_OK: 'timeline:deletedFeed:ok',
 };
@@ -67,6 +68,13 @@ export const actions = {
         jsonFeed: post,
         parent: id,
       })),
+    };
+  },
+
+  checkFeedError: (status?: number) => {
+    return {
+      type: c.CHECK_FEED_ERROR,
+      status,
     };
   },
 
@@ -130,6 +138,18 @@ export const reducer: Reducer<State['timeline']> = (
         posts: {
           $apply: (posts: State['timeline']['posts']) =>
             mergeTimeline(posts, action.posts),
+        },
+      });
+    }
+
+    case c.CHECK_FEED_ERROR: {
+      const i = initialState.feeds.findIndex(
+        feed => feed.feed._id === action.id
+      );
+      if (i === -1) return initialState;
+      return update(initialState, {
+        feeds: {
+          [i]: { loadState: { $set: LoadState.Error } },
         },
       });
     }
