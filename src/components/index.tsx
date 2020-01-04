@@ -5,14 +5,14 @@ import Timeline from './Timeline';
 import { useSelector } from 'react-redux';
 import { isSettingsOpen } from '../store/selectors';
 import Account from './Account';
-// import Alert from './Alert';
+import Alert from './Alert';
 
 const App = () => {
   const settings = useSelector(isSettingsOpen);
 
   return (
     <React.Fragment>
-      <NavBar hamburgerIsOpen={false} toggleHamburger={Boolean} />
+      <NavBar />
 
       <main>
         <div className="container">
@@ -27,7 +27,7 @@ const App = () => {
         </div>
       </main>
 
-      {/* <Alert /> */}
+      <Alert />
     </React.Fragment>
   );
 };

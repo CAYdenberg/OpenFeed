@@ -17,6 +17,7 @@ import * as comparePosts from '../../helpers/comparePosts';
 export const constants = {
   REQUEST_FEEDS: 'timeline:requestFeeds',
   REQUEST_FEEDS_OK: 'timeline:requestFeeds:ok',
+  REQUEST_FEEDS_ERROR: 'timeline:requestFeeds:error',
   CHECK_FEED: 'timeline:checkFeed',
   CHECK_FEED_OK: 'timeline:checkFeed:ok',
   CHECK_FEED_ERROR: 'timeline:checkFeed:error',
@@ -30,11 +31,22 @@ export const actions = {
     type: c.REQUEST_FEEDS,
     pouch: getFeeds(),
     response: actions.requestFeedsOk,
+    error: actions.requestFeedsError,
   }),
 
   requestFeedsOk: (feeds: SavedFeed[]) => ({
     type: c.REQUEST_FEEDS_OK,
     feeds,
+  }),
+
+  requestFeedsError: (error?: Error) => ({
+    type: c.REQUEST_FEEDS_ERROR,
+    error,
+    notification: {
+      text: 'Error loading your feeds',
+      level: 'error',
+      isDismissable: false,
+    },
   }),
 
   checkFeed: (feed: SavedFeed) => {
@@ -48,6 +60,7 @@ export const actions = {
         )}`,
       },
       response: (res: JsonFeed) => actions.checkFeedOk(res.items, feed._id),
+      error: actions.checkFeedError,
     };
   },
 

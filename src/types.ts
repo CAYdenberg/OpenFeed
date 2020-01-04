@@ -20,7 +20,11 @@ export interface OFDocument<T> {
 export interface Message {
   text: string;
   level: 'info' | 'warning' | 'error';
-  timeout: number;
+  isDismissable: boolean;
+  isDismissed: boolean;
+  timeout?: number;
+  status?: number;
+  error?: Error;
 }
 
 export interface JsonFeedAuthorData {

@@ -79,3 +79,36 @@ describe('visiblePosts', () => {
     expect(result[0]).toHaveProperty('feed', 'Preview Feed');
   });
 });
+
+describe('getMostImportantMessage', () => {
+  it('should be nullish when there are no undismissed messages', () => {
+    const state: any = {
+      messages: [{ isDismissed: true, level: 'error' }],
+    };
+    const result = selectors.getMostImportantMessage(state);
+    expect(result).toEqual({ index: -1, message: null });
+  });
+
+  it('should find the newest un-dismissed error', () => {
+    const state: any = {
+      messages: [
+        { isDismissed: true, level: 'error' },
+        { isDismissed: false, level: 'info' },
+        { isDismissed: false, level: 'error' },
+      ],
+    };
+    const result = selectors.getMostImportantMessage(state);
+    expect(result).toHaveProperty('index', 2);
+  });
+
+  it('should find the newest un-dismissed warning if there are no errors', () => {
+    const state: any = {
+      messages: [
+        { isDismissed: true, level: 'error' },
+        { isDismissed: false, level: 'warning' },
+      ],
+    };
+    const result = selectors.getMostImportantMessage(state);
+    expect(result).toHaveProperty('index', 1);
+  });
+});

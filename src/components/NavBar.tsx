@@ -24,9 +24,9 @@ const NavBar = () => {
             aria-expanded={isHamburgerOpen}
             onClick={toggle}
           >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
           </a>
         </div>
         <div className={`navbar-menu ${isHamburgerOpen ? 'is-active' : ''}`}>

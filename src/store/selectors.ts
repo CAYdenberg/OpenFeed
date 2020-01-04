@@ -76,3 +76,13 @@ export const visiblePosts = (state: State) => {
       };
     });
 };
+
+export const getMostImportantMessage = (state: State) => {
+  const index = ['error', 'warning', 'info'].reduce((index, level) => {
+    if (index !== -1) return index;
+    return state.messages.findIndex(
+      message => !message.isDismissed && message.level === level
+    );
+  }, -1);
+  return { index, message: state.messages[index] || null };
+};

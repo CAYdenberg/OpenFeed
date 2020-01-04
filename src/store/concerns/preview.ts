@@ -11,7 +11,8 @@ export const constants = {
   REQUEST_PREVIEW_OK: 'preview:requestPreview:ok',
   REQUEST_PREVIEW_ERROR: 'preview:requestPreview:error',
   ADD_FEED: 'preview:addFeed',
-  ADD_FEED_OK: 'preview:addFeed:Ok',
+  ADD_FEED_OK: 'preview:addFeed:ok',
+  ADD_FEED_ERROR: 'preview:addFeed:error',
 };
 const c = constants;
 
@@ -70,6 +71,7 @@ export const actions = {
       posts,
       pouch: putFeed(url, jsonFeed),
       response: (feed: SavedFeed) => actions.addFeedOk(feed, posts),
+      error: actions.addFeedError,
     };
   },
 
@@ -77,7 +79,24 @@ export const actions = {
     type: c.ADD_FEED_OK,
     feed,
     posts: posts.map(post => ({ jsonFeed: post, parent: feed._id })),
+    notification: {
+      text: 'Added feed',
+      level: 'info',
+      isDismissable: true,
+    },
   }),
+
+  addFeedError: (error?: Error) => {
+    return {
+      type: c.ADD_FEED_ERROR,
+      error,
+      notification: {
+        text: 'Unable to add feed',
+        level: 'error',
+        isDismissable: true,
+      },
+    };
+  },
 };
 
 export const reducer: Reducer<State['preview']> = (
