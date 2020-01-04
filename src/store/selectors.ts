@@ -80,9 +80,9 @@ export const visiblePosts = (state: State) => {
 export const getMostImportantMessage = (state: State) => {
   const index = ['error', 'warning', 'info'].reduce((index, level) => {
     if (index !== -1) return index;
-    return state.messages.findIndex(
-      message => !message.isDismissed && message.level === level
+    return state.notifications.findIndex(
+      notification => !notification.isDismissed && notification.level === level
     );
   }, -1);
-  return { index, message: state.messages[index] || null };
+  return { index, message: state.notifications[index] || null };
 };

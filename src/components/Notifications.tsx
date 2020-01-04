@@ -1,20 +1,20 @@
 import React, { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getMostImportantMessage } from '../store/selectors';
-import { messageActions } from '../store/actions';
+import { notificationActions } from '../store/actions';
 
 export const Alert = () => {
   const { index, message } = useSelector(getMostImportantMessage);
   const dispatch = useDispatch();
 
   const handleDismiss = useCallback(() => {
-    dispatch(messageActions.dismiss(index));
+    dispatch(notificationActions.dismiss(index));
   }, [index]);
 
   useEffect(() => {
     if (message && message.timeout) {
       setTimeout(() => {
-        dispatch(messageActions.dismiss(index));
+        dispatch(notificationActions.dismiss(index));
       }, message.timeout);
     }
   }, [index]);

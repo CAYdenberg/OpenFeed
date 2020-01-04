@@ -81,9 +81,9 @@ describe('visiblePosts', () => {
 });
 
 describe('getMostImportantMessage', () => {
-  it('should be nullish when there are no undismissed messages', () => {
+  it('should be nullish when there are no undismissed notifications', () => {
     const state: any = {
-      messages: [{ isDismissed: true, level: 'error' }],
+      notifications: [{ isDismissed: true, level: 'error' }],
     };
     const result = selectors.getMostImportantMessage(state);
     expect(result).toEqual({ index: -1, message: null });
@@ -91,7 +91,7 @@ describe('getMostImportantMessage', () => {
 
   it('should find the newest un-dismissed error', () => {
     const state: any = {
-      messages: [
+      notifications: [
         { isDismissed: true, level: 'error' },
         { isDismissed: false, level: 'info' },
         { isDismissed: false, level: 'error' },
@@ -103,7 +103,7 @@ describe('getMostImportantMessage', () => {
 
   it('should find the newest un-dismissed warning if there are no errors', () => {
     const state: any = {
-      messages: [
+      notifications: [
         { isDismissed: true, level: 'error' },
         { isDismissed: false, level: 'warning' },
       ],

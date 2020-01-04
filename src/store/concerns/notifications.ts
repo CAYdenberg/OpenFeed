@@ -16,8 +16,8 @@ export const actions = {
   },
 };
 
-export const reducer: Reducer<State['messages']> = (
-  initialState: State['messages'],
+export const reducer: Reducer<State['notifications']> = (
+  initialState: State['notifications'],
   action: any
 ) => {
   if (action.type === c.DISMISS) {

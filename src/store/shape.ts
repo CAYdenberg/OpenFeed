@@ -3,7 +3,7 @@ import { Reducer } from 'redux';
 import {
   ExternalPost,
   LoadState,
-  Message,
+  Notification,
   SavedFeed,
   JsonFeed,
 } from '../types';
@@ -47,7 +47,7 @@ export interface State {
     panelOpenMobile: boolean;
   };
 
-  messages: Message[];
+  notifications: Notification[];
 }
 
 export const getInitialState = (): State => ({
@@ -85,7 +85,7 @@ export const getInitialState = (): State => ({
     panelOpenMobile: false,
   },
 
-  messages: [],
+  notifications: [],
 });
 
 export type AugmentedReducer<T> = (

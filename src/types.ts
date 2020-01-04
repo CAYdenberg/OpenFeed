@@ -17,7 +17,7 @@ export interface OFDocument<T> {
   parent?: string;
 }
 
-export interface Message {
+export interface Notification {
   text: string;
   level: 'info' | 'warning' | 'error';
   isDismissable: boolean;

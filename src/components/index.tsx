@@ -5,7 +5,7 @@ import Timeline from './Timeline';
 import { useSelector } from 'react-redux';
 import { isSettingsOpen } from '../store/selectors';
 import Account from './Account';
-import Alert from './Alert';
+import Notifications from './Notifications';
 
 const App = () => {
   const settings = useSelector(isSettingsOpen);
@@ -27,7 +27,7 @@ const App = () => {
         </div>
       </main>
 
-      <Alert />
+      <Notifications />
     </React.Fragment>
   );
 };
