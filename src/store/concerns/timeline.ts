@@ -13,6 +13,7 @@ import { findStaleFeed } from '../selectors';
 import { constants as previewConstants } from './preview';
 import { mergeArrays } from '../../helpers';
 import * as comparePosts from '../../helpers/comparePosts';
+import { applyFeedChange } from '../../helpers/applyChange';
 
 export const constants = {
   REQUEST_FEEDS: 'timeline:requestFeeds',
@@ -191,6 +192,15 @@ export const reducer: Reducer<State['timeline']> = (
         posts: {
           $apply: (posts: State['timeline']['posts']) =>
             mergeTimeline(posts, action.posts),
+        },
+      });
+    }
+
+    case '@@koala-redux/CHANGE': {
+      const process = applyFeedChange(action.updates, action.deletions);
+      return update(initialState, {
+        feeds: {
+          $apply: process,
         },
       });
     }
