@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Post from './Post';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { visiblePosts } from '../../store/selectors';
+import { viewActions } from '../../store/actions';
 
 const Timeline: React.FC = () => {
   const posts = useSelector(visiblePosts);
+  const dispatch = useDispatch();
+
+  const handleOpenPost = useCallback((id: string) => {
+    dispatch(viewActions.openPost(id));
+  }, []);
 
   if (!posts.length) {
     return <h3 className="is-size-3 has-text-centered">No posts</h3>;
@@ -16,7 +22,7 @@ const Timeline: React.FC = () => {
         <Post
           post={post.post}
           feed={post.feed}
-          onOpenPost={Boolean}
+          handleOpenPost={handleOpenPost}
           isOpen={false}
           key={post.id}
         />

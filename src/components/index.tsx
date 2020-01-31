@@ -3,11 +3,12 @@ import NavBar from './NavBar';
 import ControlPanel from './ControlPanel';
 import Timeline from './Timeline';
 import { useSelector } from 'react-redux';
-import { isSettingsOpen } from '../store/selectors';
+import { isSettingsOpen, selectedPost } from '../store/selectors';
 import Account from './Account';
 import Notifications from './Notifications';
 
 const App = () => {
+  const post = useSelector(selectedPost);
   const settings = useSelector(isSettingsOpen);
 
   return (

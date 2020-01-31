@@ -33,6 +33,8 @@ export const isAllSelected = (state: State) =>
 export const selectedFeed = (state: State) =>
   state.view.routeType === 'feed' && state.view.selectedFeed;
 
+export const selectedPost = (state: State) => state.view.selectedPost;
+
 export const isSettingsOpen = (state: State) =>
   state.view.routeType === 'settings';
 
