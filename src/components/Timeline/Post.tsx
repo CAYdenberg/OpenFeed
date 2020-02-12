@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { DateTime } from 'luxon';
 import DOMPurify from 'dompurify';
-import Icon, { openOriginal } from '../Icons';
+import Icon, { openOriginal, save, unsave } from '../Icons';
 import { JsonFeedPostData } from '../../types';
 
 interface Props {
   post: JsonFeedPostData;
   isOpen: boolean;
+  isSaved?: boolean;
   feed?: string;
   onOpenPost: (id: string) => void;
+  handleClickSave: (id: string) => void;
 }
 
-const Post: React.FC<Props> = ({ feed, post, isOpen }) => {
+const Post: React.FC<Props> = ({
+  feed,
+  post,
+  isSaved,
+  isOpen,
+  handleClickSave,
+}) => {
   const {
     id,
     title,
@@ -23,6 +31,14 @@ const Post: React.FC<Props> = ({ feed, post, isOpen }) => {
     url,
   } = post;
   const date = date_published ? DateTime.fromISO(date_published) : null;
+
+  const onClickSave = useCallback(
+    (e: React.SyntheticEvent) => {
+      e.preventDefault();
+      handleClickSave(post.id);
+    },
+    [feed, post, handleClickSave]
+  );
 
   return (
     <div className="card card--post" id={id}>
@@ -53,6 +69,13 @@ const Post: React.FC<Props> = ({ feed, post, isOpen }) => {
           )}
           <span className="metadata__item">{author && author.name}</span>
           <span className="metadata__item">{feed}</span>
+          <span className="metadata__item">
+            <a role="button" onClick={onClickSave}>
+              <span className="icon">
+                <Icon icon={isSaved ? unsave : save} />
+              </span>
+            </a>
+          </span>
           {url && (
             <span className="metadata__item">
               <a href={url} target="_blank">

@@ -5,6 +5,7 @@ import {
   filterObject,
   filterObjectByKeys,
   mergeArrays,
+  applyPush,
 } from '../index';
 
 describe('getId', () => {
@@ -145,5 +146,15 @@ describe('mergeArrays', () => {
 
     const result = mergeArrays(compareFunction)(initial, toBeAdded);
     expect(result).toEqual([1, 5, 10]);
+  });
+});
+
+describe('applyPush', () => {
+  it('push a new item to the beginning of an array', () => {
+    const init = ['item 1', 'item 2'];
+    deepFreeze(init);
+    const result = applyPush('item 0')(init);
+    expect(result).toHaveLength(3);
+    expect(result[0]).toEqual('item 0');
   });
 });

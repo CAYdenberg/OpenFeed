@@ -1,5 +1,11 @@
 import { State } from './shape';
-import { LoadState } from '../types';
+import {
+  LoadState,
+  ExternalPost,
+  JsonFeedData,
+  JsonFeedPostData,
+} from '../types';
+import { postsActions } from './actions';
 
 export const isDbAvailable = (state: State) => state.system.isDbAvailable;
 
@@ -30,6 +36,12 @@ export const selectedPanel = (state: State) => state.view.panel.toLowerCase();
 export const isAllSelected = (state: State) =>
   state.view.routeType === 'timeline';
 
+export const isPostsSelected = (state: State) =>
+  state.view.routeType === 'posts';
+
+export const needPosts = (state: State) =>
+  isPostsSelected(state) && state.posts.loadState === LoadState.Ready;
+
 export const selectedFeed = (state: State) =>
   state.view.routeType === 'feed' && state.view.selectedFeed;
 
@@ -50,13 +62,32 @@ export const previewForm = (state: State) => ({
     state.preview.feed.items,
 });
 
-export const visiblePosts = (state: State) => {
+type VisiblePosts = Array<{
+  id: string;
+  post: JsonFeedPostData;
+  feed: string;
+  isSaved?: boolean;
+}>;
+
+export const visiblePosts = (state: State): VisiblePosts => {
+  if (state.view.routeType === 'posts') {
+    return state.posts.data.map(post => ({
+      id: post.jsonFeed.id,
+      post: post.jsonFeed,
+      feed: post.parent,
+      isSaved: true,
+    }));
+  }
+
+  const savedPostIds = state.posts.data.map(post => post.jsonFeed.id);
+
   if (state.view.routeType === 'preview') {
     if (!state.preview.feed) return [];
     return state.preview.feed.items.map(post => ({
       id: post.id,
       post,
       feed: state.preview.feed!.title || '',
+      isSaved: savedPostIds.includes(post.id),
     }));
   }
 
@@ -73,6 +104,7 @@ export const visiblePosts = (state: State) => {
         id: post.jsonFeed.id,
         post: post.jsonFeed,
         feed: feed ? feed.feed.displayName : '',
+        isSaved: savedPostIds.includes(post.jsonFeed.id),
       };
     });
 };

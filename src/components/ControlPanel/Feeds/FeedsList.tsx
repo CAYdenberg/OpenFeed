@@ -5,6 +5,7 @@ import {
   timelineFeeds,
   selectedFeed,
   isAllSelected,
+  isPostsSelected,
 } from '../../../store/selectors';
 import { SavedFeed, LoadState } from '../../../types';
 import Icon, { invalid } from '../../Icons';
@@ -13,6 +14,7 @@ export const FeedsList = () => {
   const feeds = useSelector(timelineFeeds);
   const active = useSelector(selectedFeed);
   const viewingAll = useSelector(isAllSelected);
+  const viewingSavedPosts = useSelector(isPostsSelected);
   const dispatch = useDispatch();
 
   const selectFeed = useCallback(
@@ -21,6 +23,7 @@ export const FeedsList = () => {
   );
 
   const selectAll = useCallback(() => dispatch(viewActions.viewAll()), []);
+  const selectPosts = useCallback(() => dispatch(viewActions.viewPosts()), []);
 
   const handleDelete = useCallback(
     (feed: SavedFeed) => dispatch(timelineActions.deleteFeed(feed)),
@@ -34,6 +37,15 @@ export const FeedsList = () => {
         onClick={selectAll}
       >
         All
+      </a>
+
+      <a
+        className={`panel-block is-flex ${
+          viewingSavedPosts ? 'is-active' : ''
+        }`}
+        onClick={selectPosts}
+      >
+        Saved Posts
       </a>
 
       {feeds.map(feed => {

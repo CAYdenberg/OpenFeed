@@ -1,6 +1,6 @@
 import { State } from './shape';
 import * as selectors from './selectors';
-import { timelineActions } from './actions';
+import { timelineActions, postsActions } from './actions';
 
 export default [
   [
@@ -9,8 +9,6 @@ export default [
       !selectors.isDbAvailable(prevState),
     timelineActions.requestFeeds(),
   ],
-  [
-    (currentState: State) => selectors.findStaleFeed(currentState),
-    timelineActions.debouncedCheckFeeds(),
-  ],
+  [selectors.findStaleFeed, timelineActions.debouncedCheckFeeds()],
+  [selectors.needPosts, postsActions.requestPosts()],
 ];

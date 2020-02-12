@@ -5,10 +5,6 @@ interface PouchDoc {
   id?: string;
 }
 
-interface Generic {
-  [key: string]: string | number | boolean | null | undefined | object;
-}
-
 export const getId = (record: PouchDoc): string => {
   const idField = record.id || record._id;
   if (!idField) {
@@ -31,23 +27,30 @@ export const determineFeedId = (url: string): string => {
   return `pheed|feed|${normalizedUrl}`;
 };
 
-export const filterObject = (obj: Generic, f: Function = Boolean) => {
+export const filterObject = (
+  obj: { [key: string]: any },
+  f: (value: any, key: string) => boolean = Boolean
+) => {
   if (!obj) return {};
 
-  return Object.keys(obj).reduce((acc: Generic, key: string) => {
+  return Object.keys(obj).reduce((acc, key: string) => {
     const value = obj[key];
     if (f(value, key)) {
       acc[key] = value;
     }
     return acc;
-  }, {});
+  }, new Object() as { [key: string]: any });
 };
 
-export const filterObjectByKeys = (obj: Generic, keys: string[]) =>
-  filterObject(obj, (value: any, key: string) => keys.indexOf(key) !== -1);
+export const filterObjectByKeys = (
+  obj: { [key: string]: any },
+  keys: string[]
+) => filterObject(obj, (value: any, key: string) => keys.indexOf(key) !== -1);
 
-export const excludeKeysFromObject = (obj: Generic, keys: string[]) =>
-  filterObject(obj, (value: any, key: string) => keys.indexOf(key) === -1);
+export const excludeKeysFromObject = (
+  obj: { [key: string]: any },
+  keys: string[]
+) => filterObject(obj, (value: any, key: string) => keys.indexOf(key) === -1);
 
 export const mergeArrays = <T>(compare: (a: T, b: T) => number) => (
   oldItems: T[],
@@ -66,4 +69,9 @@ export const mergeArrays = <T>(compare: (a: T, b: T) => number) => (
       ...acc.slice(indexOfInsertion),
     ];
   }, oldItems);
+};
+
+export const applyPush = <T>(newItem: T) => (initialState: T[]): T[] => {
+  if (initialState.includes(newItem)) return initialState;
+  return [newItem, ...initialState];
 };

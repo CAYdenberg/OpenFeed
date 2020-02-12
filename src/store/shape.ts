@@ -6,6 +6,8 @@ import {
   Notification,
   SavedFeed,
   JsonFeed,
+  JsonFeedPostData,
+  SavedPost,
 } from '../types';
 
 export interface State {
@@ -35,13 +37,13 @@ export interface State {
 
   posts: {
     loadState: LoadState;
-    data: ExternalPost[];
+    data: SavedPost[];
   };
 
   view: {
     selectedFeed: string | null;
     selectedPost: string | null;
-    routeType: 'timeline' | 'feed' | 'settings' | 'preview';
+    routeType: 'timeline' | 'feed' | 'settings' | 'preview' | 'posts';
     panel: 'Feeds' | 'Settings';
     menuOpenMobile: boolean;
     panelOpenMobile: boolean;

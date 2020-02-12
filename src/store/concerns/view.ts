@@ -7,6 +7,7 @@ export const constants = {
   PANEL: 'view:panel',
   FEED: 'view:feed',
   ALL: 'view:all',
+  POSTS: 'view:posts',
   SETTINGS: 'view:pickSettings',
   TOGGLE_MENU: 'view:toggleMenu',
 };
@@ -27,6 +28,8 @@ export const actions = {
   },
 
   viewAll: () => ({ type: c.ALL }),
+
+  viewPosts: () => ({ type: c.POSTS }),
 
   viewSettings: (slug: string) => {
     return {
@@ -65,6 +68,14 @@ export const reducer: Reducer<State['view']> = (
     case c.ALL: {
       return update(initialState, {
         routeType: { $set: 'timeline' },
+        selectedFeed: { $set: null },
+        panelOpenMobile: { $set: false },
+      });
+    }
+
+    case c.POSTS: {
+      return update(initialState, {
+        routeType: { $set: 'posts' },
         selectedFeed: { $set: null },
         panelOpenMobile: { $set: false },
       });

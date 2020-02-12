@@ -1,4 +1,11 @@
-import { JsonFeedData, SavedFeed, OFDocumentType } from '../types';
+import {
+  JsonFeedData,
+  SavedFeed,
+  OFDocumentType,
+  ExternalPost,
+  SavedPost,
+  JsonFeedPostData,
+} from '../types';
 import normalizeUrl from 'normalize-url';
 import { filterObjectByKeys } from '../helpers';
 
@@ -45,5 +52,18 @@ export const createFeed = (
     jsonFeed: filterObjectByKeys(properties, FEED_KEYS),
     type: OFDocumentType.Feed,
     _id: generateId(OFDocumentType.Feed, normalUrl),
+  };
+};
+
+export const createSavedPost = (
+  parent: string,
+  properties: JsonFeedPostData
+): SavedPost | null => {
+  if (!properties.id) return null;
+  return {
+    _id: generateId(OFDocumentType.ExternalPost, properties.id),
+    type: OFDocumentType.ExternalPost,
+    parent,
+    jsonFeed: filterObjectByKeys(properties, POST_KEYS) as JsonFeedPostData,
   };
 };
