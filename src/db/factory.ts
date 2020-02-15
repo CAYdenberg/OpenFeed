@@ -2,15 +2,15 @@ import {
   JsonFeedData,
   SavedFeed,
   OFDocumentType,
-  ExternalPost,
   SavedPost,
   JsonFeedPostData,
 } from '../types';
 import normalizeUrl from 'normalize-url';
 import { filterObjectByKeys } from '../helpers';
+import config from '../config';
 
 export const generateId = (documentType: OFDocumentType, identifier: string) =>
-  `openfeed|${documentType}|${identifier}`;
+  `${config.APP_NAME}|${documentType}|${identifier}`;
 
 const AUTHOR_KEYS = ['name', 'url', 'avatar'];
 

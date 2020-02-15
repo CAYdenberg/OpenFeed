@@ -1,7 +1,7 @@
 import { LoadState } from '../../types';
 import { applyFeedChange } from '../applyChange';
 
-describe('reconcileDocs', () => {
+describe('applyFeedChange', () => {
   const initial: any = [
     {
       loadState: LoadState.Ready,

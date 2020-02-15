@@ -60,6 +60,7 @@ export const actions = {
           url
         )}`,
       },
+      time: Date.now(),
       response: (res: JsonFeed) => actions.checkFeedOk(res.items, feed._id),
       error: actions.checkFeedError,
     };
@@ -135,7 +136,9 @@ export const reducer: Reducer<State['timeline']> = (
       if (i === -1) return initialState;
       return update(initialState, {
         feeds: {
-          [i]: { loadState: { $set: LoadState.Loading } },
+          [i]: {
+            $merge: { loadState: LoadState.Loading, checkedAt: action.time },
+          },
         },
       });
     }

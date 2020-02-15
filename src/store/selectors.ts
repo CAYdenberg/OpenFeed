@@ -1,11 +1,6 @@
 import { State } from './shape';
-import {
-  LoadState,
-  ExternalPost,
-  JsonFeedData,
-  JsonFeedPostData,
-} from '../types';
-import { postsActions } from './actions';
+import config from '../config';
+import { LoadState, JsonFeedPostData } from '../types';
 
 export const isDbAvailable = (state: State) => state.system.isDbAvailable;
 
@@ -27,7 +22,12 @@ export const authInfo = (state: State): AuthInfo => {
 };
 
 export const findStaleFeed = (state: State) =>
-  state.timeline.feeds.find(feed => feed.loadState === LoadState.Ready);
+  state.timeline.feeds.find(
+    feed =>
+      feed.loadState === LoadState.Ready ||
+      (feed.checkedAt &&
+        Date.now() - feed.checkedAt > config.FEED_CHECK_INTERVAL)
+  );
 
 export const timelineFeeds = (state: State) => state.timeline.feeds;
 
@@ -40,7 +40,7 @@ export const isPostsSelected = (state: State) =>
   state.view.routeType === 'posts';
 
 export const needPosts = (state: State) =>
-  isPostsSelected(state) && state.posts.loadState === LoadState.Ready;
+  state.system.isDbAvailable && state.posts.loadState === LoadState.Ready;
 
 export const selectedFeed = (state: State) =>
   state.view.routeType === 'feed' && state.view.selectedFeed;
