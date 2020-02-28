@@ -1,19 +1,12 @@
 import { applyMiddleware } from 'redux';
-import SagaMiddleware from 'redux-saga';
 import reduxPopsicle from 'redux-popsicle';
+import thunk from 'redux-thunk';
 
 import KoalaMiddleware from './redux-koala';
-import scroll from './scroll';
+// import scroll from './scroll';
 
 const koalaMiddleware = KoalaMiddleware(process.env.KOALA_URI);
 
-export const sagaMiddleware = SagaMiddleware();
-
-const middleware = applyMiddleware(
-  reduxPopsicle,
-  koalaMiddleware,
-  sagaMiddleware,
-  scroll
-);
+const middleware = applyMiddleware(thunk, reduxPopsicle, koalaMiddleware);
 
 export default middleware;

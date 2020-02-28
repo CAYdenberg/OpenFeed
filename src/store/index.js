@@ -1,29 +1,31 @@
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import middleware, { sagaMiddleware } from './middleware';
-import rootSaga from './sagas';
+import middleware from './middleware';
+import { getInitialState } from './shape';
+import reducer from './reducer';
+import tasks from './tasks';
+import config from '../config';
+import { timelineActions } from './actions';
 
-import { combineReducers } from './reduxHelpers';
-import { reducer as newFeedReducer } from './newFeed';
-import { reducer as feedsReducer } from './feeds';
-import { reducer as postsReducer } from './posts';
-import { reducer as statusReducer } from './status';
-import { reducer as uiReducer } from './ui';
-import { reducer as errorsRedcuer } from './errors';
+const store = createStore(
+  reducer,
+  getInitialState(),
+  composeWithDevTools(middleware)
+);
 
-const reducer = combineReducers({
-  newFeed: newFeedReducer,
-  feeds: feedsReducer,
-  posts: postsReducer,
-  status: statusReducer,
-  ui: uiReducer,
-  errors: errorsRedcuer,
+let currentState = getInitialState();
+store.subscribe(() => {
+  let previousState = currentState;
+  currentState = store.getState();
+
+  tasks.forEach(task => {
+    if (task[0](currentState, previousState)) store.dispatch(task[1]);
+  });
 });
 
-const store = createStore(reducer, composeWithDevTools(middleware));
-
-sagaMiddleware.run(rootSaga);
+// setInterval(() => {
+//   store.dispatch(timelineActions.debouncedCheckFeeds());
+// }, config.FEED_CHECK_INTERVAL);
 
 window.store = store;
-
 export default store;

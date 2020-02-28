@@ -4,6 +4,8 @@ import {
   determineFeedId,
   filterObject,
   filterObjectByKeys,
+  mergeArrays,
+  applyPush,
 } from '../index';
 
 describe('getId', () => {
@@ -110,5 +112,49 @@ describe('filterObjectByKeys', () => {
   it('should exlude properties that have not been specified', () => {
     const filtered = filterObjectByKeys(original, ['name', 'email']);
     expect(filtered).not.toHaveProperty('class');
+  });
+});
+
+describe('mergeArrays', () => {
+  const compareFunction = (a, b) => a - b;
+
+  it('should merge new items into an array and produce a sorted array', () => {
+    const initial = [1, 10];
+    deepFreeze(initial);
+    const toBeAdded = [3, 15];
+    deepFreeze(toBeAdded);
+
+    const result = mergeArrays(compareFunction)(initial, toBeAdded);
+    expect(result).toEqual([1, 3, 10, 15]);
+  });
+
+  it('should assume the old array is already in order', () => {
+    const initial = [5, 1, 2, 3, 4];
+    deepFreeze(initial);
+    const toBeAdded = [1.5, 3.5, 5.5];
+    deepFreeze(toBeAdded);
+
+    const result = mergeArrays(compareFunction)(initial, toBeAdded);
+    expect(result).toEqual([1.5, 3.5, 5, 1, 2, 3, 4, 5.5]);
+  });
+
+  it('should place new items at the beginning of the feed', () => {
+    const initial = [5, 10];
+    deepFreeze(initial);
+    const toBeAdded = [1];
+    deepFreeze(toBeAdded);
+
+    const result = mergeArrays(compareFunction)(initial, toBeAdded);
+    expect(result).toEqual([1, 5, 10]);
+  });
+});
+
+describe('applyPush', () => {
+  it('push a new item to the beginning of an array', () => {
+    const init = ['item 1', 'item 2'];
+    deepFreeze(init);
+    const result = applyPush('item 0')(init);
+    expect(result).toHaveLength(3);
+    expect(result[0]).toEqual('item 0');
   });
 });
