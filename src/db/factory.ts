@@ -12,7 +12,7 @@ import config from '../config';
 export const generateId = (documentType: OFDocumentType, identifier: string) =>
   `${config.APP_NAME}|${documentType}|${identifier}`;
 
-const AUTHOR_KEYS = ['name', 'url', 'avatar'];
+// const AUTHOR_KEYS = ['name', 'url', 'avatar'];
 
 const FEED_KEYS = [
   'version',

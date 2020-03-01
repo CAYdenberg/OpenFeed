@@ -3,7 +3,7 @@
 import clone from 'lodash.clonedeep';
 import * as selectors from '../selectors';
 import { State, getInitialState } from '../shape';
-import { OFDocumentType, LoadState } from '../../types';
+import { OFDocumentType } from '../../types';
 
 const _base: State = {
   ...getInitialState(),

@@ -1,14 +1,18 @@
-import deepFreeze from 'deep-freeze';
-import { Action } from 'redux';
+// import deepFreeze from 'deep-freeze';
+// import { Action } from 'redux';
 import reducer from '../reducer';
-import * as actions from '../actions';
-import * as selectors from '../selectors';
-import { getInitialState } from '../shape';
+// import * as actions from '../actions';
+// import * as selectors from '../selectors';
+// import { getInitialState } from '../shape';
 
-const runActions = (actions: Action[]) =>
-  actions.reduce((state, action) => {
-    deepFreeze(state);
-    return reducer(state, action);
-  }, getInitialState());
+// const runActions = (actions: Action[]) =>
+//   actions.reduce((state, action) => {
+//     deepFreeze(state);
+//     return reducer(state, action);
+//   }, getInitialState());
 
-test.todo('reducer tests');
+describe('reducer', () => {
+  it.todo('reducer tests', () => {
+    expect(reducer).toBeTruthy();
+  });
+});

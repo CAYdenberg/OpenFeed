@@ -6,7 +6,6 @@ import {
   Notification,
   SavedFeed,
   JsonFeed,
-  JsonFeedPostData,
   SavedPost,
 } from '../types';
 

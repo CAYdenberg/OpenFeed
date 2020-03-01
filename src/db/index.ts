@@ -1,14 +1,10 @@
-import * as PouchDB from 'pouchdb';
+import * as PouchDB from 'pouchdb'; // tslint:disable:no-unused-vars
 import { Store } from 'redux';
 import * as selectors from '../store/selectors';
-import {
-  SavedFeed,
-  JsonFeed,
-  SavedPost,
-  JsonFeedPostData,
-  OFDocumentType,
-} from '../types';
+import { SavedFeed, JsonFeed, SavedPost, OFDocumentType } from '../types';
 import { createFeed, generateId } from './factory';
+
+type Database = PouchDB.Database;
 
 export const getFeeds = () => (db: PouchDB.Database, store: Store) => {
   let query: Promise<SavedFeed[]>;
@@ -43,7 +39,7 @@ export const putFeed = (url: string, jsonFeed: JsonFeed) => (
   });
 };
 
-export const deleteFeed = (feed: SavedFeed) => (db: PouchDB.Database) => {
+export const deleteFeed = (feed: SavedFeed) => (db: Database) => {
   if (!feed._rev) return;
   return db.remove(feed._id, feed._rev);
 };
@@ -58,7 +54,7 @@ export const getPosts = () => (db: PouchDB.Database) => {
     .then(res => res.docs as SavedPost[]);
 };
 
-export const savePost = (post: SavedPost) => (db: PouchDB.Database) => {
+export const savePost = (post: SavedPost) => (db: Database) => {
   return db.put(post).catch(err => {
     if (err.status === 409) {
       return Promise.resolve();
@@ -66,7 +62,7 @@ export const savePost = (post: SavedPost) => (db: PouchDB.Database) => {
   });
 };
 
-export const unsavePost = (id: string) => (db: PouchDB.Database) => {
+export const unsavePost = (id: string) => (db: Database) => {
   const _id = generateId(OFDocumentType.ExternalPost, id);
   return db
     .get(_id)
@@ -77,3 +73,7 @@ export const unsavePost = (id: string) => (db: PouchDB.Database) => {
       }
     });
 };
+
+// the following line hacks around TypeScript thinking we are not "using"
+// PouchDB in this file
+export const uselessDatabaseDoNotUse = PouchDB;
