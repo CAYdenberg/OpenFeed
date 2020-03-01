@@ -14,7 +14,6 @@ import { constants as previewConstants } from './preview';
 import { mergeArrays } from '../../helpers';
 import * as comparePosts from '../../helpers/comparePosts';
 import { applyFeedChange } from '../../helpers/applyChange';
-import Post from '../../components/Timeline/Post';
 
 export const constants = {
   REQUEST_FEEDS: 'timeline:requestFeeds',
