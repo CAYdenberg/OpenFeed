@@ -14,6 +14,7 @@ import { constants as previewConstants } from './preview';
 import { mergeArrays } from '../../helpers';
 import * as comparePosts from '../../helpers/comparePosts';
 import { applyFeedChange } from '../../helpers/applyChange';
+import Post from '../../components/Timeline/Post';
 
 export const constants = {
   REQUEST_FEEDS: 'timeline:requestFeeds',
@@ -148,13 +149,19 @@ export const reducer: Reducer<State['timeline']> = (
         feed => feed.feed._id === action.id
       );
       if (i === -1) return initialState;
+
+      const oldIds = initialState.posts.map(post => post.jsonFeed.id);
+      const newPosts = action.posts.filter(
+        (post: ExternalPost) => !oldIds.includes(post.jsonFeed.id)
+      );
+
       return update(initialState, {
         feeds: {
           [i]: { loadState: { $set: LoadState.Loaded } },
         },
         posts: {
           $apply: (posts: State['timeline']['posts']) =>
-            mergeTimeline(posts, action.posts),
+            mergeTimeline(posts, newPosts),
         },
       });
     }
