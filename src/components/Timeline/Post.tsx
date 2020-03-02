@@ -9,7 +9,7 @@ interface Props {
   isOpen: boolean;
   isSaved?: boolean;
   feed?: string;
-  onOpenPost: (id: string) => void;
+  handleClickPost: (id: string) => void;
   handleClickSave: (id: string) => void;
 }
 
@@ -18,6 +18,7 @@ const Post: React.FC<Props> = ({
   post,
   isSaved,
   isOpen,
+  handleClickPost,
   handleClickSave,
 }) => {
   const {
@@ -32,6 +33,14 @@ const Post: React.FC<Props> = ({
   } = post;
   const date = date_published ? DateTime.fromISO(date_published) : null;
 
+  const onClickPost = useCallback(
+    (e: React.SyntheticEvent) => {
+      e.preventDefault();
+      handleClickPost && handleClickPost(id);
+    },
+    [handleClickPost, id]
+  );
+
   const onClickSave = useCallback(
     (e: React.SyntheticEvent) => {
       e.preventDefault();
@@ -42,21 +51,20 @@ const Post: React.FC<Props> = ({
 
   return (
     <div className="card card--post" id={id}>
-      <a href="#" className="card-header" onClick={Boolean}>
+      <a href="#" className="card-header" onClick={onClickPost}>
         <h3 className="card-header-title">{title}</h3>
       </a>
 
       <div className="card-content">
         {isOpen && content_html ? (
           <div
+            className="content"
             dangerouslySetInnerHTML={{
               __html: DOMPurify.sanitize(content_html),
             }}
           />
         ) : isOpen && content_text ? (
           <div>{content_text}</div>
-        ) : isOpen ? (
-          <div />
         ) : (
           <p className="card__summary">{summary}</p>
         )}

@@ -1,11 +1,13 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import Post from './Post';
 import { useSelector, useDispatch } from 'react-redux';
-import { postsActions } from '../../store/actions';
-import { visiblePosts } from '../../store/selectors';
+import { postsActions, viewActions } from '../../store/actions';
+import { visiblePosts, selectedPost } from '../../store/selectors';
+import { scrollIntoView } from '../../dom';
 
 const Timeline: React.FC = () => {
   const posts = useSelector(visiblePosts);
+  const openPost = useSelector(selectedPost);
   const dispatch = useDispatch();
 
   const handleClickSave = useCallback(
@@ -19,6 +21,15 @@ const Timeline: React.FC = () => {
     [posts]
   );
 
+  const handleClickPost = useCallback(
+    (id: string) => dispatch(viewActions.selectPost(id)),
+    []
+  );
+
+  useEffect(() => {
+    scrollIntoView(openPost || null);
+  }, [openPost]);
+
   if (!posts.length) {
     return <h3 className="is-size-3 has-text-centered">No posts</h3>;
   }
@@ -29,9 +40,9 @@ const Timeline: React.FC = () => {
         <Post
           post={post.post}
           feed={post.feed}
-          onOpenPost={Boolean}
-          isOpen={false}
+          isOpen={post.id === openPost}
           isSaved={post.isSaved}
+          handleClickPost={handleClickPost}
           handleClickSave={handleClickSave}
           key={post.id}
         />
