@@ -8,6 +8,7 @@ export const constants = {
   FEED: 'view:feed',
   ALL: 'view:all',
   POSTS: 'view:posts',
+  SELECT_POST: 'view:openPost',
   SETTINGS: 'view:pickSettings',
   TOGGLE_MENU: 'view:toggleMenu',
 };
@@ -30,6 +31,11 @@ export const actions = {
   viewAll: () => ({ type: c.ALL }),
 
   viewPosts: () => ({ type: c.POSTS }),
+
+  selectPost: (id: string) => ({
+    type: c.SELECT_POST,
+    id,
+  }),
 
   viewSettings: (slug: string) => {
     return {
@@ -61,6 +67,7 @@ export const reducer: Reducer<State['view']> = (
       return update(initialState, {
         routeType: { $set: 'feed' },
         selectedFeed: { $set: action.id },
+        selectedPost: { $set: null },
         panelOpenMobile: { $set: false },
       });
     }
@@ -69,6 +76,7 @@ export const reducer: Reducer<State['view']> = (
       return update(initialState, {
         routeType: { $set: 'timeline' },
         selectedFeed: { $set: null },
+        selectedPost: { $set: null },
         panelOpenMobile: { $set: false },
       });
     }
@@ -77,7 +85,14 @@ export const reducer: Reducer<State['view']> = (
       return update(initialState, {
         routeType: { $set: 'posts' },
         selectedFeed: { $set: null },
+        selectedPost: { $set: null },
         panelOpenMobile: { $set: false },
+      });
+    }
+
+    case c.SELECT_POST: {
+      return update(initialState, {
+        selectedPost: { $set: action.id },
       });
     }
 
