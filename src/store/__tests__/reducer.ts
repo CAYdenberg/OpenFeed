@@ -12,7 +12,7 @@ import reducer from '../reducer';
 //   }, getInitialState());
 
 describe('reducer', () => {
-  it.todo('reducer tests', () => {
+  it.skip('reducer tests', () => {
     expect(reducer).toBeTruthy();
   });
 });
