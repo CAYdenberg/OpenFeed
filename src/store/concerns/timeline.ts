@@ -150,9 +150,11 @@ export const reducer: Reducer<State['timeline']> = (
       if (i === -1) return initialState;
 
       const oldIds = initialState.posts.map(post => post.jsonFeed.id);
-      const newPosts = action.posts.filter(
-        (post: ExternalPost) => !oldIds.includes(post.jsonFeed.id)
-      );
+      const newPosts = action.posts.filter((post: ExternalPost) => {
+        const shouldAdd = !oldIds.includes(post.jsonFeed.id);
+        oldIds.push(post.jsonFeed.id);
+        return shouldAdd;
+      });
 
       return update(initialState, {
         feeds: {
