@@ -2,10 +2,12 @@ import React, { useCallback } from 'react';
 import { DateTime } from 'luxon';
 import DOMPurify from 'dompurify';
 import Icon, { openOriginal, save, unsave } from '../Icons';
-import { JsonFeedPostData } from '../../types';
+import { JsonFeedPostData, MercuryPostData } from '../../types';
+import Content from './Content';
 
 interface Props {
   post: JsonFeedPostData;
+  mercury?: MercuryPostData;
   isOpen: boolean;
   isSaved?: boolean;
   feed?: string;
@@ -16,6 +18,7 @@ interface Props {
 const Post: React.FC<Props> = ({
   feed,
   post,
+  mercury,
   isSaved,
   isOpen,
   handleClickPost,
@@ -56,15 +59,13 @@ const Post: React.FC<Props> = ({
       </a>
 
       <div className="card-content">
-        {isOpen && content_html ? (
-          <div
-            className="content"
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(content_html),
-            }}
+        {isOpen ? (
+          <Content
+            mercury_html={mercury && mercury.content}
+            content_html={content_html}
+            content_text={content_text}
+            summary={summary}
           />
-        ) : isOpen && content_text ? (
-          <div>{content_text}</div>
         ) : (
           <p className="card__summary">{summary}</p>
         )}

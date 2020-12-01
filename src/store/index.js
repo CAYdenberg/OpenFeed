@@ -4,8 +4,6 @@ import middleware from './middleware';
 import { getInitialState } from './shape';
 import reducer from './reducer';
 import tasks from './tasks';
-import config from '../config';
-import { timelineActions } from './actions';
 
 const store = createStore(
   reducer,
@@ -19,7 +17,8 @@ store.subscribe(() => {
   currentState = store.getState();
 
   tasks.forEach(task => {
-    if (task[0](currentState, previousState)) store.dispatch(task[1]);
+    const action = task(currentState, previousState);
+    if (action) store.dispatch(action);
   });
 });
 

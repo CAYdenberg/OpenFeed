@@ -4,6 +4,7 @@
   "description": "A syndicated feed aggregator based on the JSON Feed specification. The web belongs to us. 🌎",
   "main": "server/index.js",
   "dependencies": {
+    "@postlight/mercury-parser": "^2.2.0",
     "@types/dompurify": "^2.0.0",
     "@types/luxon": "^1.21.0",
     "@types/pouchdb": "^6.4.0",

@@ -1,6 +1,12 @@
 import { State } from './shape';
 import config from '../config';
-import { LoadState, JsonFeedPostData } from '../types';
+import {
+  LoadState,
+  JsonFeedPostData,
+  ExternalPost,
+  SavedPost,
+  MercuryPostData,
+} from '../types';
 
 export const isDbAvailable = (state: State) => state.system.isDbAvailable;
 
@@ -45,7 +51,24 @@ export const needPosts = (state: State) =>
 export const selectedFeed = (state: State) =>
   state.view.routeType === 'feed' && state.view.selectedFeed;
 
-export const selectedPost = (state: State) => state.view.selectedPost;
+export const selectedPost = (state: State): ExternalPost | SavedPost | null => {
+  const id = state.view.selectedPost;
+  if (!id) return null;
+  const timeline = state.timeline.posts.find(post => post.jsonFeed.id === id);
+  const saved = state.posts.data.find(post => post._id === id);
+  if (timeline && saved) {
+    return {
+      ...timeline,
+      ...saved,
+    };
+  } else if (timeline) {
+    return timeline;
+  } else if (saved) {
+    return saved;
+  } else {
+    return null;
+  }
+};
 
 export const isSettingsOpen = (state: State) =>
   state.view.routeType === 'settings';
@@ -69,6 +92,7 @@ type VisiblePosts = Array<{
   post: JsonFeedPostData;
   feed: string;
   isSaved?: boolean;
+  mercury?: MercuryPostData;
 }>;
 
 export const visiblePosts = (state: State): VisiblePosts => {
@@ -78,6 +102,7 @@ export const visiblePosts = (state: State): VisiblePosts => {
       post: post.jsonFeed,
       feed: post.parent,
       isSaved: true,
+      mercury: post.mercury,
     }));
   }
 
@@ -107,6 +132,7 @@ export const visiblePosts = (state: State): VisiblePosts => {
         post: post.jsonFeed,
         feed: feed ? feed.feed.displayName : '',
         isSaved: savedPostIds.includes(post.jsonFeed.id),
+        mercury: post.mercury,
       };
     });
 };
