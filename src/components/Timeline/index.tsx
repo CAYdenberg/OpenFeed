@@ -10,13 +10,15 @@ const Timeline: React.FC = () => {
   const openPost = useSelector(selectedPost);
   const dispatch = useDispatch();
 
+  const openPostId = openPost && openPost.jsonFeed.id;
+
   const handleClickSave = useCallback(
     (id: string) => {
       const post = posts.find(post => post.id === id);
       if (!post) return;
       post.isSaved
         ? dispatch(postsActions.unsave(post.id))
-        : dispatch(postsActions.save(post.feed, post.post));
+        : dispatch(postsActions._save(post.feed, post.post));
     },
     [posts]
   );
@@ -27,8 +29,8 @@ const Timeline: React.FC = () => {
   );
 
   useEffect(() => {
-    scrollIntoView(openPost || null);
-  }, [openPost]);
+    scrollIntoView(openPostId);
+  }, [openPostId]);
 
   if (!posts.length) {
     return <h3 className="is-size-3 has-text-centered">No posts</h3>;
@@ -39,8 +41,9 @@ const Timeline: React.FC = () => {
       {posts.map(post => (
         <Post
           post={post.post}
+          mercury={post.mercury}
           feed={post.feed}
-          isOpen={post.id === openPost}
+          isOpen={post.id === openPostId}
           isSaved={post.isSaved}
           handleClickPost={handleClickPost}
           handleClickSave={handleClickSave}

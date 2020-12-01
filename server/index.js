@@ -2,6 +2,7 @@
 require('dotenv').config();
 const path = require('path');
 
+const Mercury = require('@postlight/mercury-parser');
 const Koala = require('koala-server');
 const rss2json = require('rss-to-json-feed');
 const axios = require('axios');
@@ -50,6 +51,20 @@ Koala(router => {
       .catch(e => {
         console.error(e);
         res.status(404).json({ error: 'Resource could not be found' });
+      });
+  });
+
+  router.get('/parse', (req, res) => {
+    Mercury.parse(decodeURI(req.query.url))
+      .then(data => {
+        if (data.error) {
+          return res.status(400).json({ error: data.message });
+        }
+        res.json(data);
+      })
+      .catch(e => {
+        console.error(e);
+        res.status(e.status || 502).json({ error: 'Post could not be parsed' });
       });
   });
   return router;

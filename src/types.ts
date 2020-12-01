@@ -60,6 +60,23 @@ export interface JsonFeedPostData {
   tags?: string[];
 }
 
+export interface MercuryPostData {
+  author: string | null;
+  content: string | null;
+  date_published: string | null;
+  dek: null;
+  direction: 'ltr' | 'rtl' | null;
+  domain: string | null;
+  excerpt: string | null;
+  lead_image_url: string | null;
+  next_page_url: string | null;
+  rendered_pages: number | null;
+  title: string | null;
+  total_pages: number | null;
+  url: string | null;
+  word_count: number | null;
+}
+
 export interface JsonFeed extends JsonFeedData {
   items: JsonFeedPostData[];
 }
@@ -67,6 +84,7 @@ export interface JsonFeed extends JsonFeedData {
 export interface ExternalPost {
   jsonFeed: JsonFeedPostData;
   parent: string;
+  mercury?: MercuryPostData;
 }
 
 export type SavedPost = ExternalPost & OFDocument<OFDocumentType.ExternalPost>;

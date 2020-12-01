@@ -10,6 +10,7 @@ import {
 } from '../../types';
 import { State } from '../shape';
 import { findStaleFeed } from '../selectors';
+import { constants as postsConstants } from './posts';
 import { constants as previewConstants } from './preview';
 import { mergeArrays } from '../../helpers';
 import * as comparePosts from '../../helpers/comparePosts';
@@ -203,6 +204,22 @@ export const reducer: Reducer<State['timeline']> = (
         posts: {
           $apply: (posts: State['timeline']['posts']) =>
             mergeTimeline(posts, action.posts),
+        },
+      });
+    }
+
+    case postsConstants.REQUEST_MERCURY_DATA_OK: {
+      return update(initialState, {
+        posts: {
+          $apply: (posts: State['timeline']['posts']) =>
+            posts.map(post =>
+              post.jsonFeed.id === action.post.jsonFeed.id
+                ? {
+                    ...post,
+                    mercury: action.data,
+                  }
+                : post
+            ),
         },
       });
     }
